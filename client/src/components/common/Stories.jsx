@@ -28,13 +28,17 @@ export default function Stories() {
 
 function Story({direction, title, description, imgs}) {
   return (
-    <div className={`flex flex-col sm:flex-row justify-center items-center gap-6 bg-secondary w-full my-12`}>
+    <div
+      className={`flex flex-col ${
+        direction === 'left' ? 'sm:flex-row' : 'sm:flex-row-reverse'
+      } justify-center items-center gap-6 bg-secondary w-full my-12`}
+    >
       <div className="bg-primary w-2/3 sm:w-1/3 aspect-square relative">
         <img src={`./public/${imgs[0]}`} alt="asdf" className="w-2/3 rounded-full absolute top-4 mx-auto inset-x-0" />
         <img
           src={`./public/${imgs[1]}`}
           alt="asdf"
-          className={`w-1/3 rounded-full absolute top-1/2 ${direction === 'left' ? 'left' : 'right'}-1/2`}
+          className={`w-1/3 rounded-full absolute top-1/2 ${direction === 'left' ? 'left-1/2' : 'right-1/2'}`}
         />
       </div>
       <div className="flex-1 text-left">
