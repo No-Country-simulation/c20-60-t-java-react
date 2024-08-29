@@ -5,11 +5,12 @@ const textStyles = cva('first-letter:capitalize', {
     variant: {
       // 13px
       default: '[font-size:0.8125rem] [line-height:1.25rem]',
+      // 14px
+      details: 'text-sm font-semibold',
       // 18px
-      subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-semibold',
+      subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-bold',
       // 20px
-      title: 'text-xl font-bold',
-      details: ''
+      title: 'text-xl font-black'
     }
   },
   defaultVariants: {
