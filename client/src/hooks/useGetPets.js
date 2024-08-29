@@ -1,5 +1,5 @@
-import { petAPI } from '@/api/pet/petAPI'
-import { useQuery } from 'node_modules/@tanstack/react-query/build/legacy/useQuery'
+import { useQuery } from '@tanstack/react-query'
+import { petAPI } from '@/api'
 
 export function useGetPets() {
   const { data, isLoading, isError } = useQuery({
@@ -8,7 +8,7 @@ export function useGetPets() {
   })
 
   return {
-    pets: data,
+    pets: data ?? [],
     isLoading,
     isError
   }
