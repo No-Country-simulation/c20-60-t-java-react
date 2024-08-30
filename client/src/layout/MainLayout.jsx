@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Footer from '@/components/common/Footer'
+import { Toaster } from '@/components/ui/toaster'
 
 export function MainLayout() {
   return (
@@ -11,6 +12,7 @@ export function MainLayout() {
         </main>
         <Footer />
       </section>
+      <Toaster />
     </section>
   )
 }
