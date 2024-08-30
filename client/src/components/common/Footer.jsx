@@ -1,53 +1,35 @@
-import { Button } from '../ui/button'
+import { Text } from '../ui/text'
+import { Link } from 'react-router-dom'
 
 export default function Footer() {
   return (
     <footer className="bg-secondary ">
       <section className="max-w-desktop mx-auto flex flex-wrap justify-between px-20 pt-8 mt-8">
-        <section className="text-left">
-          <h3 className="text-xl font-bold">Navegación</h3>
-          <Button className="block my-4" variant="link">
-            Inicio
-          </Button>
-          <Button className="block my-4" variant="link">
-            Quiero adoptar
-          </Button>
-          <Button className="block my-4" variant="link">
-            Sobre nosotros
-          </Button>
-        </section>
-        <section className="text-left">
-          <h3 className="text-xl font-bold">Legal</h3>
-          <Button className="block my-4" variant="link">
-            Términos legales
-          </Button>
-          <Button className="block my-4" variant="link">
-            Política de privacidad
-          </Button>
-        </section>
-        <section className="text-left">
-          <h3 className="text-xl font-bold">Información de contacto</h3>
-          <Button className="block my-4" variant="link">
-            Calle Falsa 1234, Buenos Aires, Argentina
-          </Button>
-          <Button className="block my-4" variant="link">
-            pawsomefriends@gmail.com
-          </Button>
-        </section>
-        <section className="text-left">
-          <h3 className="text-xl font-bold">Nuestras redes sociales</h3>
-          <Button className="block my-4" variant="link">
-            @PawsomeFriends
-          </Button>
-          <Button className="block my-4" variant="link">
-            PawsomeFriends
-          </Button>
-          <Button className="block my-4" variant="link">
-            +54 11 1234-5678
-          </Button>
-        </section>
-        <p className="block w-full p-4">©Pawsome Friends. Todos los derechos reservados.</p>
+        <FooterSection title={'Navegacion'} links={['inicio', 'Quiero adoptar', 'Sobre nosotros']} />
+        <FooterSection title={'Legal'} links={['Términos legales', 'Politicas de privacidad']} />
+        <FooterSection title={'Información de contacto'} links={['Calle Falsa 1234, Buenos Aires, Argentina', 'pawsomefriends@gmail.com']} />
+        <FooterSection title={'Nuestras redes sociales'} links={['@PawsomeFriends', 'PawsomeFriends', '+54 11 1234-5678']} />
       </section>
+      <Text variant="medium" className="text-center my-12">
+        © 2024 Refugio Pawsome Friends. Todos los derechos reservados.
+      </Text>
     </footer>
+  )
+}
+
+export function FooterSection({ title, links }) {
+  return (
+    <section className="text-left flex flex-col gap-5">
+      <Text asChild variant={'title'}>
+        <h3>{title}</h3>
+      </Text>
+      <ul className="flex flex-col gap-3">
+        {links.map((link) => (
+          <Link className="hover:underline" to="#" key={link}>
+            <Text variant="medium">{link}</Text>
+          </Link>
+        ))}
+      </ul>
+    </section>
   )
 }
