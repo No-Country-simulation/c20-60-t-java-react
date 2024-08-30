@@ -8,7 +8,7 @@ function Header() {
       <div className="max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
           <figure>
-            <img src="./public/logo.png" alt="logo pawsome friend" width={80} height={80} />
+            <img src="./images/logo.png" alt="logo pawsome friend" width={80} height={80} />
           </figure>
         </a>
         <div className="flex flex-row-reverse lg:flex-row">

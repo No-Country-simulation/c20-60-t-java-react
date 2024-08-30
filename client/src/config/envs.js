@@ -6,6 +6,6 @@ const envsSchema = z.object({
 })
 
 export const envs = envsSchema.parse({
-  BASE_API_URL: import.meta.env.VITE_BASE_API_URL,
+  BASE_API_URL: import.meta.env.VITE_BASE_API_URL ?? '',
   MODE: import.meta.env.MODE
 })
