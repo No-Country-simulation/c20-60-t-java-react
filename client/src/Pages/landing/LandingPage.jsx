@@ -1,5 +1,7 @@
-import { InformationCard } from '@/components/common/InformationCard'
-import { Hero } from '@/components/common/Hero'
+import { InformationCard } from '@/Pages/landing/InformationCard'
+import { Hero } from '@/Pages/landing/Hero'
+import Contribute from './Contribute'
+import Stories from './Stories'
 
 const information = [
   {
@@ -28,6 +30,8 @@ export function LandingPage() {
           return <InformationCard title={title} description={description} src={img} alt={alt} key={title} />
         })}
       </section>
+      <Stories />
+      <Contribute />
     </>
   )
 }
