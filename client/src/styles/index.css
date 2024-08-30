@@ -18,3 +18,11 @@
     @apply flex flex-col px-2  max-w-60 border;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
