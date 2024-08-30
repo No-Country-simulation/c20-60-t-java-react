@@ -1,3 +1,4 @@
+import { DialogForm } from './DialogForm'
 import './PetPageStyle.css'
 
 export function PetPage() {
@@ -52,10 +53,7 @@ export function PetPage() {
                 perritos. Amigable y fiel, ideal para hogares con nños!
               </p>
 
-              {/* Botón para Formulario */}
-              <div className="form-button">
-                <button onClick={() => (window.location.href = 'formulario.html')}>Completar formulario adopcion</button>
-              </div>
+              <DialogForm />
             </div>
           </div>
         </div>
