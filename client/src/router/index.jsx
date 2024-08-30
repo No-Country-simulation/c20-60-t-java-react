@@ -1,6 +1,7 @@
 import { MainLayout } from '@/layout'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PetsPage } from '@/Pages'
+import { LandingPage } from '@/Pages/landing/LandingPage'
 
 export function MainRouter() {
   return (
@@ -17,5 +18,4 @@ export function MainRouter() {
 }
 
 // PLACEHOLDERS
-const LandingPage = () => <div />
 const PetPage = () => <div />
