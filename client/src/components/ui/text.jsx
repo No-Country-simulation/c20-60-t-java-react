@@ -6,11 +6,11 @@ const textStyles = cva('first-letter:capitalize', {
       // 13px
       default: '[font-size:0.8125rem] [line-height:1.25rem]',
       // 14px
-      details: 'text-sm font-semibold',
+      details: 'text-sm font-semibold font-quicksand',
       // 18px
-      subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-bold',
+      subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-bold font-quicksand',
       // 20px
-      title: 'text-xl font-black'
+      title: 'text-xl font-black font-quicksand'
     }
   },
   defaultVariants: {

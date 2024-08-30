@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/Roboto-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('fonts/Quicksand-Bold.ttf');
+}
+
+@font-face {
+  font-family: 'Quicksand';
+  src: url('fonts/Quicksand-SemiBold.ttf');
+}
