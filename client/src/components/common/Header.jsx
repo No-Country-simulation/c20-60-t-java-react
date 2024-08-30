@@ -4,48 +4,50 @@ import { Link } from 'react-router-dom'
 
 function Header() {
   return (
-    <header className="flex h-[80px] w-full items-center justify-between bg-secondary  px-4  shadow-md sticky top-0  z-20">
-      <a href="#top" className="flex items-center gap-2 cursor-pointer">
-        <figure>
-          <img src="./public/logo.png" alt="logo pawsome friend" width={80} height={80} />
-        </figure>
-      </a>
-      <div className="flex flex-row-reverse lg:flex-row">
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="lg:hidden">
-              <MenuIcon className="h-6 w-6" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="right">
-            <nav className="grid gap-4 p-6 ">
-              <Link to="/" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
-                Inicio
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
-                Sobre Nosotros
-              </Link>
-              <Link href="#" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
-                Donar
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <nav className="hidden items-center gap-6 font-medium lg:flex ">
-          <Link to={'/'} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-            Inicio
-          </Link>
-          <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-            Sobre Nosotros
-          </Link>
-          <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-            Donar
-          </Link>
-        </nav>
-        <Button size="icon" className="lg:ml-2 lg:mr-0 mr-2 " variant="outline">
-          <ThemeIcon />
-        </Button>
+    <header className="h-[80px] w-full   bg-secondary  px-4  shadow-md sticky top-0  z-20">
+      <div className="max-w-desktop flex items-center justify-between mx-auto">
+        <a href="#top" className="flex items-center gap-2 cursor-pointer">
+          <figure>
+            <img src="./public/logo.png" alt="logo pawsome friend" width={80} height={80} />
+          </figure>
+        </a>
+        <div className="flex flex-row-reverse lg:flex-row">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" size="icon" className="lg:hidden">
+                <MenuIcon className="h-6 w-6" />
+                <span className="sr-only">Toggle navigation menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <nav className="grid gap-4 p-6 ">
+                <Link to="/" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
+                  Inicio
+                </Link>
+                <Link href="#" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
+                  Sobre Nosotros
+                </Link>
+                <Link href="#" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
+                  Donar
+                </Link>
+              </nav>
+            </SheetContent>
+          </Sheet>
+          <nav className="hidden items-center gap-6 font-medium lg:flex ">
+            <Link to={'/'} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+              Inicio
+            </Link>
+            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+              Sobre Nosotros
+            </Link>
+            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+              Donar
+            </Link>
+          </nav>
+          <Button size="icon" className="lg:ml-2 lg:mr-0 mr-2 " variant="outline">
+            <ThemeIcon />
+          </Button>
+        </div>
       </div>
     </header>
   )

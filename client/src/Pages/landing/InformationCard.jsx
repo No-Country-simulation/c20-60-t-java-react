@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 function InformationCard({ title, description, src, alt }) {
   return (
     <article className={` lg:flex  lg:last:flex-row-reverse lg:first:mb-[7.5rem] first:mb-10 py-5 lg:py-0 overflow-hidden rounded-[.5rem] shadow-xl`}>
-      <Card className="w-full mb-2 lg:mb-0  lg:basis-2/4 shadow-none border-none">
+      <Card className="w-full mb-5 lg:mb-0  lg:basis-2/4 shadow-none border-none rounded-none">
         <CardHeader>
           <CardTitle className="text-3xl font-bold font-quicksand">{title}</CardTitle>
         </CardHeader>
