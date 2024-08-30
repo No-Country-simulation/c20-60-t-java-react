@@ -1,5 +1,5 @@
 import { useGetPets } from '@/hooks/useGetPets'
-import { PetsPageLayout } from '@/layout/PetsPageLayout'
+import { PetsPageLayout } from '@/layout'
 import { PetsGrid } from './PetsGrid'
 
 export function PetsPage() {
