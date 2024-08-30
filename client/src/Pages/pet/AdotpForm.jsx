@@ -36,60 +36,62 @@ export function AdotpForm() {
 
   return (
     <Form {...form}>
-      <form action="" onSubmit={form.handleSubmit(handleSubmit)}>
-        <FormField
-          name="name"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Lionel Messi" {...field} />
-              </FormControl>
-              <FormDescription>Tu nombre.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email</FormLabel>
-              <FormControl>
-                <Input placeholder="example@gmail.com" {...field} />
-              </FormControl>
-              <FormDescription>Tu email.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="location"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Dirección</FormLabel>
-              <FormControl>
-                <Input placeholder="Buenos Aires, Capital" {...field} />
-              </FormControl>
-              <FormDescription>Tu dirección.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="phone_number"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Número telefónico</FormLabel>
-              <FormControl>
-                <Input placeholder="1126157262" type="number" {...field} />
-              </FormControl>
-              <FormDescription>Tu número telefónico.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button>Enviar</Button>
+      <form action="" className="w-[800px] flex flex-col gap-12" onSubmit={form.handleSubmit(handleSubmit)}>
+        <section className="grid grid-cols-2 gap-10">
+          <FormField
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Lionel Messi" {...field} />
+                </FormControl>
+                <FormDescription>Tu nombre.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="example@gmail.com" {...field} />
+                </FormControl>
+                <FormDescription>Tu email.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="location"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Dirección</FormLabel>
+                <FormControl>
+                  <Input placeholder="Buenos Aires, Capital" {...field} />
+                </FormControl>
+                <FormDescription>Tu dirección.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="phone_number"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Número telefónico</FormLabel>
+                <FormControl>
+                  <Input placeholder="1126157262" type="number" {...field} />
+                </FormControl>
+                <FormDescription>Tu número telefónico.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </section>
+        <Button className="w-fit mx-auto min-w-[300px] py-2 px-4">Adoptar</Button>
       </form>
     </Form>
   )

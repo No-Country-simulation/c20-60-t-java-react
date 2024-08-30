@@ -1,4 +1,5 @@
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Text } from '@/components/ui/text'
 import { AdotpForm } from './AdotpForm'
 
 export function DialogForm() {
@@ -7,10 +8,12 @@ export function DialogForm() {
       <DialogTrigger>Adoptame!</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Adopta una mascota</DialogTitle>
-          <AdotpForm />
-          <DialogDescription>Completa todos los campos para poder ser elegible.</DialogDescription>
+          <DialogTitle className="flex flex-col gap-x-14 gap-y-8">
+            <Text variant="title">Adopta una mascota</Text>
+            <Text variant="medium">Completa todos los campos para poder ser elegible.</Text>
+          </DialogTitle>
         </DialogHeader>
+        <AdotpForm />
       </DialogContent>
     </Dialog>
   )
