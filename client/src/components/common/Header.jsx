@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 function Header() {
   return (
-    <header className="h-[80px] w-full   bg-secondary  px-4  shadow-md sticky top-0  z-20">
+    <header className="h-[80px] w-full bg-secondary px-4 shadow-md sticky top-0 z-20">
       <div className="max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
           <figure>
