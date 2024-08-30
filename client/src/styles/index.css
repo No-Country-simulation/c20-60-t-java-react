@@ -15,6 +15,6 @@
 }
 @layer NavBar {
   .nav-container {
-    @apply flex flex-col px-2 h-screen max-w-60 border;
+    @apply flex flex-col px-2  max-w-60 border;
   }
 }

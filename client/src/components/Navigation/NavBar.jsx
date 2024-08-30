@@ -1,6 +1,6 @@
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
-import { NavSection,BadgeGroup } from './index'
+import { NavSection, BadgeGroup } from './index'
 
 export const NavBar = () => {
   return (
