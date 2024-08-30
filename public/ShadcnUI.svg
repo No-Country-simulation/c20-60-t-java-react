@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="90" height="90" viewBox="0 0 128 128">
+  <rect width="12" height="12" fill="none"></rect>
+  <line x1="104" y1="64" x2="64" y2="104" fill="none" stroke="currentColor" stroke-linecap="round"
+    stroke-linejoin="round" stroke-width="8"></line>
+  <line x1="96" y1="20" x2="20" y2="96" fill="none" stroke="currentColor" stroke-linecap="round"
+    stroke-linejoin="round" stroke-width="8"></line>
+  <!-- <text x="15" y="128" font-family="Arial" font-size="20" fill="currentColor">Shadcn UI</text> -->
+</svg>
