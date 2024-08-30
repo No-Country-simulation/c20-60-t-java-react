@@ -19,6 +19,13 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+
 /* HIDE ARROWS ON NUMBER INPUTS */
 
 /* Chrome, Safari, Edge, Opera */
@@ -31,4 +38,5 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type='number'] {
   -moz-appearance: textfield;
+
 }
