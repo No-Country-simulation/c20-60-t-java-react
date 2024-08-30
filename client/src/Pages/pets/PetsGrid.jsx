@@ -1,14 +1,16 @@
-import { PetCard } from './PetCard'
+import { Grid } from '@/components/ui/grid'
+import { PetCard } from './petCard'
+import { PetsPagination } from './PetsPagination'
 
 export function PetsGrid({ pets }) {
   return (
     <>
-      <section className="grid grid-cols-responsive gap-y-8 gap-x-10 justify-center">
+      <Grid>
         {pets?.map((pet) => (
           <PetCard key={pet.id} {...pet} />
         ))}
-      </section>
-      <footer>{/* PAGINATION */}</footer>
+      </Grid>
+      <PetsPagination />
     </>
   )
 }

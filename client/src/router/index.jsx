@@ -2,6 +2,7 @@ import { MainLayout } from '@/layout'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { PetsPage , PetPage } from '@/Pages'
 
+
 export function MainRouter() {
   return (
     <BrowserRouter>
