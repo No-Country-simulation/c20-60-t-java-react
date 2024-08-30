@@ -1,4 +1,5 @@
 import { Outlet } from 'react-router-dom'
+import Footer from '@/components/common/Footer'
 
 export function MainLayout() {
   return (
@@ -16,4 +17,3 @@ export function MainLayout() {
 
 // PLACEHOLDERS
 const Header = () => <div className="absolute" />
-const Footer = () => <div />
