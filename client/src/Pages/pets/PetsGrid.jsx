@@ -1,5 +1,6 @@
-import { PetCard } from './petCard'
 import { Grid } from '@/components/ui/grid'
+import { PetCard } from './petCard'
+import { PetsPagination } from './PetsPagination'
 
 export function PetsGrid({ pets }) {
   return (
@@ -9,7 +10,7 @@ export function PetsGrid({ pets }) {
           <PetCard key={pet.id} {...pet} />
         ))}
       </Grid>
-      <footer>{/* PAGINATION */}</footer>
+      <PetsPagination />
     </>
   )
 }
