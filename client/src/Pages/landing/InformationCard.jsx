@@ -1,23 +1,24 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Text } from '@/components/ui/text'
 
-function InformationCard({ title, description, src, alt }) {
+export function InformationCard({ title, description, src, alt }) {
   return (
-    <article className={` lg:flex  lg:last:flex-row-reverse lg:first:mb-[7.5rem] first:mb-10 py-5 lg:py-0 overflow-hidden rounded-[.5rem] shadow-xl`}>
-      <Card className="w-full mb-5 lg:mb-0  lg:basis-2/4 shadow-none border-none rounded-none">
-        <CardHeader>
-          <CardTitle className="text-3xl font-bold font-quicksand">{title}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground font-roboto">{description}</p>
-        </CardContent>
-      </Card>
-      <div className=" lg:first:mr-6 ">
-        <figure className="border-0">
-          <img src={src} alt={alt} className="object-cover w-[36.875rem] h-[18.125rem] mx-auto border-0" />
-        </figure>
-      </div>
+    <article
+      className="relative lg:flex lg:last:flex-row-reverse py-5 lg:py-0  
+      // 
+      [&>section]:last:items-end [&>div]:last:translate-x-full"
+    >
+      <div className="absolute inset-0 bg-secondary top-0 -translate-x-full" />
+      <section className="flex flex-1 flex-col justify-center bg-secondary p-4">
+        <div className="flex flex-col gap-4 ">
+          <Text variant="title">{title}</Text>
+          <Text variant="landingCard" className="max-w-[420px]">
+            {description}
+          </Text>
+        </div>
+      </section>
+      <figure className="lg:first:mr-6 flex-1 border-0 h-72">
+        <img src={src} alt={alt} className="w-full h-full object-cover mx-auto border-0" />
+      </figure>
     </article>
   )
 }
-
-export { InformationCard }
