@@ -1,22 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
+import { toast } from '@/components/ui/use-toast'
+import { adotpFormSchema } from '@/lib/zod-validations/adoptFormSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { z } from 'zod'
-
-const adotpFormSchema = z.object({
-  email: z.string().email({ message: 'Email inválido' }),
-  name: z.string().min(3, { message: 'El nombre debe tener al menos 3 caracteres' }).max(50, { message: 'El nombre es muy largo' }),
-  location: z.string().min(5, { message: 'Dirección inválida' }),
-  phone_number: z.coerce.number().refine(
-    (phone) => {
-      const phoneStringified = phone.toString()
-      return phoneStringified.length > 5 && phoneStringified.length < 20
-    },
-    { message: 'Numero telefónico invalido' }
-  )
-})
 
 export function AdotpForm() {
   const form = useForm({
@@ -31,6 +19,7 @@ export function AdotpForm() {
 
   const handleSubmit = (data) => {
     console.log(data)
+    toast({ title: 'Formulario enviado con exito!', description: 'Gracias por decidir adoptar!' })
     form.reset()
   }
 
