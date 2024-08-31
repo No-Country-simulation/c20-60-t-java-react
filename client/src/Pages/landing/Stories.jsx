@@ -1,7 +1,7 @@
 import { Story } from "@/components/common"
 export const Stories =()=> {
   return (
-    <section>
+    <section className="w-full">
       <Story
         direction="left"
         title="Toby: el perrito que sobrevivió un incendio"
