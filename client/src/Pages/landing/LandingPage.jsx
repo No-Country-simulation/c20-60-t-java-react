@@ -1,10 +1,10 @@
 import { InformationCard } from '@/Pages/landing/InformationCard'
 import { Hero } from '@/Pages/landing/Hero'
 import Contribute from './Contribute'
-import Stories from './Stories'
 import HowToAdopt from '@/components/common/HowToAdopt'
 import ChooseCatOrDog from '@/components/common/ChooseCatOrDog'
 import { Text } from '@/components/ui/text'
+import { Stories } from './Stories'
 
 const information = [
   {
