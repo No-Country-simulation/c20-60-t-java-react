@@ -15,13 +15,14 @@ const buttonVariants = cva(
         secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        navBar: 'bg-[#E3C8D080] text-gray-600 shadow-[0_4px_6px_rgba(0,0,0,0.2)] rounded-[15px] py-32 w-full'
+        navigation: 'rounded-none border border-black hover:bg-secondary',
+        navigationActive: 'border border-black bg-black/20 rounded-none'
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded-md px-3',
         lg: 'h-11 rounded-md px-8',
-        icon: 'h-10 w-10'
+        icon: 'h-6 w-6'
       }
     },
     defaultVariants: {
@@ -37,4 +38,4 @@ const Button = React.forwardRef(({ className, variant, size, asChild = false, ..
 })
 Button.displayName = 'Button'
 
-export { Button }
+export { Button, buttonVariants }

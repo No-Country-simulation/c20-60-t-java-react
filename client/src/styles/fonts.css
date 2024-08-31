@@ -1,17 +1,17 @@
 @font-face {
   font-family: 'Roboto';
-  src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  src: url('/fonts/Roboto-Regular.ttf') format('truetype');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('fonts/Quicksand-Bold.ttf') format('truetype');
+  src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Quicksand';
-  src: url('fonts/Quicksand-SemiBold.ttf') format('truetype');
+  src: url('/fonts/Quicksand-SemiBold.ttf') format('truetype');
   font-weight: 600;
 }
