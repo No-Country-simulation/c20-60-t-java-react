@@ -17,6 +17,7 @@ const textStyles = cva('first-letter:capitalize', {
       subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-bold font-quicksand',
       // size 20px | height 28px
       title: 'text-2xl font-bold font-quicksand',
+      display: 'text-4xl font-bold font-quicksand',
       landingCard: '[font-size:1rem] [line-height:1.5625rem]'
     }
   },

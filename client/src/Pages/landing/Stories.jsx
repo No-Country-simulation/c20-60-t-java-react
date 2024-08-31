@@ -2,7 +2,7 @@ import { Button } from '@/components/ui/button'
 
 export default function Stories() {
   return (
-    <section>
+    <section className="w-full">
       <Story
         direction="left"
         title="Toby: el perrito que sobrevivió un incendio"

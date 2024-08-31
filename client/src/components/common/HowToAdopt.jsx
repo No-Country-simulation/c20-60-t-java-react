@@ -30,15 +30,15 @@ export default function HowToAdopt() {
 
 function Step({ step, imgUrl, title, description }) {
   return (
-    <article className="flex flex-col items-center w-1/4">
-      <img src={`./public/${imgUrl}`} alt={title} className="w-1/3 mt m-8 mb-4" />
-      <Text variant="subtitle" className="pb-4">
+    <article className="flex flex-col items-center max-w-96">
+      <img src={`./public/${imgUrl}`} alt={title} className="w-44 mt m-8 mb-4" />
+      <Text variant="display" className="pb-3">
         {step}
       </Text>
-      <Text variant="medium" className="pb-2">
+      <Text variant="title" className="pb-2">
         {title}
       </Text>
-      <Text className="text-center pb-8">{description}</Text>
+      <Text variant="medium" className="text-center pb-9">{description}</Text>
     </article>
   )
 }

@@ -2,6 +2,8 @@ import { InformationCard } from '@/Pages/landing/InformationCard'
 import { Hero } from '@/Pages/landing/Hero'
 import Contribute from './Contribute'
 import Stories from './Stories'
+import HowToAdopt from '@/components/common/HowToAdopt'
+import { Text } from '@/components/ui/text'
 
 const information = [
   {
@@ -30,6 +32,8 @@ export function LandingPage() {
           return <InformationCard title={title} description={description} src={img} alt={alt} key={title} />
         })}
       </section>
+      <Text variant="display" className="text-center pb-6">¿Cómo adoptar?</Text>
+      <HowToAdopt/>
       <Stories />
       <Contribute />
     </>
