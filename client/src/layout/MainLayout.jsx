@@ -18,6 +18,5 @@ export function MainLayout() {
     </section>
   )
 }
-
 // PLACEHOLDERS
 // const Header = () => <div className="absolute" />
