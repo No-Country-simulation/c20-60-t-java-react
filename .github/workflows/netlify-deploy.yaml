@@ -1,12 +1,16 @@
 name: Deploy demo build to Netlify
 run-name: Deploy to Netlify by @${{ github.actor }} 🚀
 on:
-  push:
+  pull_request:
+    types: [closed]
     branches:
       - dev
 
 jobs:
   Build-Demo:
+    if: >
+      github.event.pull_request.merged == true &&
+      contains(github.event.pull_request.labels.*.name, 'frontend')
     runs-on: ubuntu-latest
     defaults:
       run:
