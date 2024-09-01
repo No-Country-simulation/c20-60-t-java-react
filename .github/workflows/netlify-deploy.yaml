@@ -24,9 +24,8 @@ jobs:
         run: npm run build:demo --if-present
       - name: ✨ Install netlify cli
         run: npm install netlify-cli@17.10.1 -g
+      - name: 🔗 Link to netlify site
+        run: netlify link --site ${{ secrets.NETLIFY_SITE_ID }}
       - name: 🌐 Deploy build folder
         id: netlify_deploy
-        run: netlify deploy \
-          --dir dist \
-          --site ${{ secrets.NETLIFY_SITE_ID }} \
-          --auth ${{ secrets.NETLIFY_API_TOKEN }}
+        run: netlify deploy --dir dist --site ${{ secrets.NETLIFY_SITE_ID }} --auth ${{ secrets.NETLIFY_API_TOKEN }} --prod
