@@ -1,50 +1,62 @@
 [
   {
     "id": 1,
+    "raza": "gato",
     "name": "Michino",
     "age": "4 meses",
     "thumbnail": "https://st.depositphotos.com/1000938/4122/i/450/depositphotos_41225801-stock-photo-black-white-cat.jpg",
     "labels": ["pequeño", "vacunado", "gato"],
-    "description": "Michino es un gatito de apenas 4 meses, lo encontramos en la calle y es muy juguetón."
+    "description": "Michino es un gatito de apenas 4 meses, lo encontramos en la calle y es muy juguetón.",
+    "vacunado": true
   },
   {
     "id": 2,
+    "raza": "perro",
     "name": "Luna",
     "age": "2 años",
     "thumbnail": "https://www.shutterstock.com/image-photo/happy-puppy-welsh-corgi-14-600nw-2270841247.jpg",
     "labels": ["mediana", "vacunada", "perro"],
-    "description": "Luna es una perrita muy cariñosa de 2 años. Le encanta correr y jugar en el parque."
+    "description": "Luna es una perrita muy cariñosa de 2 años. Le encanta correr y jugar en el parque.",
+    "vacunado": true
   },
   {
     "id": 3,
+    "raza": "gato",
     "name": "Mimi",
     "age": "6 meses",
     "thumbnail": "https://media.istockphoto.com/id/1389862392/photo/womans-hand-stroking-a-ginger-cat-on-isolated-white-background.jpg?s=612x612&w=0&k=20&c=DW07OmTZBTG0u2A8McZfmXkIW_7VXCAwDpVIRhUfqQw=",
     "labels": ["pequeña", "esterilizada", "gato"],
-    "description": "Mimi es una gatita curiosa y activa. Tiene 6 meses y le gusta explorar su entorno."
+    "description": "Mimi es una gatita curiosa y activa. Tiene 6 meses y le gusta explorar su entorno.",
+    "vacunado": true
   },
   {
     "id": 4,
+    "raza": "perro",
     "name": "Rocco",
     "age": "3 años",
     "thumbnail": "https://cdn.stocksnap.io/img-thumbs/280h/dog-animal_DOTORLBDD7.jpg",
     "labels": ["grande", "vacunado", "perro"],
-    "description": "Rocco es un perro leal y protector. Tiene 3 años y es ideal para una familia."
+    "description": "Rocco es un perro leal y protector. Tiene 3 años y es ideal para una familia.",
+    "vacunado": false
   },
   {
     "id": 5,
+    "raza": "gato",
     "name": "Chispita",
     "age": "1 año",
     "thumbnail": "https://www.shutterstock.com/image-photo/funny-large-longhair-gray-kitten-600nw-1842198919.jpg",
     "labels": ["pequeña", "vacunada", "gato"],
-    "description": "Chispita es una gatita de 1 año, muy tranquila y cariñosa. Le gusta dormir al sol."
+    "description": "Chispita es una gatita de 1 año, muy tranquila y cariñosa. Le gusta dormir al sol.",
+    "vacunado": false
   },
   {
     "id": 6,
+    "raza": "perro",
     "name": "Max",
     "age": "5 años",
     "thumbnail": "https://www.stockvault.net/data/2012/06/19/131801/thumb16.jpg",
     "labels": ["mediano", "vacunado", "perro"],
-    "description": "Max es un perro tranquilo de 5 años. Le encanta estar en casa y acompañar a su dueño."
+    "description": "Max es un perro tranquilo de 5 años. Le encanta estar en casa y acompañar a su dueño.",
+    "vacunado": false
   }
 ]

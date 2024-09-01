@@ -2,9 +2,32 @@ import { useGetPets } from '@/hooks/useGetPets'
 import { PetsPageLayout } from '@/layout'
 import { PetsLoader } from './petCard/PetCardLoader'
 import { PetsGrid } from './PetsGrid'
+import { useState } from 'react'
 
 export function PetsPage() {
-  const { pets, isError, isLoading } = useGetPets()
+  const [filters, setFilter] = useState({
+    raza: '',
+    tamaño: '',
+    sexo: '',
+    edad: '',
+    vacunado: '',
+    esterilizado: ''
+  })
+  const { pets, isError, isLoading, refetch } = useGetPets(filters)
+
+  const handleUpdateFilter = (field, value) => {
+    setFilter((prevState) => {
+      const newState = { ...prevState }
+      newState[field] = value
+
+      return newState
+    })
+  }
+
+  const handleApplyFilters = (event) => {
+    event.preventDefault()
+    refetch(filters)
+  }
 
   return (
     <PetsPageLayout>
