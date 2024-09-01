@@ -38,6 +38,9 @@ export default function HowToAdopt() {
 function Step({ step, imgUrl, title, description }) {
   return (
     <article className="flex flex-col items-center max-w-96">
+      {/* <figure clas>
+
+      </figure> */}
       <img src={`./public/${imgUrl}`} alt={title} className="w-44 mt m-8 mb-4" />
       <Text variant="display" className="pb-3">
         {step}

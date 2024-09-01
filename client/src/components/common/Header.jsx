@@ -1,15 +1,19 @@
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetTrigger, SheetContent } from '@/components/ui/sheet'
 import { Link } from 'react-router-dom'
+import { Text } from '../ui/index'
 
 function Header() {
   return (
-    <header className="h-[80px] w-full bg-secondary px-4 shadow-md sticky top-0 z-20">
-      <div className="max-w-desktop flex items-center justify-between mx-auto">
+    <header className="w-full bg-accent text-primary-foreground px-4 shadow-md sticky top-0 z-20">
+      <div className="h-[80px] max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
           <figure>
-            <img src="./images/logo.png" alt="logo pawsome friend" width={80} height={80} />
+            <img src="./images/logo.png" alt="logo pawsome friend" width={60} height={60} />
           </figure>
+          <Text variant="subtitle" className="text-primary">
+            Pawsome friends
+          </Text>
         </a>
         <div className="flex flex-row-reverse lg:flex-row">
           <Sheet>
@@ -35,13 +39,13 @@ function Header() {
           </Sheet>
           <nav className="hidden items-center gap-6 font-medium lg:flex ">
             <Link to={'/'} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-              Inicio
+              <Text variant="subtitle">Inicio</Text>
             </Link>
             <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-              Sobre Nosotros
+              <Text variant="subtitle">Sobre Nosotros</Text>
             </Link>
             <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
-              Donar
+              <Text variant="subtitle">Donar</Text>
             </Link>
           </nav>
           <Button size="icon" className="lg:ml-2 lg:mr-0 mr-2 " variant="outline">
