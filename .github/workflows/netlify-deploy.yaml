@@ -24,7 +24,7 @@ jobs:
       - name: ✨ Install netlify cli
         run: npm add netlify-cli -D -E
       - name: 🌐 Deploy build folder
-        run: npm netlify deploy \
+        run: npx netlify deploy \
           --dir dist \
           --site ${{ secrets.NETLIFY_SITE_ID }} \
           --auth ${{ secrets.NETLIFY_API_TOKEN }}
