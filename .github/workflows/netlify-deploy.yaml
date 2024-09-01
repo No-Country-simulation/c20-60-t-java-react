@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "20.x"
       - name: 📦 install dependencies
-        run: npm install --only=production
+        run: npm install
       - name: 🏗️ Build
         run: npm run build:demo --if-present
       - name: ✨ Install netlify cli
