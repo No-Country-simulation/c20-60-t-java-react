@@ -33,9 +33,10 @@ export const NavBar = ({ onRefetch }) => {
     if (filters.vacunado === '') {
       return ''
     }
-
     return filters.vacunado ? 'Sí' : 'No'
   }
+
+  const isFilterApplied = Object.keys(filters).some((field) => filters[field] !== '')
 
   return (
     <div className="nav-container">
@@ -62,7 +63,7 @@ export const NavBar = ({ onRefetch }) => {
         <BadgeGroup items={['Sí', 'No']} />
       </NavSection>
       <div className="flex justify-center items-center mt-1">
-        <Button onClick={onRefetch} variant="navBar">
+        <Button onClick={onRefetch} hoverable variant={isFilterApplied ? 'navBar' : 'navBarInactive'}>
           Aplicar Filtros
         </Button>
       </div>
