@@ -2,15 +2,21 @@ import { useGetPets } from '@/hooks/useGetPets'
 import { PetsPageLayout } from '@/layout'
 import { PetsLoader } from './petCard/PetCardLoader'
 import { PetsGrid } from './PetsGrid'
+import { usePetFilter } from '@/hooks/usePetFilter'
 
 export function PetsPage() {
-  const { pets, isError, isLoading } = useGetPets()
+  const { filters } = usePetFilter()
+  const { pets, isError, refetch, isFetching } = useGetPets(filters)
+
+  const handleApplyFilters = () => {
+    refetch(filters)
+  }
 
   return (
-    <PetsPageLayout>
+    <PetsPageLayout onRefetch={handleApplyFilters}>
       {isError && <PetsError />}
-      {!isError && isLoading && <PetsLoader />}
-      {!isError && !isLoading && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
+      {!isError && isFetching && <PetsLoader />}
+      {!isError && !isFetching && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
     </PetsPageLayout>
   )
 }

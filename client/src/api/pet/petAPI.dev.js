@@ -1,10 +1,11 @@
 import PETS from '@/data/pets.json'
+import { filterPets } from '@/utils/filterPets'
 
 export const petDevAPI = {
-  async getAll() {
+  async getAll(filters) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        resolve(PETS)
+        resolve(filterPets(PETS, filters))
       }, 2000)
     })
   },
