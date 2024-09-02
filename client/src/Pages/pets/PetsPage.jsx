@@ -2,10 +2,10 @@ import { useGetPets } from '@/hooks/useGetPets'
 import { PetsPageLayout } from '@/layout'
 import { PetsLoader } from './petCard/PetCardLoader'
 import { PetsGrid } from './PetsGrid'
-import { useFilterStore } from '@/store/filtersStore'
+import { usePetFilter } from '@/hooks/usePetFilter'
 
 export function PetsPage() {
-  const { filters } = useFilterStore()
+  const { filters } = usePetFilter()
   const { pets, isError, isLoading, refetch } = useGetPets(filters)
 
   const handleApplyFilters = () => {

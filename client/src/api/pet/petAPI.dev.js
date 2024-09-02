@@ -6,7 +6,7 @@ export const petDevAPI = {
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(filterPets(PETS, filters))
-      }, 200)
+      }, 2000)
     })
   },
   async getOne({ id }) {
