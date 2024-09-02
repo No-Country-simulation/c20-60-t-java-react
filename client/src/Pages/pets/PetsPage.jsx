@@ -6,7 +6,7 @@ import { usePetFilter } from '@/hooks/usePetFilter'
 
 export function PetsPage() {
   const { filters } = usePetFilter()
-  const { pets, isError, isLoading, refetch } = useGetPets(filters)
+  const { pets, isError, refetch, isFetching } = useGetPets(filters)
 
   const handleApplyFilters = () => {
     refetch(filters)
@@ -15,8 +15,8 @@ export function PetsPage() {
   return (
     <PetsPageLayout onRefetch={handleApplyFilters}>
       {isError && <PetsError />}
-      {!isError && isLoading && <PetsLoader />}
-      {!isError && !isLoading && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
+      {!isError && isFetching && <PetsLoader />}
+      {!isError && !isFetching && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
     </PetsPageLayout>
   )
 }
