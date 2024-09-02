@@ -1,9 +1,11 @@
 import { Badge } from '../ui/badge'
-export const BadgeGroup = ({ items }) => {
+export const BadgeGroup = ({ items, onUpdate, active }) => {
   return (
     <>
       {items.map((item, index) => (
-        <Badge key={index} variant="outline">{item}</Badge>
+        <Badge onClick={() => onUpdate(item)} key={index} variant="outline" isActive={active === item}>
+          {item}
+        </Badge>
       ))}
     </>
   )

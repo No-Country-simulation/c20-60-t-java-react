@@ -1,7 +1,8 @@
 export function filterPets(pets, filters) {
   function passFilter(field, pet) {
     const value = filters[field]
-    if (!value) return pet
+
+    if (value === '') return pet
     if (value === pet[field]) return pet
   }
 
