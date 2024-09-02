@@ -1,16 +1,23 @@
 import { Button } from '@/components/ui/button'
+import { Text } from '@/components/ui/index'
 
 export default function Contribute() {
   return (
-    <section className="py-4 text-center">
-      <h2 className="text-2xl md:text-3xl font-bold">Con tu ayuda, podemos salvar a muchos más animales</h2>
-      <p className="my-6">Dona ahora o inscríbete para ser voluntario en Pawsome Friends y formar parte del cambio juntos.</p>
-      <Button className="block mx-auto my-6" variant="secondary">
-        <a href="/">Quiero donar</a>
-      </Button>
-      <Button className="block mx-auto my-6">
-        <a href="">Quiero ser voluntario</a>
-      </Button>
+    <section className="flex flex-col gap-10 text-center">
+      <header className="flex flex-col max-w-[590px] mx-auto">
+        <Text variant="display" className="md:text-3xl">
+          Con tu ayuda, podemos salvar a muchos más animales
+        </Text>
+        <p className="my-6">Dona ahora o inscríbete para ser voluntario en Pawsome Friends y formar parte del cambio juntos.</p>
+      </header>
+      <footer className="flex flex-col gap-6 items-center">
+        <Button size="lg">
+          <a href="/">Quiero donar</a>
+        </Button>
+        <Button variant="outline" size="lg">
+          <a href="">Quiero ser voluntario</a>
+        </Button>
+      </footer>
     </section>
   )
 }
