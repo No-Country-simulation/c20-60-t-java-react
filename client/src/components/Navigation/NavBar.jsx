@@ -32,7 +32,13 @@ export const NavBar = ({ onRefetch }) => {
         <BadgeGroup onUpdate={updateEsterilizado} active={getBooleanFilter('esterilizado')} items={['Sí', 'No']} />
       </NavSection>
       <div className="flex justify-center items-center mt-1">
-        <Button onClick={onRefetch} hoverable variant={isFilterApplied ? 'navBar' : 'navBarInactive'}>
+        <Button
+          onClick={onRefetch}
+          hoverable={isFilterApplied}
+          disabled={!isFilterApplied}
+          fullWidth
+          variant={isFilterApplied ? 'default' : 'disabled'}
+        >
           Aplicar Filtros
         </Button>
       </div>
