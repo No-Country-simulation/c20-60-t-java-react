@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button'
+import { Text } from '@/components/ui/index'
 
-export default function Contribute() {
+export function Contribute() {
   return (
-    <section className="py-4 text-center">
-      <h2 className="text-2xl md:text-3xl font-bold">Con tu ayuda, podemos salvar a muchos más animales</h2>
-      <p className="my-6">Dona ahora o inscríbete para ser voluntario en Pawsome Friends y formar parte del cambio juntos.</p>
+    <section className="py-4 text-center m-10">
+      <Text variant="display">Con tu ayuda, podemos salvar a muchos más animales</Text>
+      <Text variant="medium" className="my-6">Dona ahora o inscríbete para ser voluntario en Pawsome Friends y formar parte del cambio juntos.</Text>
       <Button className="block mx-auto my-6" variant="secondary">
         <a href="/">Quiero donar</a>
       </Button>

@@ -1,7 +1,7 @@
-import ChooseCatOrDog from './ChooseCatOrDog'
-import Contribute from './Contribute'
+import { ChooseCatOrDog } from './ChooseCatOrDog'
+import { Contribute } from './Contribute'
 import { Hero } from './Hero'
-import HowToAdopt from './HowToAdopt'
+import { HowToAdopt } from './HowToAdopt'
 import { InformationCard } from './InformationCard'
 import { Stories } from './Stories'
 
