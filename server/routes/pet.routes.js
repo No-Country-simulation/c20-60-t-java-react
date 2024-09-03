@@ -1,5 +1,5 @@
 const PetController = require('../controllers/pet.controller')
-const upload = require('../config/upload')
+const upload = require('../upload')
 module.exports = (app) => {
   app.get('/api/pets/', PetController.findAllPets)
   app.get('/api/pets/:id', PetController.findOneSinglePet)

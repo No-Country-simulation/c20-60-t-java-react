@@ -4,7 +4,7 @@ const PetSchema = new mongoose.Schema(
   {
     photo: {
       type: String,
-      required: [true, 'Photo is required']
+      required: [false]
     },
     name: {
       type: String,
