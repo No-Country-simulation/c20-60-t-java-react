@@ -5,7 +5,7 @@ export const Story = ({ direction, title, description, imgs }) => {
     <div
       className={`relative flex flex-col ${
         direction === 'left' ? 'sm:flex-row' : 'sm:flex-row-reverse'
-      } justify-between items-center gap-16 sm:gap-28 md:gap-36 bg-secondary w-full px-6 my-16 lg:my-24`}
+      } justify-between items-center gap-16 sm:gap-28 md:gap-36 bg-secondary w-full px-6 my-16 lg:my-24 shadow-2xl`}
     >
       <div className="w-1/2  sm:w-[40%] sm:max-w-56 aspect-square relative top:0 sm:top-3.5 lg:top-0 mt-6 sm:mt-0">
         <img
