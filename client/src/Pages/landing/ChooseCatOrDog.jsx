@@ -22,9 +22,11 @@ export function ChooseCatOrDog() {
 
 function AdoptCard({ species }) {
   return (
-    <article className="bg-secondary flex flex-col justify-center items-center w-2/3 sm:w-[40%] md:w-[38%] lg:w-5/12 rounded-lg my-4">
+    <article className="bg-secondary flex flex-col justify-center items-center rounded-lg w-2/3 sm:w-[40%] md:w-[38%] lg:w-5/12 my-4 border-4 border-transparent  transition shadow-lg shadow-transparent hover:border-button hover:shadow-button">
       <img src={`./images/adopcion-${species}.webp`} alt={species} className="w-11/12 aspect-[3/2] object-cover rounded-lg mt-5" />
-      <Button className="block w-44 my-8">Adoptar un {species}</Button>
+      <Button variant="" className="block w-44 my-8">
+        Adoptar un {species}
+      </Button>
     </article>
   )
 }
