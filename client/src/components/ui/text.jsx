@@ -12,7 +12,7 @@ const textStyles = cva('first-letter:capitalize', {
       // size 14px | height 20px
       details: 'text-sm font-semibold font-quicksand',
       // size 15px | height 17px
-      medium: '[font-size:0.9375rem] [line-height:1.0625rem]',
+      medium: '[font-size:0.9375rem] [line-height:1.5rem]',
       // size 18px | height 24px
       subtitle: '[font-size:1.125rem] [line-height:1.5rem] font-bold font-quicksand',
       // size 20px | height 28px
