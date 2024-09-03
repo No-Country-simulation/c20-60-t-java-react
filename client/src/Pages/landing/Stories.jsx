@@ -3,7 +3,7 @@ import { Text } from '@/components/ui/index'
 
 export const Stories = () => {
   return (
-    <section className="flex flex-col gap-5 mx-10">
+    <section className="flex flex-col gap-5 ">
       <Text variant="display" className="text-center pt-20 pb-4">
         Conoce las historias de nuestros rescatados
       </Text>
