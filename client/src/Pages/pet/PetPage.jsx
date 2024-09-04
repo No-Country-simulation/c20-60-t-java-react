@@ -1,5 +1,6 @@
 import { DialogForm } from './DialogForm'
 import './PetPageStyle.css'
+import { SimilarPets } from './SimilarPets'
 
 export function PetPage() {
   return (
@@ -56,8 +57,10 @@ export function PetPage() {
               <DialogForm />
             </div>
           </div>
+          
         </div>
       </section>
+      <SimilarPets />
     </section>
   )
 }
