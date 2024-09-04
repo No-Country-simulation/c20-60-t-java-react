@@ -1,21 +1,25 @@
 import { useGetPets } from '@/hooks/useGetPets'
+import { usePetFilter } from '@/hooks/usePetFilter'
 import { PetsPageLayout } from '@/layout'
 import { PetsGrid } from './PetsGrid'
+import { PetsNotFound } from './PetsNotFound'
+import { PetsLoader } from './petCard/PetCardLoader'
 
 export function PetsPage() {
-  const { pets, isError, isLoading } = useGetPets()
+  const { filters } = usePetFilter()
+  const { pets, isError, refetch, isFetching } = useGetPets(filters)
+
+  const handleApplyFilters = () => {
+    refetch(filters)
+  }
 
   return (
-    <PetsPageLayout>
+    <PetsPageLayout onRefetch={handleApplyFilters}>
       {isError && <PetsError />}
-      {!isError && isLoading && <PetsLoader />}
-      {!isError && !isLoading && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
+      {!isError && isFetching && <PetsLoader />}
+      {!isError && !isFetching && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
     </PetsPageLayout>
   )
 }
 
 export const PetsError = () => <div>Hubo un error!</div>
-export const PetsLoader = () => <div>Cargando informacion...</div>
-export const PetsNotFound = () => (
-  <article className="p-4 text-center bg-secondary rounded-lg">Por el momento no tenemos mascotas para ser adoptadas</article>
-)

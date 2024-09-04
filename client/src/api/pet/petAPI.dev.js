@@ -1,22 +1,19 @@
-const URL = 'http://localhost:5173/src/data/pets.json'
+import PETS from '@/data/pets.json'
+import { filterPets } from '@/utils/filterPets'
 
 export const petDevAPI = {
-  async getAll() {
+  async getAll(filters) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        fetch(URL)
-          .then((response) => response.json())
-          .then((response) => resolve(response))
+        resolve(filterPets(PETS, filters))
       }, 2000)
     })
   },
   async getOne({ id }) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        fetch(URL)
-          .then((response) => response.json())
-          .then((response) => response.find((res) => res.id === id))
-          .then((response) => resolve(response))
+        const pet = PETS.find((res) => res.id === id)
+        resolve(pet)
       }, 2000)
     })
   }

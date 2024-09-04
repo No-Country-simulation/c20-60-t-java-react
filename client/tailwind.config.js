@@ -12,6 +12,10 @@ module.exports = {
       }
     },
     extend: {
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+        quicksand: ['Quicksand', 'sans-serif']
+      },
       colors: {
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
@@ -45,7 +49,9 @@ module.exports = {
         card: {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))'
-        }
+        },
+        link: 'hsl(var(--link))',
+        button: 'hsl(var(--button))'
       },
       borderRadius: {
         lg: 'var(--radius)',

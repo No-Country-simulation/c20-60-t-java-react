@@ -1,15 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import { petAPI } from '@/api'
 
-export function useGetPets() {
-  const { data, isLoading, isError } = useQuery({
+export function useGetPets(filters) {
+  const { data, isError, refetch, isFetching } = useQuery({
     queryKey: ['pets'],
-    queryFn: () => petAPI.getAll()
+    queryFn: () => petAPI.getAll(filters)
   })
 
   return {
     pets: data ?? [],
-    isLoading,
-    isError
+    isError,
+    refetch,
+    isFetching
   }
 }
