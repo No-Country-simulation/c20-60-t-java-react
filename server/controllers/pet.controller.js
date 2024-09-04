@@ -13,17 +13,13 @@ module.exports.findOneSinglePet = (req, res) => {
 }
 
 module.exports.createNewPet = (req, res) => {
-  const { name, age, breed, size, sex, color, sterilized, vaccinated } = req.body
-  const photo = req.file ? req.file.path : null
-  Pet.create({ name, age, breed, size, sex, color, sterilized, vaccinated, photo })
+  Pet.create(req.body)
     .then((newlyCreatedPet) => res.json({ pet: newlyCreatedPet }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
 
 module.exports.updateExistingPet = (req, res) => {
-  const { name, age, breed, size, sex, color, sterilized, vaccinated } = req.body
-  const photo = req.file ? req.file.path : null
-  Pet.findOneAndUpdate({ _id: req.params.id }, { name, age, breed, size, sex, color, sterilized, vaccinated, photo }, { new: true })
+  Pet.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((updatedPet) => res.json({ pet: updatedPet }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }

@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-const path = require('path')
+
 // This will fire our mongoose.connect statement to initialize our database connection
 require('./config/mongoose.config')
 
@@ -14,7 +14,7 @@ const corsOptions = {
 }
 app.use(cors(corsOptions))
 app.use(cookieParser())
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
+
 const AllMyPetRoutes = require('./routes/pet.routes')
 AllMyPetRoutes(app)
 

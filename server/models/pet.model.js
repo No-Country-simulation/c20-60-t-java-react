@@ -3,8 +3,7 @@ const mongoose = require('mongoose')
 const PetSchema = new mongoose.Schema(
   {
     photo: {
-      type: String,
-      required: [false]
+      type: String
     },
     name: {
       type: String,
@@ -31,12 +30,10 @@ const PetSchema = new mongoose.Schema(
       required: [true, 'Color is required']
     },
     sterilized: {
-      type: Boolean,
-      required: [true, 'Sterilized is required']
+      type: Boolean
     },
     vaccinated: {
-      type: Boolean,
-      required: [true, 'Vaccinated is required']
+      type: Boolean
     }
   },
   { timestamps: true }
