@@ -1,0 +1,26 @@
+services:
+  db:
+    container_name: pawsome-friends-db
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootpass
+      POSTGRES_DB: root
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgres/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - backend
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata: {}
+networks:
+  frontend:
+  backend:
