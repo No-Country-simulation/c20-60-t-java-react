@@ -12,7 +12,7 @@
     mask-image: linear-gradient(to bottom, white 95%, transparent);
   }
 
-  @keyframes scaleImg {
+  /* @keyframes scaleImg {
     30% {
       opacity: 1;
     }
@@ -27,5 +27,5 @@
     to {
       opacity: 0;
     }
-  }
+  } */
 }
