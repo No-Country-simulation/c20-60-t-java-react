@@ -1,4 +1,4 @@
-const PetController = require('../controllers/pet.controller')
+const PetController = require('../controllers/pet.controller.js')
 
 module.exports = (app) => {
   app.get('/api/pets/', PetController.findAllPets)
