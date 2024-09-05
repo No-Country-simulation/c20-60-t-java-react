@@ -9,9 +9,7 @@ export function HowToAdopt() {
       <Text variant="display" className="text-center pb-6">
         ¿Cómo adoptar?
       </Text>
-      <section className="relative grid sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-y-0 sm:gap-x-8 md:gap-12 lg:gap-x-16 bg-secondary px-8">
-        <div className="absolute inset-0 bg-secondary translate-x-full" />
-        <div className="absolute inset-0 bg-secondary -translate-x-full" />
+      <section className=" relative grid sm:grid-cols-2 md:grid-cols-3 justify-items-center gap-y-0 sm:gap-x-8 md:gap-12 lg:gap-x-16 bg-secondary px-8">
         <Step
           step="1"
           imgUrl={Step1}
