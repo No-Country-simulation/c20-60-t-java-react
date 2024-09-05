@@ -2,16 +2,16 @@ const mongoose = require('mongoose')
 
 const PetSchema = new mongoose.Schema(
   {
-    photo: {
+    imgURL: {
       type: String
     },
     name: {
       type: String,
       required: [true, 'Name is required']
     },
-    type: {
+    species: {
       type: String,
-      required: [true, 'Type is required']
+      required: [true, 'Species is required']
     },
     age: {
       type: Number,
@@ -32,6 +32,14 @@ const PetSchema = new mongoose.Schema(
     color: {
       type: String,
       required: [true, 'Color is required']
+    },
+    description: {
+      type: String,
+      required: [true, 'Description is required']
+    },
+    labels: {
+      type: [String],
+      required: [true, 'Labels are required']
     },
     sterilized: {
       type: Boolean
