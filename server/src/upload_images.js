@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from 'cloudinary'
-import 'dotenv/config'
+require('dotenv/config')
+const cloudinary = require('cloudinary').v2
 
 ;(async function () {
   // Configuration
