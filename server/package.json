@@ -1,11 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "build": "node src/index.js"
   },
   "devDependencies": {
     "eslint": "^8.57.0",

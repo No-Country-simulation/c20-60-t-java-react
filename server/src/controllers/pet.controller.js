@@ -1,4 +1,4 @@
-const Pet = require('../models/pet.model')
+const Pet = require('../models/pet.model.js')
 
 module.exports.findAllPets = (req, res) => {
   Pet.find()
