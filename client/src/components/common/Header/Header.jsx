@@ -27,7 +27,7 @@ return (
             </SheetTrigger>
             <SheetContent side="right">
               <nav className=" grid gap-4 p-2 ">
-                <Link to="/" className="w- flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
+                <Link to="/" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
                   Inicio
                 </Link>
                 <Link href="#" className="flex items-center gap-2 text-lg font-medium transition-colors hover:text-primary font-roboto">
