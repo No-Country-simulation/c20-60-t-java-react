@@ -10,7 +10,7 @@ export function SignupPage() {
       </header>
       <SignupForm />
       <footer>
-        <Link to={'/auth/login'} className="underline text-accent text-center ">
+        <Link to={'/auth/iniciar-sesion'} className="underline text-accent text-center ">
           <Text className="justify-center">Ya formas parte de un refugio? inicia sesion aqui!</Text>
         </Link>
       </footer>

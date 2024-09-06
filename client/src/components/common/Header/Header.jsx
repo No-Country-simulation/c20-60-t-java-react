@@ -5,8 +5,8 @@ import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
-export const Header=() =>{
-return (
+export const Header = () => {
+  return (
     <header className="w-full bg-accent text-primary-foreground px-4 shadow-md sticky top-0 z-20">
       <div className="h-[80px] max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
@@ -56,5 +56,3 @@ return (
     </header>
   )
 }
-
-

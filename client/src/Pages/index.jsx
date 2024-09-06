@@ -1,4 +1,6 @@
 export { PetsPage } from './pets/PetsPage'
 export { PetPage } from './pet/PetPage'
 export { LandingPage } from './landing/LandingPage'
-export { SignupPage } from './auth/SignupPage'
+// Auth
+export { SignupPage } from './auth/signup/SignupPage'
+export { LoginPage } from './auth/login/LoginPage'

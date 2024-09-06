@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom'
 
 export function AuthLayout() {
   return (
-    <section className="grid grid-cols-3 gap-12 py-12">
+    <section className="grid grid-cols-3 gap-12 py-12 min-h-[70dvh]">
       <article className="">
         <Outlet />
       </article>
