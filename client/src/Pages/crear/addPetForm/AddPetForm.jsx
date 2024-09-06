@@ -8,6 +8,7 @@ import { SizeField } from './SizeField'
 import { TextField } from './TextField'
 import { BreedField } from './BreedField'
 import { BooleanFieldWithIcons } from './BooleanFieldWithIcons'
+import { toast } from '@/components/ui/use-toast'
 
 export function AddPetForm() {
   const form = useForm({
@@ -18,6 +19,7 @@ export function AddPetForm() {
   const handleSubmit = (data) => {
     console.log(data)
     form.reset()
+    toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
   }
 
   return (
