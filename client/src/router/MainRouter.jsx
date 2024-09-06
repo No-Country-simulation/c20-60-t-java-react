@@ -1,10 +1,6 @@
-import { LandingPage, LoginPage, PetPage, PetsPage, SignupPage } from '@/Pages'
+import { CrearPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage } from '@/Pages'
 import { AuthLayout, MainLayout } from '@/layout'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { LandingPage } from '@/Pages/landing/LandingPage'
-import { PetsPage, PetPage } from '@/Pages'
-import { CrearPage } from '@/Pages/crear/CrearPage'
-
 
 export function MainRouter() {
   return (
