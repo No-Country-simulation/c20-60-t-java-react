@@ -1,10 +1,13 @@
-const express = require('express')
+import express from 'express'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import './config/mongoose.config.js'
+import AllMyPetRoutes from './routes/pet.routes.js'
+import AllMyUserRoutes from './routes/user.routes.js'
+
 const app = express()
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
 
 // This will fire our mongoose.connect statement to initialize our database connection
-require('./config/mongoose.config')
 
 app.use(express.json(), express.urlencoded({ extended: true }))
 const corsOptions = {
@@ -15,7 +18,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(cookieParser())
 
-const AllMyPetRoutes = require('./routes/pet.routes')
 AllMyPetRoutes(app)
+AllMyUserRoutes(app)
 
 app.listen(8000, () => console.log('The server is all fired up on port 8000'))
