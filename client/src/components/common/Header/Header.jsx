@@ -40,14 +40,17 @@ export const Header = () => {
             </SheetContent>
           </Sheet>
           <nav className="hidden items-center gap-14 font-medium lg:flex ">
-            <Link to={'/'} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={'/'} className="hover:text-primary">
               <Text variant="subtitle">Inicio</Text>
             </Link>
-            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Sobre Nosotros</Text>
             </Link>
-            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Donar</Text>
+            </Link>
+            <Link to={'/auth/registro'} className="hover:text-primary">
+              <Text variant="subtitle">Registrarse</Text>
             </Link>
             <ThemeSwitcher />
           </nav>
