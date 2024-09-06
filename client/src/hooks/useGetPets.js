@@ -4,7 +4,8 @@ import { petAPI } from '@/api'
 export function useGetPets(filters) {
   const { data, isError, refetch, isFetching } = useQuery({
     queryKey: ['pets'],
-    queryFn: () => petAPI.getAll(filters)
+    queryFn: () => petAPI.getAll(filters),
+    refetchOnWindowFocus: false
   })
 
   return {
