@@ -6,18 +6,14 @@ import { PetsNotFound } from './PetsNotFound'
 import { PetsLoader } from './petCard/PetCardLoader'
 
 export function PetsPage() {
-  const { filters } = usePetFilter()
-  const { pets, isError, refetch, isFetching } = useGetPets(filters)
-
-  const handleApplyFilters = () => {
-    refetch(filters)
-  }
+  const { pets, isError, isFetching } = useGetPets()
+  const { filterPets, filteredPets } = usePetFilter(pets)
 
   return (
-    <PetsPageLayout onRefetch={handleApplyFilters}>
+    <PetsPageLayout onRefetch={filterPets}>
       {isError && <PetsError />}
       {!isError && isFetching && <PetsLoader />}
-      {!isError && !isFetching && (pets.length ? <PetsGrid pets={pets} /> : <PetsNotFound />)}
+      {!isError && !isFetching && (filteredPets.length ? <PetsGrid pets={filteredPets} /> : <PetsNotFound />)}
     </PetsPageLayout>
   )
 }
