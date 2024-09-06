@@ -1,22 +1,7 @@
-import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+import { Card, CardContent } from '@/components/ui/card'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
 
-// Lista de imágenes
-const images = [
-  "/images/stories/Charly-1.jpg",
-  "/images/stories/Charly-2.jpg",
-  "/images/stories/Mora-2.jpg",
-  
-]
-
-export const CarouselPets = () => {
+export const CarouselPets = ({ images }) => {
   return (
     <Carousel className="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl">
       <CarouselContent>
