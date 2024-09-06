@@ -10,11 +10,24 @@ export function AddPetForm() {
   })
 
   const handleSubmit = (data) => {
+    console.log('CREANDO MASCOTA')
     console.log(data)
   }
-
+  
   const handleChangeSex = (value) => {
-    form.setValue('sexo', value)
+    form.setValue('sex', value)
+  }
+  
+  const handleToggleVacunado = (value) => {
+    form.setValue('vaccinated', value)
+  }
+
+  const handleToggleEsterilizado = (value) => {
+    form.setValue('sterilized', value)
+  }
+
+  const handleChangeSpecie = (value) => {
+    form.setValue('specie', value)
   }
 
   return (
@@ -35,22 +48,63 @@ export function AddPetForm() {
           )}
         />
         <FormItem>
+          <FormLabel>Especie</FormLabel>
+          <Input onChange={(e) => handleChangeSpecie(e.target.value)} name="specie" type="radio" value={'perro'} />
+          <Input onChange={(e) => handleChangeSpecie(e.target.value)} name="specie" type="radio" value={'gato'} />
+          <FormMessage />
+        </FormItem>
+        <FormItem>
           <FormLabel>Sexo</FormLabel>
-          <Input onChange={(e) => handleChangeSex(e.target.value)} name="sexo" type="radio" value="macho" />
-          <Input onChange={(e) => handleChangeSex(e.target.value)} name="sexo" type="radio" value="hembra" />
+          <Input onChange={(e) => handleChangeSex(e.target.value)} name="sex" type="radio" value="macho" />
+          <Input onChange={(e) => handleChangeSex(e.target.value)} name="sex" type="radio" value="hembra" />
           <FormDescription>Sexo de la mascota</FormDescription>
+          <FormMessage />
+        </FormItem>
+        {/* <FormField
+          control={form.control}
+          name="size"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Tamaño</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecciona el tamaño de la mascota" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {["pequeño", "mediano", "grande"].map(size => (
+                    <SelectItem key={size} value={size}>{size}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        /> */}
+        <FormItem>
+          <FormLabel>Vacunado</FormLabel>
+          <Input onChange={(e) => handleToggleVacunado(e.target.value)} name="vaccinated" type="radio" value={true} />
+          <Input onChange={(e) => handleToggleVacunado(e.target.value)} name="vaccinated" type="radio" value={false} />
+          <FormMessage />
+        </FormItem>
+
+        <FormItem>
+          <FormLabel>Esterilizado</FormLabel>
+          <Input onChange={(e) => handleToggleEsterilizado(e.target.value)} name="sterilized" type="radio" value={true} />
+          <Input onChange={(e) => handleToggleEsterilizado(e.target.value)} name="sterilized" type="radio" value={false} />
           <FormMessage />
         </FormItem>
         <FormField
           control={form.control}
-          name="name"
+          name="breed"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nombre</FormLabel>
+              <FormLabel>Raza</FormLabel>
               <FormControl>
-                <Input placeholder="rocco" {...field} />
+                <Input placeholder="Labrador" {...field} />
               </FormControl>
-              <FormDescription>Nombre de la mascota</FormDescription>
+              <FormDescription>Raza de la mascota</FormDescription>
               <FormMessage />
             </FormItem>
           )}
