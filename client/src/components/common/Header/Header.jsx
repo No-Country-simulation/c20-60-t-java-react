@@ -5,13 +5,13 @@ import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
-export const Header=() =>{
-return (
+export const Header = () => {
+  return (
     <header className="w-full bg-accent text-primary-foreground px-4 shadow-md sticky top-0 z-20">
       <div className="h-[80px] max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
           <figure>
-            <img src="./images/logo.png" alt="logo pawsome friend" width={60} height={60} />
+            <img src="/images/logo.png" alt="logo pawsome friend" width={60} height={60} />
           </figure>
           <Text variant="subtitle" className="text-primary">
             Pawsome friends
@@ -40,14 +40,17 @@ return (
             </SheetContent>
           </Sheet>
           <nav className="hidden items-center gap-14 font-medium lg:flex ">
-            <Link to={'/'} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={'/'} className="hover:text-primary">
               <Text variant="subtitle">Inicio</Text>
             </Link>
-            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Sobre Nosotros</Text>
             </Link>
-            <Link to={''} className="flex items-center gap-2 transition-colors hover:text-primary font-roboto">
+            <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Donar</Text>
+            </Link>
+            <Link to={'/auth/registro'} className="hover:text-primary">
+              <Text variant="subtitle">Registrarse</Text>
             </Link>
             <ThemeSwitcher />
           </nav>
@@ -56,5 +59,3 @@ return (
     </header>
   )
 }
-
-

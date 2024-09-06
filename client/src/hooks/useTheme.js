@@ -13,8 +13,6 @@ export function useTheme() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  console.log(isDarkMode)
-
   const toggleTheme = () => {
     document.documentElement.classList.toggle('dark')
 
