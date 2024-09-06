@@ -1,8 +1,9 @@
-const express = require('express')
-const cors = require('cors')
-const cookieParser = require('cookie-parser')
-const AllMyPetRoutes = require('./routes/pet.routes')
-require('./config/mongoose.config') // This will fire our mongoose.connect statement to initialize our database connection
+import express from 'express'
+import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import './config/mongoose.config.js' // This will fire our mongoose.connect statement to initialize our database connection
+import AllMyPetRoutes from './routes/pet.routes.js'
+import AllMyUserRoutes from './routes/user.routes.js'
 
 const app = express()
 
@@ -17,5 +18,6 @@ app.use(cors(corsOptions))
 app.use(cookieParser())
 
 AllMyPetRoutes(app)
+AllMyUserRoutes(app)
 
-module.exports = app
+export default app

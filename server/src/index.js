@@ -1,6 +1,6 @@
-require('dotenv/config')
-const http = require('http')
-const app = require('./app.js')
+import 'dotenv/config'
+import http from 'http'
+import app from './app.js'
 
 const server = http.createServer(app)
 const PORT = process.env.SERVER_PORT || 3001

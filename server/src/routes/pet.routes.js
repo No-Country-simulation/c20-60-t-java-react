@@ -1,11 +1,12 @@
-const PetController = require('../controllers/pet.controller.js')
-const { swaggerUi, specs } = require('../controllers/swagger.controller.js')
+import { authenticate } from '../config/jwt.config.js'
+import { createNewPet, deleteAnExistingPet, findAllPets, findOneSinglePet, updateExistingPet } from '../controllers/pet.controller.js'
+// import { specs, swaggerUi } from '../controllers/swagger.controller.js'
 
-module.exports = (app) => {
-  app.get('/api/pets/', PetController.findAllPets)
-  app.get('/api/pets/:id', PetController.findOneSinglePet)
-  app.put('/api/pets/update/:id', PetController.updateExistingPet)
-  app.post('/api/pets/new', PetController.createNewPet)
-  app.delete('/api/pets/delete/:id', PetController.deleteAnExistingPet)
-  app.get('/', swaggerUi.serve, swaggerUi.setup(specs))
+export default function AllMyPetRoutes(app) {
+  app.get('/api/pets/', findAllPets)
+  app.get('/api/pets/:id', findOneSinglePet)
+  app.put('/api/pets/update/:id', authenticate, updateExistingPet)
+  app.post('/api/pets/new', authenticate, createNewPet)
+  app.delete('/api/pets/delete/:id', authenticate, deleteAnExistingPet)
+  // app.get('/', swaggerUi.serve, swaggerUi.setup(specs))
 }
