@@ -1,12 +1,14 @@
 const express = require('express')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
+const { swaggerUi, specs } = require('./swagger.js')
 const AllMyPetRoutes = require('./routes/pet.routes')
 require('./config/mongoose.config') // This will fire our mongoose.connect statement to initialize our database connection
 
 const app = express()
 
 app.use(express.json(), express.urlencoded({ extended: true }))
+app.use('/', swaggerUi.serve, swaggerUi.setup(specs))
 
 const corsOptions = {
   credentials: true, // Allow credentials (cookies) to be sent to/from origin

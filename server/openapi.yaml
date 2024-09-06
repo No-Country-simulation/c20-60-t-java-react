@@ -1,0 +1,191 @@
+openapi: 3.0.3
+info:
+  title: Pawsome Friend API
+  description: |-
+    This API provides a comprehensive set of endpoints to manage an PawsomeFriend, including users, roles, permissions, products, categories, and suppliers.
+
+    With this API, you can:
+
+    - Manage user accounts and their associated roles and permissions
+    - Create, read, update, and delete product categories
+    - Create, read, update, and delete product suppliers
+    - Manage product inventory, including adding, updating, and retrieving product information
+
+    The API uses role-based access control (RBAC) to ensure that users can only perform actions that they are authorized to do based on their assigned roles and permissions.
+  version: "1.0"
+
+servers:
+  - url: https://localhost:3000/api/v1
+    description: Backend server
+
+tags:
+  - name: pets
+    description: Pets management
+
+paths:
+  /api/pets:
+    get:
+      tags:
+        - pets
+      summary: Retrieve all pets
+      description: Retrieve a list of all pets.
+      responses:
+        "200":
+          description: A list of pets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Pet"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+    post:
+      tags:
+        - pets
+      summary: Create a new pet
+      description: Create a new pet.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+      responses:
+        "201":
+          description: Pet created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "400":
+          description: Bad request
+        "500":
+          description: Internal server error
+
+  /api/pets/{id}:
+    get:
+      tags:
+        - pets
+      summary: Retrieve a single pet
+      description: Retrieve a single pet by ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A single pet
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "400":
+          description: Bad request
+        "404":
+          description: Pet not found
+        "500":
+          description: Internal server error
+    put:
+      tags:
+        - pets
+      summary: Update an existing pet
+      description: Update an existing pet by ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Pet"
+      responses:
+        "200":
+          description: Pet updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pet"
+        "400":
+          description: Bad request
+        "404":
+          description: Pet not found
+        "500":
+          description: Internal server error
+    delete:
+      tags:
+        - pets
+      summary: Delete a pet
+      description: Delete a pet by ID.
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Pet deleted successfully
+        "400":
+          description: Bad request
+        "404":
+          description: Pet not found
+        "500":
+          description: Internal server error
+
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        imgURL:
+          type: string
+        name:
+          type: string
+          required: true
+        species:
+          type: string
+          required: true
+        age:
+          type: number
+          required: true
+        breed:
+          type: string
+          required: true
+        size:
+          type: string
+          required: true
+        sex:
+          type: string
+          required: true
+        color:
+          type: string
+          required: true
+        description:
+          type: string
+          required: true
+        labels:
+          type: array
+          items:
+            type: string
+          required: true
+        sterilized:
+          type: boolean
+        vaccinated:
+          type: boolean
+      required:
+        - name
+        - species
+        - age
+        - breed
+        - size
+        - sex
+        - color
+        - description
+        - labels
