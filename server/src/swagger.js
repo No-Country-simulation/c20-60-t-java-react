@@ -1,5 +1,8 @@
-import swaggerJsdoc from 'swagger-jsdoc'
-import swaggerUi from 'swagger-ui-express'
+const swaggerJsdoc = require('swagger-jsdoc')
+const swaggerUi = require('swagger-ui-express')
+require('dotenv/config')
+
+const PORT = process.env.SERVER_PORT || 3001
 
 const options = {
   swaggerDefinition: {
@@ -11,7 +14,7 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:3000'
+        url: `http://localhost:${PORT}`
       }
     ]
   },
@@ -19,4 +22,4 @@ const options = {
 }
 
 const specs = swaggerJsdoc(options)
-export { swaggerUi, specs }
+module.exports = { swaggerUi, specs }

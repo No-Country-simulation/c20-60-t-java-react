@@ -1,14 +1,10 @@
-import express from 'express'
-import { swaggerUi, specs } from '../swagger.js'
-import petRoutes from '../routes/pet.routes.js'
+require('dotenv/config')
+const http = require('http')
+const app = require('./app.js')
 
-const app = express()
-const port = 3000
+const server = http.createServer(app)
+const PORT = process.env.SERVER_PORT || 3001
 
-app.use(express.json())
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
-app.use('/', petRoutes)
-
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`)
+server.listen(PORT, () => {
+  console.log(`The server is all fired up on port ${PORT}`)
 })
