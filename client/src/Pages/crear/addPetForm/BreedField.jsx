@@ -19,7 +19,7 @@ export function BreedField() {
   const selectedSpecie = form.watch('specie')
 
   if (selectedSpecie) {
-    breeds = selectedSpecie === 'perro' ? razasPerro : razasGato
+    breeds = selectedSpecie === 'dog' ? razasPerro : razasGato
   }
 
   return (
@@ -28,7 +28,7 @@ export function BreedField() {
       name="breed"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Tamaño</FormLabel>
+          <FormLabel>Raza</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger>
