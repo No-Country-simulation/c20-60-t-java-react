@@ -1,3 +1,4 @@
+import { CarouselPets } from '@/components/common/CarouselPets'
 import { DialogForm } from './DialogForm'
 import './PetPageStyle.css'
 
@@ -5,19 +6,11 @@ export function PetPage() {
   return (
     <section className="section p-4">
       <section className="pet-page main flex flex-col lg:flex-row items-center lg:items-start gap-8">
-        <div className=" content w-full lg:w-1/2">
-          {/* Imagen del Perrito */}
-          <div className=" image-container w-full">
-            <img
-              src="https://animalso.com/wp-content/uploads/2018/08/Golden-Retriever-1.jpg"
-              alt="Perrito Golden Retriever"
-              className="perrito-image w-full h-auto"
-            />
-          </div>
+        <div className=" flex justify-center w-full lg:w-1/2">
+          <CarouselPets />
         </div>
 
-        {/* Información de Perritos en una Card */}
-        <div className="card  w-full lg:w-1/2 p-4">
+        <div className="card w-full lg:w-1/2 p-4">
           <div className="info">
             <ul className="pet-details space-y-2">
               <li>

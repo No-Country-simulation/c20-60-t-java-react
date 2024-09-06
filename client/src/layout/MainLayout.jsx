@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Footer from '@/components/common/Footer'
-import { Header } from '@/components/common/Header'
+import { Header } from '@/components/common/index'
 import { Toaster } from '@/components/ui/toaster'
 
 export function MainLayout() {
