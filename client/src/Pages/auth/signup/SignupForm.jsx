@@ -15,7 +15,7 @@ export function SignupForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4 w-full">
         <FormField
           name="name"
           control={form.control}

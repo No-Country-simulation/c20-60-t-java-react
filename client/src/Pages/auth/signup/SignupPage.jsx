@@ -1,19 +1,10 @@
-import { Text } from '@/components/ui'
 import { SignupForm } from './SignupForm'
-import { Link } from 'react-router-dom'
+import { AuthPageLayout } from '@/layout'
 
 export function SignupPage() {
   return (
-    <section className="flex flex-col gap-12">
-      <header>
-        <Text variant={'variant'}>Registro para refugios</Text>
-      </header>
+    <AuthPageLayout title={'Registro para refugios'} linkText={'Ya formas parte de un refugio? inicia sesion aqui!'} link={'/auth/iniciar-sesion'}>
       <SignupForm />
-      <footer>
-        <Link to={'/auth/iniciar-sesion'} className="underline text-accent text-center ">
-          <Text className="justify-center">Ya formas parte de un refugio? inicia sesion aqui!</Text>
-        </Link>
-      </footer>
-    </section>
+    </AuthPageLayout>
   )
 }

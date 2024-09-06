@@ -11,7 +11,7 @@ export const Header = () => {
       <div className="h-[80px] max-w-desktop flex items-center justify-between mx-auto">
         <a href="#top" className="flex items-center gap-2 cursor-pointer">
           <figure>
-            <img src="./images/logo.png" alt="logo pawsome friend" width={60} height={60} />
+            <img src="/images/logo.png" alt="logo pawsome friend" width={60} height={60} />
           </figure>
           <Text variant="subtitle" className="text-primary">
             Pawsome friends
