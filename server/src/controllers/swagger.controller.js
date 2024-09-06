@@ -23,4 +23,4 @@ const options = {
 
 const specs = swaggerJsdoc(options)
 
-export default { swaggerUi, specs }
+export { specs, swaggerUi }
