@@ -1,12 +1,11 @@
 import { envs } from '@/config/envs'
-import { buildQuery } from '@/utils/buildQuery'
 import { mapPet } from './mapper'
 
 const ENDPOINT = envs.BASE_API_URL + '/api/pets'
 
 export const petAPI = {
-  async getAll(filters) {
-    return fetch(ENDPOINT + buildQuery(filters))
+  async getAll() {
+    return fetch(ENDPOINT)
       .then((response) => response.json())
       .then((response) => response.pets.map((pet) => mapPet(pet)))
   },

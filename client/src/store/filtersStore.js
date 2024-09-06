@@ -1,12 +1,12 @@
 import { create } from 'zustand'
 
 const FILTER_INIT = {
-  raza: '',
-  tamaño: '',
-  sexo: '',
-  edad: '',
-  vacunado: '',
-  esterilizado: ''
+  breed: '',
+  size: '',
+  sex: '',
+  age: '',
+  vaccinated: '',
+  sterilized: ''
 }
 
 export const petFiltersStore = create((set) => ({

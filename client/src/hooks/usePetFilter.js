@@ -1,10 +1,39 @@
 import { petFiltersStore } from '@/store/index'
+import { useEffect, useState } from 'react'
 
-export function usePetFilter() {
+export function usePetFilter(pets) {
+  console.log(pets)
   const { filters, updateFilter } = petFiltersStore((state) => ({
     filters: state.filters,
     updateFilter: state.updateFilter
   }))
+
+  const [filteredPets, setFilteredPets] = useState(filterPets(pets))
+
+  useEffect(() => {
+    handleFilterPets()
+  }, [pets?.length])
+
+  function handleFilterPets() {
+    setFilteredPets(filterPets(pets))
+  }
+
+  function filterPets(pets) {
+    function passFilter(field, pet) {
+      const value = filters[field]
+
+      if (value === '') return true
+
+      // In case value is a boolean, it cannot use toLowerCase()
+      if (typeof value === 'string') {
+        return value.toLowerCase() === pet[field].toLowerCase()
+      }
+
+      return value === pet[field]
+    }
+
+    return pets?.filter((pet) => Object.keys(filters).every((field) => passFilter(field, pet)))
+  }
 
   function updateBooleanFilter(field, value) {
     let prevValue = filters[field]
@@ -27,27 +56,27 @@ export function usePetFilter() {
   }
 
   function updateRaza(value) {
-    updateFilter('raza', value)
+    updateFilter('breed', value)
   }
 
   function updateTamaño(value) {
-    updateFilter('tamaño', value)
+    updateFilter('size', value)
   }
 
   function updateSexo(value) {
-    updateFilter('sexo', value)
+    updateFilter('sex', value)
   }
 
   function updateEdad(value) {
-    updateFilter('edad', value)
+    updateFilter('age', value)
   }
 
   function updateVacunado(value) {
-    updateBooleanFilter('vacunado', value)
+    updateBooleanFilter('vaccinated', value)
   }
 
   function updateEsterilizado(value) {
-    updateBooleanFilter('esterilizado', value)
+    updateBooleanFilter('sterilized', value)
   }
 
   // Para los filtros booleanos (vacunado, esterilizado) hay
@@ -66,11 +95,13 @@ export function usePetFilter() {
     isFilterApplied,
     getBooleanFilter,
     updateVacunado,
-    filters,
     updateRaza,
     updateTamaño,
     updateSexo,
     updateEsterilizado,
-    updateEdad
+    updateEdad,
+    filterPets: handleFilterPets,
+    filteredPets,
+    filters
   }
 }
