@@ -1,7 +1,8 @@
-import { MainLayout } from '@/layout'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { PetPage, PetsPage } from '@/Pages'
+import { SignupPage } from '@/Pages/auth/SignupPage'
 import { LandingPage } from '@/Pages/landing/LandingPage'
-import { PetsPage , PetPage } from '@/Pages'
+import { AuthLayout, MainLayout } from '@/layout'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export function MainRouter() {
   return (
@@ -11,6 +12,9 @@ export function MainRouter() {
           <Route index element={<LandingPage />} />
           <Route path="/mascotas" element={<PetsPage />} />
           <Route path="/mascotas/:id" element={<PetPage />} />
+          <Route path="/auth" element={<AuthLayout />}>
+            <Route path="/auth/refugio" element={<SignupPage />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

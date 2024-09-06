@@ -1,11 +1,16 @@
 {
   "compilerOptions": {
-    // ...
-    "baseUrl": ".",
+    "moduleResolution": "Node",
+    "target": "ES6", // Ensures modern JS syntax is supported
+    "module": "ESNext", // Set to ESNext to allow import/export syntax
+    "jsx": "react-jsx", // Ensures JSX syntax is supported if using React
+    "allowSyntheticDefaultImports": true, // Ensures default imports from non-ES modules
+    "jsxImportSource": "react",
+    "baseUrl": ".", // Base directory for resolving non-relative imports
+    // "checkJs": true, // Enables type checking and IntelliSense for JS files
     "paths": {
-      "@/*": ["./src/*"]
-    },
-    "module": "ESNext"
-    // ...
-  }
+      "@/*": ["./src/*"] // Alias to map @/ to the src folder
+    }
+  },
+  "exclude": ["node_modules"] // Exclude folder to avoid IntelliSense suggestions for dependencies
 }
