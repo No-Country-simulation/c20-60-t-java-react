@@ -1,9 +1,12 @@
-const PetController = require('../controllers/pet.controller')
+import { Router } from 'express'
+import { findAllPets, findOneSinglePet, createNewPet, updateExistingPet, deleteAnExistingPet } from '../controllers/pet.controller.js'
 
-module.exports = (app) => {
-  app.get('/api/pets/', PetController.findAllPets)
-  app.get('/api/pets/:id', PetController.findOneSinglePet)
-  app.put('/api/pets/update/:id', PetController.updateExistingPet)
-  app.post('/api/pets/new', PetController.createNewPet)
-  app.delete('/api/pets/delete/:id', PetController.deleteAnExistingPet)
-}
+const router = Router()
+
+router.get('/api/pets/', findAllPets)
+router.get('/api/pets/:id', findOneSinglePet)
+router.put('/api/pets/update/:id', updateExistingPet)
+router.post('/api/pets/new', createNewPet)
+router.delete('/api/pets/delete/:id', deleteAnExistingPet)
+
+export default router
