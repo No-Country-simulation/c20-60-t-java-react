@@ -7,7 +7,7 @@ export function DialogForm() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className="w-full mt-12">Adoptame!</Button>
+        <Button className="mt-12 w-full">Adoptame!</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

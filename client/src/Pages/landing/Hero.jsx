@@ -4,17 +4,17 @@ import '@/styles/hero.css'
 
 function Hero() {
   return (
-    <section className="min-h-dvh grid place-content-center">
+    <section className="grid min-h-dvh place-content-center">
       <img
         src="./images/hero.webp"
         alt="Hero section image"
-        className="imgHero absolute inset-0 w-screen h-dvh object-cover opacity-[.5] z-[-10px]"
+        className="imgHero absolute inset-0 z-[-10px] h-dvh w-screen object-cover opacity-[.5]"
       />
-      <div className="border-0 text-center text-2xl text-balance mt-[-80px] w-[90%] mx-auto z-10">
-        <h1 className="text-4xl md:text-6xl fade font-quicksand">Cambia su mundo, adopta hoy</h1>
-        <h2 className="my-5 fade font-quicksand">Porque adoptar es más que dar un hogar, es ofrecer una segunda oportunidad.</h2>
+      <div className="z-10 mx-auto mt-[-80px] w-[90%] text-balance border-0 text-center text-2xl">
+        <h1 className="fade font-quicksand text-4xl md:text-6xl">Cambia su mundo, adopta hoy</h1>
+        <h2 className="fade my-5 font-quicksand">Porque adoptar es más que dar un hogar, es ofrecer una segunda oportunidad.</h2>
         <Link to="/mascotas">
-          <Button variant="outline" className="w-full md:w-[386px] h-[56px] bg-white mb-5 rounded-[10px] max-w-full fade font-roboto">
+          <Button variant="outline" className="fade mb-5 h-[56px] w-full max-w-full rounded-[10px] bg-white font-roboto md:w-[386px]">
             Quiero adoptar
           </Button>
         </Link>

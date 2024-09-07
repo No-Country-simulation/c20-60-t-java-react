@@ -18,7 +18,7 @@ export function BooleanFieldWithIcons({ options, label, field }) {
                   <FormControl>
                     <label
                       htmlFor={value}
-                      className={`w-full cursor-pointer hover:-translate-y-1 transition bg-accent flex justify-center items-center rounded-lg p-2 ${
+                      className={`flex w-full cursor-pointer items-center justify-center rounded-lg bg-accent p-2 transition hover:-translate-y-1 ${
                         field.value === value ? 'opacity-100' : 'opacity-50'
                       }`}
                     >

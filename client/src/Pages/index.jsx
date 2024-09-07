@@ -5,4 +5,3 @@ export { CrearPage } from './crear/CrearPage'
 // Auth
 export { SignupPage } from './auth/signup/SignupPage'
 export { LoginPage } from './auth/login/LoginPage'
-

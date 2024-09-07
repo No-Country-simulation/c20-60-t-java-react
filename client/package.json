@@ -50,6 +50,7 @@
     "globals": "^15.9.0",
     "netlify-cli": "17.34.3",
     "postcss": "^8.4.41",
+    "prettier-plugin-tailwindcss": "0.6.6",
     "standard": "^17.1.0",
     "tailwindcss": "^3.4.10",
     "vite": "^5.4.1"

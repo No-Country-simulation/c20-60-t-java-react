@@ -9,7 +9,7 @@ export const NavBar = ({ onRefetch }) => {
 
   return (
     <div className="nav-container">
-      <h1 className="font-bold text-lg">Filtrar Por</h1>
+      <h1 className="text-lg font-bold">Filtrar Por</h1>
       <NavSection title="Ubicacion">
         <Input className="mt-3" type="text" placeholder="Busca una ciudad o provincia" />
       </NavSection>
@@ -31,7 +31,7 @@ export const NavBar = ({ onRefetch }) => {
       <NavSection title="Esterilizado">
         <BadgeGroup onUpdate={updateEsterilizado} active={getBooleanFilter('sterilized')} items={['Sí', 'No']} />
       </NavSection>
-      <div className="flex justify-center items-center mt-1">
+      <div className="mt-1 flex items-center justify-center">
         <Button
           onClick={onRefetch}
           hoverable={isFilterApplied}

@@ -25,7 +25,7 @@ export function AdotpForm() {
 
   return (
     <Form {...form}>
-      <form action="" className="w-[800px] flex flex-col gap-12" onSubmit={form.handleSubmit(handleSubmit)}>
+      <form action="" className="flex w-[800px] flex-col gap-12" onSubmit={form.handleSubmit(handleSubmit)}>
         <section className="grid grid-cols-2 gap-10">
           <FormField
             name="name"
@@ -80,7 +80,7 @@ export function AdotpForm() {
             )}
           />
         </section>
-        <Button className="w-fit mx-auto min-w-[300px] py-2 px-4">Adoptar</Button>
+        <Button className="mx-auto w-fit min-w-[300px] px-4 py-2">Adoptar</Button>
       </form>
     </Form>
   )

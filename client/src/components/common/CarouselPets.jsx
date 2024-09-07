@@ -10,7 +10,7 @@ export const CarouselPets = ({ images }) => {
             <div className="p-1">
               <Card>
                 <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <img src={src} alt={`Imagen ${index + 1}`} className="object-cover w-full h-full" />
+                  <img src={src} alt={`Imagen ${index + 1}`} className="h-full w-full object-cover" />
                 </CardContent>
               </Card>
             </div>

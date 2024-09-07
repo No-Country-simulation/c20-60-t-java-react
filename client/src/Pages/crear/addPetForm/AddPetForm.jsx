@@ -24,7 +24,7 @@ export function AddPetForm() {
 
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4 p-12 bg-secondary rounded-md border">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4 rounded-md border bg-secondary p-12">
         <TextField field={'name'} label={'Nombre'} placeholder={'Rocco'} description={'Nombre de la mascota'} />
         <BooleanFieldWithIcons field={'specie'} label={'Especie'} options={specieOptions} />
         <BooleanFieldWithIcons field={'sex'} label={'Sexo de la mascota'} options={sexOptions} />

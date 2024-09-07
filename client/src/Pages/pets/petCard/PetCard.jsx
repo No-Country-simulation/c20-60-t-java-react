@@ -12,7 +12,7 @@ export function PetCard({ name, age, thumbnail, labels, id, description }) {
       <PetCardHeader name={name} age={age} image={image} />
       <PetCardLabelsGroup labels={labels} />
       <PetCardInfo description={description} />
-      <Link className="w-fit underline hover:translate-y-[-2px] transition" to={`/mascotas/${id}`}>
+      <Link className="w-fit underline transition hover:translate-y-[-2px]" to={`/mascotas/${id}`}>
         <Text>Mostrar más</Text>
       </Link>
     </Card>

@@ -3,8 +3,8 @@ import { Text } from '@/components/ui/index'
 
 export const Stories = () => {
   return (
-    <section className="flex flex-col gap-5 ">
-      <Text variant="display" className="text-center pt-20 pb-4">
+    <section className="flex flex-col gap-5">
+      <Text variant="display" className="pb-4 pt-20 text-center">
         Conoce las historias de nuestros rescatados
       </Text>
       <section className="w-full">

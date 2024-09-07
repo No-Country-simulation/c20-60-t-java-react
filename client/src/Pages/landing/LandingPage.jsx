@@ -27,7 +27,7 @@ export function LandingPage() {
     <>
       <Hero />
       <section className="flex flex-col gap-28 pb-16">
-        <section className="w-[90%] mx-auto border-0 border-slate-600 border-solid my-[3.75rem] max-w-desktop flex flex-col gap-32">
+        <section className="mx-auto my-[3.75rem] flex w-[90%] max-w-desktop flex-col gap-32 border-0 border-solid border-slate-600">
           {information.map((element) => {
             const { title, description, alt, img } = element
             return <InformationCard title={title} description={description} src={img} alt={alt} key={title} />

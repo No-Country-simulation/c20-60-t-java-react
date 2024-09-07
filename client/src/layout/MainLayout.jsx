@@ -5,10 +5,10 @@ import { Toaster } from '@/components/ui/toaster'
 
 export function MainLayout() {
   return (
-    <section className="relative bg-background text-primary text-pretty antialiased flex flex-col">
+    <section className="relative flex flex-col text-pretty bg-background text-primary antialiased">
       <Header />
-      <section className="grid grid-rows-[1fr_auto] min-h-[100dvh]">
-        <main className="w-full max-w-desktop mx-auto">
+      <section className="grid min-h-[100dvh] grid-rows-[1fr_auto]">
+        <main className="mx-auto w-full max-w-desktop">
           <Outlet />
         </main>
         <Footer />

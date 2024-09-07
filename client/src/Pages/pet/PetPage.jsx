@@ -20,12 +20,12 @@ export function PetPage() {
 
   return (
     <section className="section p-4">
-      <section className="pet-page main flex flex-col lg:flex-row items-center lg:items-start gap-8">
-        <div className=" flex justify-center w-full lg:w-1/2">
+      <section className="pet-page main flex flex-col items-center gap-8 lg:flex-row lg:items-start">
+        <div className="flex w-full justify-center lg:w-1/2">
           <CarouselPets images={[pet.thumbnail]} />
         </div>
 
-        <div className="card w-full lg:w-1/2 p-4">
+        <div className="card w-full p-4 lg:w-1/2">
           <div className="info">
             <ul className="pet-details space-y-2">
               <li>

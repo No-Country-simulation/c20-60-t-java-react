@@ -9,7 +9,7 @@ export function AuthPageLayout({ children, title, linkText, link }) {
       </header>
       {children}
       <footer>
-        <Link to={link} className="underline text-accent">
+        <Link to={link} className="text-accent underline">
           <Text className="justify-center">{linkText}</Text>
         </Link>
       </footer>

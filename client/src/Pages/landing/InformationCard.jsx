@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 export function InformationCard({ title, description, src, alt }) {
   return (
-    <article className="relative flex flex-col lg:flex-row lg:last:flex-row-reverse py-5 lg:py-0 [&>section]:last:items-end [&>div]:last:translate-x-full">
+    <article className="relative flex flex-col py-5 lg:flex-row lg:py-0 lg:last:flex-row-reverse [&>div]:last:translate-x-full [&>section]:last:items-end">
       <section className="flex flex-1 flex-col justify-center bg-secondary p-4">
         <div className="flex flex-col gap-4">
           <Text variant="title">{title}</Text>
@@ -12,8 +12,8 @@ export function InformationCard({ title, description, src, alt }) {
           </Text>
         </div>
       </section>
-      <figure className="flex-1 h-72">
-        <img src={src} alt={alt} className="w-full h-full object-cover" />
+      <figure className="h-72 flex-1">
+        <img src={src} alt={alt} className="h-full w-full object-cover" />
       </figure>
     </article>
   )

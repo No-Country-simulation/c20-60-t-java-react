@@ -6,7 +6,7 @@ export function PetsPageLayout({ children, onRefetch }) {
       <aside className="bg-secondary px-4 py-8">
         <NavBar onRefetch={onRefetch} />
       </aside>
-      <section className="flex-1 flex flex-col gap-8 py-12">{children}</section>
+      <section className="flex flex-1 flex-col gap-8 py-12">{children}</section>
     </section>
   )
 }
