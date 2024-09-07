@@ -1,7 +1,7 @@
-import { Outlet } from 'react-router-dom'
 import Footer from '@/components/common/Footer'
 import { Header } from '@/components/common/index'
-import { Toaster } from '@/components/ui/toaster'
+import { DevPill, Toaster } from '@/components/ui'
+import { Outlet } from 'react-router-dom'
 
 export function MainLayout() {
   return (
@@ -14,6 +14,7 @@ export function MainLayout() {
         <Footer />
       </section>
       <Toaster />
+      <DevPill />
     </section>
   )
 }
