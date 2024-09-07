@@ -4,6 +4,7 @@ import { PetsPageLayout } from '@/layout'
 import { PetsGrid } from './PetsGrid'
 import { PetsNotFound } from './PetsNotFound'
 import { PetsLoader } from './petCard/PetCardLoader'
+import { AnimatePresence } from 'framer-motion'
 
 export function PetsPage() {
   const { pets, isError, isFetching } = useGetPets()
@@ -11,9 +12,11 @@ export function PetsPage() {
 
   return (
     <PetsPageLayout onRefetch={filterPets}>
-      {isError && <PetsError />}
-      {!isError && isFetching && <PetsLoader />}
-      {!isError && !isFetching && (filteredPets.length ? <PetsGrid pets={filteredPets} /> : <PetsNotFound />)}
+      <AnimatePresence>
+        {isError && <PetsError />}
+        {!isError && isFetching && <PetsLoader />}
+        {!isError && !isFetching && (filteredPets.length ? <PetsGrid pets={filteredPets} /> : <PetsNotFound />)}
+      </AnimatePresence>
     </PetsPageLayout>
   )
 }
