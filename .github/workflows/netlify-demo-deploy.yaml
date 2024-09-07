@@ -17,6 +17,8 @@ jobs:
         working-directory: ./client
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
