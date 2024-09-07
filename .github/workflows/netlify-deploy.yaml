@@ -1,4 +1,4 @@
-name: Deploy demo build to Netlify
+name: Deploy production build to Netlify
 run-name: Deploy to Netlify by @${{ github.actor }} 🚀
 on:
   pull_request:
