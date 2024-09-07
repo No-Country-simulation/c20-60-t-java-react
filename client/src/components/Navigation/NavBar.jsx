@@ -3,9 +3,20 @@ import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 import { NavSection, BadgeGroup } from './index'
 
-export const NavBar = ({ onRefetch }) => {
-  const { getBooleanFilter, isFilterApplied, updateVacunado, updateTamaño, updateSexo, updateEdad, updateRaza, updateEsterilizado, filters } =
-    usePetFilter()
+export const NavBar = () => {
+  const {
+    getBooleanFilter,
+    isFilterSelected,
+    updateVacunado,
+    updateTamaño,
+    updateSexo,
+    updateEdad,
+    updateRaza,
+    updateEsterilizado,
+    filters,
+    filterHaveBeenUsed,
+    filterPets
+  } = usePetFilter()
 
   return (
     <div className="nav-container">
@@ -31,13 +42,13 @@ export const NavBar = ({ onRefetch }) => {
       <NavSection title="Esterilizado">
         <BadgeGroup onUpdate={updateEsterilizado} active={getBooleanFilter('sterilized')} items={['Sí', 'No']} />
       </NavSection>
-      <div className="mt-1 flex items-center justify-center">
+      <div className="mt-1 flex flex-col items-center justify-center gap-4">
         <Button
-          onClick={onRefetch}
-          hoverable={isFilterApplied}
-          disabled={!isFilterApplied}
+          onClick={filterPets}
+          hoverable={isFilterSelected}
+          disabled={!isFilterSelected && !filterHaveBeenUsed}
           fullWidth
-          variant={isFilterApplied ? 'default' : 'disabled'}
+          variant={isFilterSelected || filterHaveBeenUsed ? 'default' : 'disabled'}
         >
           Aplicar Filtros
         </Button>

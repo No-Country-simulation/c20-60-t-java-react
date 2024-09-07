@@ -7,15 +7,15 @@ import { PetsLoader } from './petCard/PetCardLoader'
 import { AnimatePresence } from 'framer-motion'
 
 export function PetsPage() {
-  const { pets, isError, isFetching } = useGetPets()
-  const { filterPets, filteredPets } = usePetFilter(pets)
+  const { isError, isFetching } = useGetPets()
+  const { filteredPets } = usePetFilter()
 
   return (
-    <PetsPageLayout onRefetch={filterPets}>
+    <PetsPageLayout>
       <AnimatePresence>
         {isError && <PetsError />}
         {!isError && isFetching && <PetsLoader />}
-        {!isError && !isFetching && (filteredPets.length ? <PetsGrid pets={filteredPets} /> : <PetsNotFound />)}
+        {!isError && !isFetching && (filteredPets?.length ? <PetsGrid /> : <PetsNotFound />)}
       </AnimatePresence>
     </PetsPageLayout>
   )

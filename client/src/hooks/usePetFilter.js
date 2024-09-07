@@ -1,39 +1,22 @@
 import { petFiltersStore } from '@/store/index'
-import { useEffect, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
-export function usePetFilter(pets) {
-  console.log(pets)
-  const { filters, updateFilter } = petFiltersStore((state) => ({
+export function usePetFilter() {
+  const queryClient = useQueryClient()
+  const pets = queryClient.getQueryData(['pets'])
+
+  const { filters, updateFilter, filteredPets, applyFilter } = petFiltersStore((state) => ({
     filters: state.filters,
-    updateFilter: state.updateFilter
+    updateFilter: state.updateFilter,
+    filteredPets: state.filteredPets,
+    applyFilter: state.applyFilter
   }))
 
-  const [filteredPets, setFilteredPets] = useState(filterPets(pets))
-
+  // Apply the filter when the pets change
   useEffect(() => {
-    handleFilterPets()
+    applyFilter(pets)
   }, [pets?.length])
-
-  function handleFilterPets() {
-    setFilteredPets(filterPets(pets))
-  }
-
-  function filterPets(pets) {
-    function passFilter(field, pet) {
-      const value = filters[field]
-
-      if (value === '') return true
-
-      // In case value is a boolean, it cannot use toLowerCase()
-      if (typeof value === 'string') {
-        return value.toLowerCase() === pet[field].toLowerCase()
-      }
-
-      return value === pet[field]
-    }
-
-    return pets?.filter((pet) => Object.keys(filters).every((field) => passFilter(field, pet)))
-  }
 
   function updateBooleanFilter(field, value) {
     let prevValue = filters[field]
@@ -55,33 +38,6 @@ export function usePetFilter(pets) {
     }
   }
 
-  function updateRaza(value) {
-    updateFilter('breed', value)
-  }
-
-  function updateTamaño(value) {
-    updateFilter('size', value)
-  }
-
-  function updateSexo(value) {
-    updateFilter('sex', value)
-  }
-
-  function updateEdad(value) {
-    updateFilter('age', value)
-  }
-
-  function updateVacunado(value) {
-    updateBooleanFilter('vaccinated', value)
-  }
-
-  function updateEsterilizado(value) {
-    updateBooleanFilter('sterilized', value)
-  }
-
-  // Para los filtros booleanos (vacunado, esterilizado) hay
-  // que hacer un mapeo porque el estado del filtro se guarda
-  // como true o false
   function getBooleanFilter(field) {
     if (filters[field] === '') {
       return ''
@@ -89,18 +45,21 @@ export function usePetFilter(pets) {
     return filters[field] ? 'Sí' : 'No'
   }
 
-  const isFilterApplied = Object.keys(filters).some((field) => filters[field] !== '')
+  const isFilterSelected = Object.keys(filters).some((field) => filters[field] !== '')
+
+  const filterHaveBeenUsed = pets?.length !== filteredPets?.length
 
   return {
-    isFilterApplied,
+    updateVacunado: (value) => updateBooleanFilter('vaccinated', value),
+    updateEsterilizado: (value) => updateBooleanFilter('sterilized', value),
+    updateRaza: (value) => updateFilter('breed', value),
+    updateTamaño: (value) => updateFilter('size', value),
+    updateSexo: (value) => updateFilter('sex', value),
+    updateEdad: (value) => updateFilter('age', value),
+    filterPets: () => applyFilter(pets),
+    filterHaveBeenUsed,
+    isFilterSelected,
     getBooleanFilter,
-    updateVacunado,
-    updateRaza,
-    updateTamaño,
-    updateSexo,
-    updateEsterilizado,
-    updateEdad,
-    filterPets: handleFilterPets,
     filteredPets,
     filters
   }
