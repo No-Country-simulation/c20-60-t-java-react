@@ -1,0 +1,19 @@
+{
+  "name": "pawsome-friends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run --workspace client/ dev:backend\" \"npm run --workspace server/ dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "8.2.2"
+  }
+}

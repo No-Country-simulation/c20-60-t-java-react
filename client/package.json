@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:backend": "vite --mode dev",
     "build": "VITE_PETS_BASE_API_URL=https://pawsome-friends-server-14r3.onrender.com vite build",
     "build:demo": "vite build --mode=development",
     "lint": "eslint .",
