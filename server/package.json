@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "node src/index.js"
+    "build": "node src/index.js",
+    "seed": "node src/config/seed.js"
   },
   "devDependencies": {
     "cloudinary": "2.4.0",
