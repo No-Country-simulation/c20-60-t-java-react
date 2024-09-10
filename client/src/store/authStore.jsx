@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
     authAPI.login(data).then((response) => {
       if (response.ok) {
         response.json().then((res) => {
+          console.log(res.user)
           setUser(res.user)
         })
         toast({ title: 'Logged in!' })

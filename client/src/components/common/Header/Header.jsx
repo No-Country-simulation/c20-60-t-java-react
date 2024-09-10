@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom'
 import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
+import { useAuth } from '@/store/authStore'
 
 export const Header = () => {
+  const { user } = useAuth()
+
   return (
     <header className="sticky top-0 z-20 w-full bg-accent px-4 text-primary-foreground shadow-md">
       <div className="mx-auto flex h-[80px] max-w-desktop items-center justify-between">
@@ -49,9 +52,15 @@ export const Header = () => {
             <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Donar</Text>
             </Link>
-            <Link to={'/auth/registro'} className="hover:text-primary">
-              <Text variant="subtitle">Registrarse</Text>
-            </Link>
+            {!user ? (
+              <Link to={'/auth/registro'} className="hover:text-primary">
+                <Text variant="subtitle">Registrarse</Text>
+              </Link>
+            ) : (
+              <Link to={'/crear-mascota'} className="hover:text-primary">
+                <Text variant="subtitle">Crear</Text>
+              </Link>
+            )}
             <ThemeSwitcher />
           </nav>
         </div>
