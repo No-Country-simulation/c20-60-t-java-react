@@ -6,18 +6,19 @@ export const refugeeLoginSchema = z.object({
 })
 
 export const refugeeSignupSchema = refugeeLoginSchema.extend({
-  owner: z
+  typeUser: z.string().min(1),
+  firstName: z
     .string()
     .trim()
-    .min(4, 'Nombre del propietario muy corto')
-    .max(50, 'Nobre del propietario muy largo')
+    .min(3, 'Primer nombre muy corto')
+    .max(50, 'Primer nombre muy largo')
     .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos'),
-  name: z
+  lastName: z
     .string()
     .trim()
     .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos')
-    .min(5, 'El nombre del refugio debe tener al menos 5 caracteres')
-    .max(50, 'El nombre de la mascota no puede tener mas de 50 caracteres')
+    .min(3, 'Apellido muy corto')
+    .max(50, 'Apellido muy largo')
 })
 
 export const defaultLoginValues = {
@@ -25,4 +26,4 @@ export const defaultLoginValues = {
   password: ''
 }
 
-export const defaultSignupValues = { ...defaultLoginValues, owner: '', name: '' }
+export const defaultSignupValues = { ...defaultLoginValues, typeUser: undefined, firstName: '', lastName: '' }
