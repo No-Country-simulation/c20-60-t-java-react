@@ -1,3 +1,4 @@
+import { authAPI } from '@/api'
 import {
   Button,
   Form,
@@ -14,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui'
+import { toast } from '@/components/ui/use-toast'
 import { defaultSignupValues, refugeeSignupSchema } from '@/lib/zod-validations/refugeeAuthSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
@@ -25,7 +27,9 @@ export function SignupForm() {
   })
 
   const handleSubmit = (data) => {
-    console.log(data)
+    authAPI.register(data).then(() => {
+      toast({ title: 'User succesfully registered', description: 'Login with your credentials' })
+    })
     form.reset()
   }
 
@@ -104,6 +108,20 @@ export function SignupForm() {
           render={({ field }) => (
             <FormItem>
               <FormLabel>Contraseña</FormLabel>
+              <FormControl>
+                <Input placeholder="******" type="password" {...field} />
+              </FormControl>
+              <FormDescription></FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          name="confirmPassword"
+          control={form.control}
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Confirmar contraseña</FormLabel>
               <FormControl>
                 <Input placeholder="******" type="password" {...field} />
               </FormControl>
