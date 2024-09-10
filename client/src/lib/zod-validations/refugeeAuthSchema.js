@@ -5,24 +5,34 @@ export const refugeeLoginSchema = z.object({
   password: z.string().min(6, 'La contraseña debe ser de al menos 6 carácteres').max(25, 'La contraseña no puede tener mas de 25 caracteres')
 })
 
-export const refugeeSignupSchema = refugeeLoginSchema.extend({
-  owner: z
-    .string()
-    .trim()
-    .min(4, 'Nombre del propietario muy corto')
-    .max(50, 'Nobre del propietario muy largo')
-    .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos'),
-  name: z
-    .string()
-    .trim()
-    .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos')
-    .min(5, 'El nombre del refugio debe tener al menos 5 caracteres')
-    .max(50, 'El nombre de la mascota no puede tener mas de 50 caracteres')
-})
+export const refugeeSignupSchema = refugeeLoginSchema
+  .extend({
+    confirmPassword: z
+      .string()
+      .min(6, 'La confirmación debe ser de al menos 6 carácteres')
+      .max(25, 'La confirmación no puede tener más de 25 caracteres'),
+    typeUser: z.string().min(1),
+    firstName: z
+      .string()
+      .trim()
+      .min(3, 'Primer nombre muy corto')
+      .max(50, 'Primer nombre muy largo')
+      .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos'),
+    lastName: z
+      .string()
+      .trim()
+      .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos')
+      .min(3, 'Apellido muy corto')
+      .max(50, 'Apellido muy largo')
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Las contraseñas deben coincidir',
+    path: ['confirmPassword']
+  })
 
 export const defaultLoginValues = {
   email: '',
   password: ''
 }
 
-export const defaultSignupValues = { ...defaultLoginValues, owner: '', name: '' }
+export const defaultSignupValues = { ...defaultLoginValues, typeUser: undefined, firstName: '', lastName: '', confirmPassword: '' }

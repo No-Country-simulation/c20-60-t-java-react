@@ -11,6 +11,7 @@ const app = express()
 app.use(express.json(), express.urlencoded({ extended: true }))
 
 const corsOptions = {
+  origin: process.env.ORIGIN_CLIENT,
   credentials: true, // Allow credentials (cookies) to be sent to/from origin
   methods: 'GET, POST, PUT, PATCH, DELETE' // Allow these methods
 }
