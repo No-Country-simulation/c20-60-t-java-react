@@ -1,16 +1,19 @@
 import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui'
 import { defaultLoginValues, refugeeLoginSchema } from '@/lib/zod-validations/refugeeAuthSchema'
+import { useAuth } from '@/store/authStore'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 
 export function LoginForm() {
+  const { loginAction } = useAuth()
   const form = useForm({
     resolver: zodResolver(refugeeLoginSchema),
     defaultValues: defaultLoginValues
   })
 
   const handleSubmit = (data) => {
-    console.log(data)
+    console.log('LOGGING IN...')
+    loginAction(data)
   }
 
   return (
