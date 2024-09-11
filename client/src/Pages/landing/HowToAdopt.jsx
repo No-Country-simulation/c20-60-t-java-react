@@ -1,6 +1,6 @@
-import Step1 from '/Step-1.svg'
-import Step2 from '/Step-2.svg'
-import Step3 from '/Step-3.svg'
+import { Step1 } from '@/components/icons/Step1'
+import { Step2 } from '@/components/icons/Step2'
+import { Step3 } from '@/components/icons/Step3'
 import { Text } from '../../components/ui/text'
 
 export function HowToAdopt() {
@@ -9,22 +9,22 @@ export function HowToAdopt() {
       <Text variant="display" className="pb-6 text-center">
         ¿Cómo adoptar?
       </Text>
-      <section className="relative grid justify-items-center gap-y-0 bg-secondary px-8 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:gap-12 lg:gap-x-16">
+      <section className="relative grid justify-items-center gap-y-12 bg-secondary px-8 py-9 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:gap-12 lg:gap-x-16">
         <Step
           step="1"
-          imgUrl={Step1}
+          icon={<Step1 />}
           title="Encuentra a tu amigo fiel"
           description="Puedes filtrar entre perro o gato, ciudad o provincia, razas, tamaño y otras preferencias"
         ></Step>
         <Step
           step="2"
-          imgUrl={Step2}
+          icon={<Step2 />}
           title="Rellena el formulario"
           description="Una vez decidido a adoptar, deberás rellenar el formulario con datos personales para que podamos contactarnos contigo"
         ></Step>
         <Step
           step="3"
-          imgUrl={Step3}
+          icon={<Step3 />}
           title="Te contactamos"
           description="Según los datos que nos proporcionaste, te contactaremos para continuar con el proceso de adopción"
         ></Step>
@@ -33,20 +33,17 @@ export function HowToAdopt() {
   )
 }
 
-function Step({ step, imgUrl, title, description }) {
+function Step({ step, icon, title, description }) {
   return (
-    <article className="flex max-w-64 flex-col items-center sm:last:col-span-2 md:last:col-span-1">
-      {/* <figure clas>
-
-      </figure> */}
-      <img src={imgUrl} alt={title} className="m-8 mb-4 w-44" />
-      <Text variant="display" className="pb-3">
+    <article className="flex max-w-64 flex-col items-center gap-2 sm:last:col-span-2 md:last:col-span-1">
+      {icon}
+      <Text variant="display" className="">
         {step}
       </Text>
-      <Text variant="title" className="pb-2 text-center">
+      <Text variant="title" className="text-center">
         {title}
       </Text>
-      <Text variant="medium" className="pb-9 text-center">
+      <Text variant="medium" className="text-center">
         {description}
       </Text>
     </article>

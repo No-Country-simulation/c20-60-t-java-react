@@ -6,7 +6,7 @@ export const ThemeSwitcher = () => {
   const { isDarkMode, toggleTheme } = useTheme()
 
   return (
-    <button onClick={toggleTheme} className="flex gap-3 rounded-full bg-background p-1">
+    <button onClick={toggleTheme} className="flex gap-3 rounded-full bg-white p-1">
       <span className={`rounded-full p-1 transition ${isDarkMode ? 'bg-[#343434]' : 'text-[#B5B5B5]'}`}>
         <MoonIcon />
       </span>

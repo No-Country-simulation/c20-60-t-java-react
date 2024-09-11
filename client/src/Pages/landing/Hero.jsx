@@ -14,9 +14,7 @@ function Hero() {
         <h1 className="fade font-quicksand text-4xl md:text-6xl">Cambia su mundo, adopta hoy</h1>
         <h2 className="fade my-5 font-quicksand">Porque adoptar es más que dar un hogar, es ofrecer una segunda oportunidad.</h2>
         <Link to="/mascotas">
-          <Button variant="outline" className="fade mb-5 h-[56px] w-full max-w-full rounded-[10px] bg-white font-roboto md:w-[386px]">
-            Quiero adoptar
-          </Button>
+          <Button size="lg">Quiero adoptar</Button>
         </Link>
       </div>
     </section>
