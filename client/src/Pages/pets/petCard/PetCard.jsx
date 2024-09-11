@@ -5,11 +5,11 @@ import { PetCardHeader, PetCardInfo, PetCardLabelsGroup } from './index'
 
 export function PetCard({ name, age, thumbnail, labels, id, description, species }) {
   return (
-    <Card className="flex flex-col gap-3 p-3">
+    <Card className="flex h-full flex-col gap-3 p-3">
       <PetCardHeader name={name} age={age} image={thumbnail} species={species} />
       <PetCardLabelsGroup labels={labels} />
       <PetCardInfo description={description} />
-      <Link className="w-fit underline transition hover:translate-y-[-2px]" to={`/mascotas/${id}`}>
+      <Link className="mt-auto w-fit underline transition hover:translate-y-[-2px]" to={`/mascotas/${id}`}>
         <Text>Mostrar más</Text>
       </Link>
     </Card>
