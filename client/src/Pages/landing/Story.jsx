@@ -7,6 +7,8 @@ export const Story = ({ direction, title, description, imgs }) => {
         direction === 'left' ? 'sm:flex-row' : 'sm:flex-row-reverse'
       } my-16 w-full items-center justify-between gap-16 bg-secondary px-6 shadow-2xl sm:gap-28 md:gap-36 lg:my-24`}
     >
+      <div className="absolute inset-0 hidden translate-x-full bg-inherit lg:block" />
+      <div className="absolute inset-0 hidden -translate-x-full bg-inherit lg:block" />
       <div className="top:0 relative mt-6 aspect-square w-1/2 sm:top-3.5 sm:mt-0 sm:w-[40%] sm:max-w-56 lg:top-0">
         <img
           src={imgs[0]}

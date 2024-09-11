@@ -13,6 +13,7 @@
     @apply bg-background text-foreground;
   }
 }
+
 @layer NavBar {
   .nav-container {
     @apply flex max-w-60 flex-col border px-2;
