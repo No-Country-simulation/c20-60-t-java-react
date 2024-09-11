@@ -1,21 +1,17 @@
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
-import { useSearchParams } from 'react-router-dom'
+import { Pagination, PaginationContent, PaginationItem, PaginationButton, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
 
-export function PetsPagination() {
-  const [searchParams] = useSearchParams()
-  const currentPage = Number(searchParams.get('page')) || 1
-
+export function PetsPagination({ pagesAmount, activePage, onUpdatePage }) {
   return (
     <Pagination>
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious href="#" />
         </PaginationItem>
-        {[1, 2, 3, 4, 5, 6].map((page) => (
+        {pagesAmount.map((page) => (
           <PaginationItem key={page}>
-            <PaginationLink isActive={currentPage === page} href="#">
+            <PaginationButton onClick={() => onUpdatePage(page)} isActive={activePage === page}>
               {page}
-            </PaginationLink>
+            </PaginationButton>
           </PaginationItem>
         ))}
         <PaginationItem>

@@ -18,7 +18,7 @@ const buttonVariants = cva(
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
         navigation: 'rounded-none border border-black hover:bg-secondary',
-        navigationActive: 'border border-black bg-black/20 rounded-none',
+        navigationActive: 'border border-black bg-accent rounded-none',
         navBar: 'bg-[#E3C8D080] text-gray-600 shadow-[0_4px_6px_rgba(0,0,0,0.2)] rounded-[15px] py-32 w-full',
         navBarInactive: 'bg-[#fff] text-gray-600 shadow-[0_4px_6px_rgba(0,0,0,0.2)] rounded-[15px] py-32 w-full'
       },
