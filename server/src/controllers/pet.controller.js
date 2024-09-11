@@ -14,7 +14,7 @@ const findOneSinglePet = (req, res) => {
 
 const createNewPet = (req, res) => {
   Pet.create(req.body)
-    .then((newlyCreatedPet) => res.json({ pet: newlyCreatedPet }))
+    .then((newlyCreatedPet) => res.json({ pet: { id: newlyCreatedPet._id } }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
 
