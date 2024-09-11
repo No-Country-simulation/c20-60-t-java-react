@@ -6,27 +6,29 @@ import { useNavigate } from 'react-router-dom'
 const AuthContext = createContext()
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(localStorage.getItem('pawsome-friends-user'))
   const navigate = useNavigate()
 
   const loginAction = (data) => {
     authAPI.login(data).then((response) => {
-      if (response.ok) {
-        response.json().then((res) => {
-          console.log(res.user)
-          setUser(res.user)
-        })
-        toast({ title: 'Logged in!' })
-        navigate({ pathname: '/' })
-      } else {
+      if (!response.ok) {
         toast({ title: 'Invalid credentials' })
+        return
       }
+
+      response.json().then((res) => {
+        setUser(res.user)
+        localStorage.setItem('pawsome-friends-user', JSON.stringify(res.user))
+      })
+      toast({ title: 'Logged in!' })
+      navigate({ pathname: '/' })
     })
   }
 
   const logOut = async () => {
-    setUser(null)
+    localStorage.removeItem('pawsome-friends-user')
     await authAPI.logout()
+    setUser(null)
     navigate('/')
   }
 

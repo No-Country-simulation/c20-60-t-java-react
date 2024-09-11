@@ -8,7 +8,7 @@
     "server"
   ],
   "scripts": {
-    "dev": "concurrently \"npm run --workspace client/ dev:backend\" \"npm run --workspace server/ dev\""
+    "dev": "concurrently \"docker compose up -d\" \"npm run --workspace client/ dev:backend\" \"npm run --workspace server/ dev\""
   },
   "keywords": [],
   "author": "",

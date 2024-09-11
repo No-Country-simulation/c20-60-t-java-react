@@ -6,7 +6,6 @@ import { Outlet } from 'react-router-dom'
 
 export function MainLayout() {
   const { user, logOut } = useAuth()
-  console.log(user)
 
   return (
     <section className="relative flex flex-col text-pretty bg-background text-primary antialiased">

@@ -1,6 +1,7 @@
 import { CrearPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage } from '@/Pages'
 import { AuthLayout, MainLayout } from '@/layout'
 import AuthProvider from '@/store/authStore'
+import { ProtectedRoute } from '@/utils/ProtectedRoute'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 export function MainRouter() {
@@ -12,10 +13,12 @@ export function MainRouter() {
             <Route index element={<LandingPage />} />
             <Route path="/mascotas" element={<PetsPage />} />
             <Route path="/mascotas/:id" element={<PetPage />} />
-            <Route path="/crear-mascota" element={<CrearPage />} />
             <Route path="/auth/" element={<AuthLayout />}>
               <Route path="registro" element={<SignupPage />} />
               <Route path="iniciar-sesion" element={<LoginPage />} />
+            </Route>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/crear-mascota" element={<CrearPage />} />
             </Route>
           </Route>
         </Routes>
