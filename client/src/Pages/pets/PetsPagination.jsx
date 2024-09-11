@@ -1,6 +1,6 @@
-import { Pagination, PaginationContent, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
+import { Pagination, PaginationContent, PaginationItem, PaginationButton, PaginationNext, PaginationPrevious } from '@/components/ui/pagination'
 
-export function PetsPagination({ pagesAmount, activePage }) {
+export function PetsPagination({ pagesAmount, activePage, onUpdatePage }) {
   return (
     <Pagination>
       <PaginationContent>
@@ -9,9 +9,9 @@ export function PetsPagination({ pagesAmount, activePage }) {
         </PaginationItem>
         {pagesAmount.map((page) => (
           <PaginationItem key={page}>
-            <PaginationLink isActive={activePage === page} href={`?page=${page}`}>
+            <PaginationButton onClick={() => onUpdatePage(page)} isActive={activePage === page}>
               {page}
-            </PaginationLink>
+            </PaginationButton>
           </PaginationItem>
         ))}
         <PaginationItem>

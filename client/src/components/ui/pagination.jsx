@@ -15,8 +15,8 @@ PaginationContent.displayName = 'PaginationContent'
 const PaginationItem = React.forwardRef(({ className, ...props }, ref) => <li ref={ref} className={className} {...props} />)
 PaginationItem.displayName = 'PaginationItem'
 
-const PaginationLink = ({ className, isActive, size = 'icon', ...props }) => (
-  <a
+const PaginationButton = ({ className, isActive, size = 'icon', ...props }) => (
+  <button
     aria-current={isActive ? 'page' : undefined}
     className={cn(
       buttonVariants({
@@ -28,19 +28,19 @@ const PaginationLink = ({ className, isActive, size = 'icon', ...props }) => (
     {...props}
   />
 )
-PaginationLink.displayName = 'PaginationLink'
+PaginationButton.displayName = 'PaginationButton'
 
 const PaginationPrevious = ({ className, ...props }) => (
-  <PaginationLink aria-label="Go to previous page" className={cn(className)} {...props}>
+  <PaginationButton aria-label="Go to previous page" className={cn(className)} {...props}>
     <ChevronLeft />
-  </PaginationLink>
+  </PaginationButton>
 )
 PaginationPrevious.displayName = 'PaginationPrevious'
 
 const PaginationNext = ({ className, ...props }) => (
-  <PaginationLink aria-label="Go to next page" className={cn(className)} {...props}>
+  <PaginationButton aria-label="Go to next page" className={cn(className)} {...props}>
     <ChevronRight />
-  </PaginationLink>
+  </PaginationButton>
 )
 PaginationNext.displayName = 'PaginationNext'
 
@@ -52,4 +52,4 @@ const PaginationEllipsis = ({ className, ...props }) => (
 )
 PaginationEllipsis.displayName = 'PaginationEllipsis'
 
-export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationLink, PaginationNext, PaginationPrevious }
+export { Pagination, PaginationContent, PaginationEllipsis, PaginationItem, PaginationButton, PaginationNext, PaginationPrevious }

@@ -2,7 +2,7 @@ import { Grid } from '@/components/ui/grid'
 import { MotionItem } from '@/components/ui/motion-item'
 import { usePetFilter } from '@/hooks/usePetFilter'
 import { AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { PetsPagination } from './PetsPagination'
 import { PetCard } from './petCard'
@@ -10,12 +10,21 @@ import { PetCard } from './petCard'
 const PETS_PER_PAGE = 6
 
 export function PetsGrid() {
-  const [searchParams] = useSearchParams()
-  const currentPage = Number(searchParams.get('page')) || 1
   const { filteredPets } = usePetFilter()
-  const end = 0 + currentPage * PETS_PER_PAGE
+  const [searchParams, setSearchParams] = useSearchParams()
+  const currentPage = Number(searchParams.get('page')) || 1
+  const end = currentPage * PETS_PER_PAGE
   const [paginatedPets, setPaginatedPets] = useState(filteredPets?.slice(end - PETS_PER_PAGE, end))
   const pagesAmount = [...Array.from({ length: Math.ceil(filteredPets.length / PETS_PER_PAGE) }, (_, index) => index + 1)]
+
+  const onUpdatePage = (page) => {
+    setSearchParams({ page: page.toString() })
+  }
+
+  useEffect(() => {
+    const end = currentPage * PETS_PER_PAGE
+    setPaginatedPets(filteredPets.slice(end - PETS_PER_PAGE, end))
+  }, [currentPage, filteredPets])
 
   return (
     <>
@@ -28,7 +37,7 @@ export function PetsGrid() {
           ))}
         </AnimatePresence>
       </Grid>
-      <PetsPagination activePage={currentPage} pagesAmount={pagesAmount} />
+      <PetsPagination activePage={currentPage} pagesAmount={pagesAmount} onUpdatePage={onUpdatePage} />
     </>
   )
 }
