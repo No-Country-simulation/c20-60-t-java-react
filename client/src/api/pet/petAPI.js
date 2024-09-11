@@ -1,4 +1,5 @@
 import { envs } from '@/config/envs'
+import { buildPostRequest } from '@/utils/buildPostRequest'
 import { mapPet } from './mapper'
 
 const ENDPOINT = envs.BASE_API_URL + '/api/pets'
@@ -13,5 +14,8 @@ export const petAPI = {
     return fetch(ENDPOINT + `/${id}`)
       .then((response) => response.json())
       .then((response) => mapPet(response.pet))
+  },
+  async create(data) {
+    return fetch(ENDPOINT + `/new`, buildPostRequest(data)).then((response) => response.json())
   }
 }

@@ -16,7 +16,7 @@ import { razasPerro, razasGato } from '@/data/constants'
 export function BreedField() {
   const form = useFormContext()
   let breeds
-  const selectedSpecie = form.watch('specie')
+  const selectedSpecie = form.watch('species')
 
   if (selectedSpecie) {
     breeds = selectedSpecie === 'dog' ? razasPerro : razasGato
@@ -33,7 +33,7 @@ export function BreedField() {
             <FormControl>
               <SelectTrigger>
                 <SelectValue
-                  placeholder={form.getValues('specie') ? 'Selecciona la raza de la mascota' : 'Primero Selecciona el especie de la mascota'}
+                  placeholder={form.getValues('species') ? 'Selecciona la raza de la mascota' : 'Primero Selecciona el especie de la mascota'}
                 />
               </SelectTrigger>
             </FormControl>
