@@ -24,12 +24,13 @@ export function DashboardLayout() {
   const { pathname } = useLocation()
 
   return (
-    <section className="grid min-h-[90dvh] grid-cols-4 gap-6 py-12">
+    <section className="grid min-h-[90dvh] grid-cols-[minmax(150px,300px)_1fr] gap-6 py-12">
       <div className="relative">
         <aside className="sticky top-28 flex h-full max-h-80 flex-col justify-between overflow-hidden rounded-lg bg-secondary">
           <nav className="flex flex-col divide-y">
             {DASHBOARD_NAV_LINKS.map((link) => (
               <Link
+                key={link.path}
                 to={link.path}
                 className={`flex items-center justify-center gap-2 px-8 py-4 transition-colors hover:bg-card ${pathname === link.path && 'bg-accent'}`}
               >
@@ -50,7 +51,7 @@ export function DashboardLayout() {
           </nav>
         </aside>
       </div>
-      <article className="col-span-3">
+      <article>
         <Outlet />
       </article>
     </section>

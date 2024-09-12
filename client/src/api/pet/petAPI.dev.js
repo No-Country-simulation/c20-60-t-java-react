@@ -22,5 +22,12 @@ export const petDevAPI = {
         resolve()
       }, 2000)
     })
+  },
+  async update(id, data) {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
   }
 }
