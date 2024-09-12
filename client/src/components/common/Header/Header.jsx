@@ -1,18 +1,19 @@
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
 import { useAuth } from '@/store/authStore'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
 
 export const Header = () => {
   const { user } = useAuth()
+  const { pathname } = useLocation()
 
   return (
     <header className="sticky top-0 z-20 w-full bg-accent px-4 text-primary-foreground shadow-md">
       <div className="mx-auto flex h-[80px] max-w-desktop items-center justify-between">
-        <a href="#top" className="flex cursor-pointer items-center gap-2">
+        <a href={pathname !== '/' ? '/' : '#top'} className="flex cursor-pointer items-center gap-2">
           <figure>
             <img src="/images/logo.png" alt="logo pawsome friend" width={60} height={60} />
           </figure>
@@ -30,10 +31,7 @@ export const Header = () => {
             </SheetTrigger>
             <SheetContent side="right">
               <nav className="grid gap-4 p-2">
-                <Link to="/" className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
-                  Inicio
-                </Link>
-                <Link href="#" className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
+                <Link to={'#about-us'} className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
                   Sobre Nosotros
                 </Link>
                 <Link href="#" className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
@@ -43,20 +41,15 @@ export const Header = () => {
             </SheetContent>
           </Sheet>
           <nav className="hidden items-center gap-14 font-medium lg:flex">
-            <Link to={'/'} className="hover:text-primary">
-              <Text variant="subtitle">Inicio</Text>
-            </Link>
-            <Link to={''} className="hover:text-primary">
+            <a href={pathname !== '/' ? '/#about-us' : '#about-us'} className="hover:text-primary">
               <Text variant="subtitle">Sobre Nosotros</Text>
-            </Link>
-            <Link to={''} className="hover:text-primary">
+            </a>
+            <a href={'#donar'} className="hover:text-primary">
               <Text variant="subtitle">Donar</Text>
+            </a>
+            <Link to={'/mascotas'} className="hover:text-primary">
+              <Text variant="subtitle">Mascotas</Text>
             </Link>
-            {user && (
-              <Link to={'/crear-mascota'} className="hover:text-primary">
-                <Text variant="subtitle">Crear</Text>
-              </Link>
-            )}
             <ThemeSwitcher />
             {user ? (
               <Link to={'/dashboard/mascotas'} className="hover:text-primary">
