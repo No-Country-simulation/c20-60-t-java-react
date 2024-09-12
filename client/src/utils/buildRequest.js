@@ -1,6 +1,6 @@
-export function buildPostRequest(data) {
+export function buildRequest(data, method = 'POST') {
   return {
-    method: 'POST',
+    method,
     body: JSON.stringify(data),
     credentials: 'include',
     headers: {

@@ -1,5 +1,5 @@
 import { envs } from '@/config/envs'
-import { buildPostRequest } from '@/utils/buildPostRequest'
+import { buildRequest } from '@/utils/buildRequest'
 import { mapPet } from './mapper'
 
 const ENDPOINT = envs.BASE_API_URL + '/api/pets'
@@ -16,6 +16,14 @@ export const petAPI = {
       .then((response) => mapPet(response.pet))
   },
   async create(data) {
-    return fetch(ENDPOINT + `/new`, buildPostRequest(data)).then((response) => response.json())
+    return fetch(ENDPOINT + `/new`, buildRequest(data)).then((response) => response.json())
+  },
+  async update(id, data) {
+    return fetch(ENDPOINT + `/update/` + id, buildRequest(data, 'PUT')).then((response) => {
+      if (!response.ok) {
+        throw new Error('Error al alctualizar el estado de la mascota')
+      }
+      return response.json()
+    })
   }
 }

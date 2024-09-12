@@ -1,3 +1,6 @@
+// Frontend is going to use the object returned by this function
+// Some field doesn't have the same name that comes from the backend
+
 export function mapPet(rawPet) {
   const birthDate = rawPet.birthDate ?? undefined
   const todayTimestamp = Math.round(Date.now() / 1000)
@@ -34,6 +37,7 @@ export function mapPet(rawPet) {
     color: rawPet.color ?? '-',
     description: rawPet.description ?? '-',
     vaccinated: rawPet.vaccinated ?? false,
-    sterilized: rawPet.sterilized ?? false
+    sterilized: rawPet.sterilized ?? false,
+    availableForAdoption: rawPet.availableForAdoption ?? false
   }
 }
