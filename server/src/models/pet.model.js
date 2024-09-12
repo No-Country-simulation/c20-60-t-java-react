@@ -46,6 +46,10 @@ const PetSchema = new mongoose.Schema(
     },
     vaccinated: {
       type: Boolean
+    },
+    availableForAdoption: {
+      type: Boolean,
+      default: true
     }
   },
   { timestamps: true }
