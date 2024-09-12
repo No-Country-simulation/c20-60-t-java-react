@@ -19,10 +19,6 @@ export function AddPetForm() {
   })
 
   const handleSubmit = (data) => {
-    const birthDate = data.birthDate
-    const birthTimeStamp = Math.round(birthDate.getTime()/1000)
-    data.birthDate = birthTimeStamp
-    
     console.log(data)
     petAPI.create(data).then(() => {
       form.reset()

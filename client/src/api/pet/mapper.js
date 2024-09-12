@@ -1,27 +1,4 @@
 export function mapPet(rawPet) {
-
-  const birthDate = rawPet.birthDate ?? undefined
-  const todayTimestamp = Math.round(Date.now()/1000)
-
-  const ageInSeconds = todayTimestamp - birthDate
-  const secondsInAYear = 1000 * 60 * 60 * 24 * 365.25
-
-  let age = ageInSeconds / secondsInAYear
-  let fullAge = ''
-  
-  if (age >= 1) {
-    age = Math.floor(age)
-    if(age === 1) fullAge = `${fullAge} año`
-    fullAge = `${fullAge} años`
-  }
-  
-  if (age < 1) {
-    age *=  12
-    age = Math.floor(age)
-    if(age>1) fullAge = `${age} meses`
-    fullAge = `${age} mes`
-  }
-
   return {
     id: rawPet._id,
     species: rawPet.species ?? '-',
@@ -29,7 +6,7 @@ export function mapPet(rawPet) {
     sex: rawPet.sex ?? '-',
     size: rawPet.size ?? '-',
     breed: rawPet.breed ?? '-',
-    age: fullAge ?? '-',
+    age: rawPet.age ?? '-',
     thumbnail: rawPet.imgURL ?? '-',
     labels: rawPet.labels ?? '-',
     color: rawPet.color ?? '-',
