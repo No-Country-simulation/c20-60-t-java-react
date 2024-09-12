@@ -3,22 +3,20 @@ export function mapPet(rawPet) {
   const todayTimestamp = Math.round(Date.now() / 1000)
 
   const ageInSeconds = todayTimestamp - birthDate
-  const secondsInAYear = 1000 * 60 * 60 * 24 * 365.25
+  const secondsInAYear = 60 * 60 * 24 * 365.25
 
+  let fullAge = undefined
   let age = ageInSeconds / secondsInAYear
-  let fullAge = ''
 
   if (age >= 1) {
     age = Math.floor(age)
-    if (age === 1) fullAge = `${fullAge} año`
-    fullAge = `${fullAge} años`
-  }
-
-  if (age < 1) {
+    if (age === 1) fullAge = `${age} año`
+    else fullAge = `${age} años`
+  } else {
     age *= 12
     age = Math.floor(age)
-    if (age > 1) fullAge = `${age} meses`
-    fullAge = `${age} mes`
+    if (age === 1) fullAge = `${age} mes`
+    else fullAge = `${age} meses`
   }
 
   return {
