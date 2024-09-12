@@ -1,4 +1,4 @@
-import { CrearPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage } from '@/Pages'
+import { CrearPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage, DashboardPage } from '@/Pages'
 import { AuthLayout, MainLayout } from '@/layout'
 import AuthProvider from '@/store/authStore'
 import { ProtectedRoute } from '@/utils/ProtectedRoute'
@@ -19,6 +19,7 @@ export function MainRouter() {
             </Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/crear-mascota" element={<CrearPage />} />
+              <Route path="/dashboard" element={<DashboardPage />} />
             </Route>
           </Route>
         </Routes>

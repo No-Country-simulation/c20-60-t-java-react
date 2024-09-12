@@ -19,8 +19,10 @@ import { toast } from '@/components/ui/use-toast'
 import { defaultSignupValues, refugeeSignupSchema } from '@/lib/zod-validations/refugeeAuthSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 export function SignupForm() {
+  const redirect = useNavigate()
   const form = useForm({
     resolver: zodResolver(refugeeSignupSchema),
     defaultValues: defaultSignupValues
@@ -28,9 +30,10 @@ export function SignupForm() {
 
   const handleSubmit = (data) => {
     authAPI.register(data).then(() => {
+      form.reset()
       toast({ title: 'User succesfully registered', description: 'Login with your credentials' })
+      redirect({ pathname: 'auth/iniciar-sesion' })
     })
-    form.reset()
   }
 
   return (
