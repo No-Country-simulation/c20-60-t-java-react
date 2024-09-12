@@ -5,7 +5,7 @@ import { AddPetForm } from './addPetForm/AddPetForm'
 
 export function CrearPage() {
   return (
-    <section className="flex flex-col gap-6 py-12">
+    <section className="flex flex-col gap-6">
       <Text variant="title">añadir nueva mascota</Text>
       <AddPetForm />
     </section>
