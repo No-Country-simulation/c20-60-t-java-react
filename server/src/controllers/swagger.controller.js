@@ -14,7 +14,7 @@ const options = {
     },
     servers: [
       {
-        url: `http://localhost:${PORT}`
+        url: 'https://pawsome-friends-server-14r3.onrender.com/'
       }
     ]
   },
