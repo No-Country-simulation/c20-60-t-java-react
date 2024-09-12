@@ -1,5 +1,5 @@
-import { CrearPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage, DashboardPage } from '@/Pages'
-import { AuthLayout, MainLayout } from '@/layout'
+import { CrearPage, DashPetsPage, DashRequestsPage, LandingPage, LoginPage, PetPage, PetsPage, SignupPage } from '@/Pages'
+import { AuthLayout, DashboardLayout, MainLayout } from '@/layout'
 import AuthProvider from '@/store/authStore'
 import { ProtectedRoute } from '@/utils/ProtectedRoute'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -19,7 +19,10 @@ export function MainRouter() {
             </Route>
             <Route element={<ProtectedRoute />}>
               <Route path="/crear-mascota" element={<CrearPage />} />
-              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/dashboard/" element={<DashboardLayout />}>
+                <Route path="mascotas" element={<DashPetsPage />} />
+                <Route path="peticiones" element={<DashRequestsPage />} />
+              </Route>
             </Route>
           </Route>
         </Routes>

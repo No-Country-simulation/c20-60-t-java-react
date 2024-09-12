@@ -59,16 +59,12 @@ export const Header = () => {
             )}
             <ThemeSwitcher />
             {user ? (
-              <Link to={'/dashboard'} className="hover:text-primary">
-                <Button>
-                  <Text variant="details">dashboard</Text>
-                </Button>
+              <Link to={'/dashboard/mascotas'} className="hover:text-primary">
+                <Button>dashboard</Button>
               </Link>
             ) : (
-              <Link to={'/dashboard'} className="hover:text-primary">
-                <Button>
-                  <Text variant="details">iniciar sesion</Text>
-                </Button>
+              <Link to={'/auth/iniciar-sesion'} className="hover:text-primary">
+                <Button>iniciar sesion</Button>
               </Link>
             )}
           </nav>

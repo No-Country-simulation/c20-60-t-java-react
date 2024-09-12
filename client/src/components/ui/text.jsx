@@ -4,7 +4,7 @@ import React from 'react'
 
 import { cn } from '@/lib/utils'
 
-const textStyles = cva('first-letter:capitalize transition-colors', {
+const textStyles = cva('first-letter:capitalize transition-colors flex gap-1 items-center', {
   variants: {
     variant: {
       // size 13px | height 20px
