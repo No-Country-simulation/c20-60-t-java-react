@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import { useAuth } from '@/store/authStore'
 import { Link } from 'react-router-dom'
 import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'
 import { ThemeSwitcher } from './ThemeSwitcher'
-import { useAuth } from '@/store/authStore'
 
 export const Header = () => {
   const { user } = useAuth()
@@ -52,16 +52,25 @@ export const Header = () => {
             <Link to={''} className="hover:text-primary">
               <Text variant="subtitle">Donar</Text>
             </Link>
-            {!user ? (
-              <Link to={'/auth/registro'} className="hover:text-primary">
-                <Text variant="subtitle">Registrarse</Text>
-              </Link>
-            ) : (
+            {user && (
               <Link to={'/crear-mascota'} className="hover:text-primary">
                 <Text variant="subtitle">Crear</Text>
               </Link>
             )}
             <ThemeSwitcher />
+            {user ? (
+              <Link to={'/dashboard'} className="hover:text-primary">
+                <Button>
+                  <Text variant="details">dashboard</Text>
+                </Button>
+              </Link>
+            ) : (
+              <Link to={'/dashboard'} className="hover:text-primary">
+                <Button>
+                  <Text variant="details">iniciar sesion</Text>
+                </Button>
+              </Link>
+            )}
           </nav>
         </div>
       </div>
