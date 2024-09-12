@@ -51,7 +51,8 @@ const login = (req, res) => {
                 .status(200)
                 .cookie('usertoken', newJWT, {
                   httpOnly: true,
-                  expires: new Date(Date.now() + 900000000)
+                  expires: new Date(Date.now() + 900000000),
+                  sameSite: 'none'
                 })
                 .json({ msg: 'success!', user: userInfo, newJWT })
             } else {
