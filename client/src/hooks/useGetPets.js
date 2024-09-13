@@ -12,6 +12,7 @@ export function useGetPets(filters) {
     pets: data ?? [],
     isError,
     refetch,
-    isFetching
+    isFetching,
+    refetch
   }
 }
