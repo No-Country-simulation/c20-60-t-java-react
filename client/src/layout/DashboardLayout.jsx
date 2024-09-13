@@ -26,7 +26,7 @@ export function DashboardLayout() {
   return (
     <section className="grid min-h-[90dvh] grid-cols-[minmax(150px,300px)_1fr] gap-6 py-12">
       <div className="relative">
-        <aside className="sticky top-28 flex h-full max-h-96 flex-col justify-between overflow-hidden rounded-lg bg-secondary">
+        <aside className="sticky top-28 flex h-full max-h-[70dvh] flex-col justify-between overflow-hidden rounded-lg bg-secondary">
           <nav className="flex flex-col divide-y">
             {DASHBOARD_NAV_LINKS.map((link) => (
               <Link

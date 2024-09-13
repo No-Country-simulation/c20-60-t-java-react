@@ -1,7 +1,10 @@
 import Pet from '../models/pet.model.js'
 
 const findAllPets = (req, res) => {
-  Pet.find()
+  let querys
+  if (req.query.adoptable) querys = { availableForAdoption: req.query.adoptable }
+
+  Pet.find(querys)
     .then((allDaPets) => res.json({ pets: allDaPets }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }

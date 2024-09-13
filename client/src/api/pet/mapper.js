@@ -1,27 +1,9 @@
 // Frontend is going to use the object returned by this function
 // Some field doesn't have the same name that comes from the backend
 
+import { getAgeFromBirthDate } from '@/utils/getAgeFromBirthDate'
+
 export function mapPet(rawPet) {
-  const birthDate = rawPet.birthDate ?? undefined
-  const todayTimestamp = Math.round(Date.now() / 1000)
-
-  const ageInSeconds = todayTimestamp - birthDate
-  const secondsInAYear = 60 * 60 * 24 * 365.25
-
-  let fullAge = undefined
-  let age = ageInSeconds / secondsInAYear
-
-  if (age >= 1) {
-    age = Math.floor(age)
-    if (age === 1) fullAge = `${age} año`
-    else fullAge = `${age} años`
-  } else {
-    age *= 12
-    age = Math.floor(age)
-    if (age === 1) fullAge = `${age} mes`
-    else fullAge = `${age} meses`
-  }
-
   return {
     id: rawPet._id,
     species: rawPet.species ?? '-',
@@ -29,7 +11,8 @@ export function mapPet(rawPet) {
     sex: rawPet.sex ?? '-',
     size: rawPet.size ?? '-',
     breed: rawPet.breed ?? '-',
-    age: fullAge ?? '-',
+    age: getAgeFromBirthDate(rawPet.birthDate) ?? '-',
+    birthDate: rawPet.birthDate ?? new Date(),
     thumbnail: rawPet.imgURL ?? '-',
     labels: rawPet.labels ?? '-',
     color: rawPet.color ?? '-',

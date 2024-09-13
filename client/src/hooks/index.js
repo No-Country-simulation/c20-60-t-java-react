@@ -1,3 +1,5 @@
 export * from './useTheme'
 export * from './useDeletePetMutation'
 export * from './useUpdatePetMutation'
+export * from './useGetAdoptablePets'
+export * from './useGetPetRequests'

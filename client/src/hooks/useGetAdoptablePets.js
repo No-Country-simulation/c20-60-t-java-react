@@ -1,10 +1,10 @@
 import { petAPI } from '@/api'
 import { useQuery } from '@tanstack/react-query'
 
-export function useGetPets() {
+export function useGetAdoptablePets() {
   const { data, isError, refetch, isFetching } = useQuery({
-    queryKey: ['pets'],
-    queryFn: () => petAPI.getAll({ adoptable: false }),
+    queryKey: ['pets-adoptable'],
+    queryFn: () => petAPI.getAll({ adoptable: true }),
     refetchOnWindowFocus: false
   })
 

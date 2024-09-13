@@ -4,4 +4,4 @@ export { PetsPage } from './pets/PetsPage'
 // Auth
 export { LoginPage, SignupPage } from './auth'
 // Dashboard
-export { DashAddPetPage, DashPetsPage, DashRequestsPage } from './dashboard'
+export { DashAddPetPage, DashPetsPage, DashRequestsPage, DashEditPetPage } from './dashboard'

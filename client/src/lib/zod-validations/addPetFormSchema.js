@@ -1,4 +1,4 @@
-import { unknown, z } from 'zod'
+import { z } from 'zod'
 
 export const addPetFormSchema = z.object({
   name: z.string().min(3, 'El nombre debe tener minimo 3 letras'),
@@ -22,5 +22,7 @@ export const defaultValues = {
   vaccinated: false,
   sterilized: false,
   size: '',
-  birthDate: undefined
+  birthDate: undefined,
+  description: '',
+  color: ''
 }
