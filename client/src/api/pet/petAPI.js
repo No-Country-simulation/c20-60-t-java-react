@@ -18,6 +18,9 @@ export const petAPI = {
   async create(data) {
     return fetch(ENDPOINT + `/new`, buildRequest(data)).then((response) => response.json())
   },
+  async delete(id) {
+    return fetch(ENDPOINT + `/delete/` + id, buildRequest({}, 'DELETE')).then((response) => response.json())
+  },
   async update(id, data) {
     return fetch(ENDPOINT + `/update/` + id, buildRequest(data, 'PUT')).then((response) => {
       if (!response.ok) {

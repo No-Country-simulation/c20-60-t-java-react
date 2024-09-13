@@ -7,7 +7,7 @@ export function MainLayout() {
   return (
     <section className="relative flex flex-col text-pretty bg-background text-primary antialiased">
       <Header />
-      <section className="grid min-h-[100dvh] grid-rows-[1fr_auto]">
+      <section className="grid min-h-[100dvh] grid-rows-[1fr_auto] px-4">
         <main className="mx-auto w-full max-w-desktop">
           <Outlet />
         </main>
