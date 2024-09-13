@@ -10,6 +10,7 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui'
+import { sizeOptions } from '@/data/constants'
 import { useFormContext } from 'react-hook-form'
 
 export function SizeField() {
@@ -29,9 +30,9 @@ export function SizeField() {
               </SelectTrigger>
             </FormControl>
             <SelectContent>
-              {['pequeño', 'mediano', 'grande'].map((size) => (
-                <SelectItem key={size} value={size}>
-                  {size}
+              {sizeOptions.map((size) => (
+                <SelectItem key={size.value} value={size.value}>
+                  {size.text}
                 </SelectItem>
               ))}
             </SelectContent>
