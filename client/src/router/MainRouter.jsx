@@ -18,7 +18,6 @@ export function MainRouter() {
               <Route path="iniciar-sesion" element={<LoginPage />} />
             </Route>
             <Route element={<ProtectedRoute />}>
-              {/* <Route path="/crear-mascota" element={<CrearPage />} /> */}
               <Route path="/dashboard/" element={<DashboardLayout />}>
                 <Route path="mascotas" element={<DashPetsPage />} />
                 <Route path="peticiones" element={<DashRequestsPage />} />
