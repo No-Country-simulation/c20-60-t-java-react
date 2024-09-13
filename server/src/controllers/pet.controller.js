@@ -8,12 +8,15 @@ const findAllPets = (req, res) => {
 
 const findOneSinglePet = (req, res) => {
   Pet.findOne({ _id: req.params.id })
+    .populate('shelter') // Poblar la referencia al refugio
     .then((oneSinglePet) => res.json({ pet: oneSinglePet }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
 
 const createNewPet = (req, res) => {
-  Pet.create(req.body)
+  const shelterId = req.params.shelterId
+  const petData = { ...req.body, shelter: shelterId }
+  Pet.create(petData)
     .then((newlyCreatedPet) => res.json({ pet: { id: newlyCreatedPet._id } }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }

@@ -50,6 +50,10 @@ const PetSchema = new mongoose.Schema(
     availableForAdoption: {
       type: Boolean,
       default: true
+    },
+    shelter: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Shelter'
     }
   },
   { timestamps: true }

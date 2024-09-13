@@ -5,6 +5,7 @@ import './config/mongoose.config.js' // This will fire our mongoose.connect stat
 import AllMyPetRoutes from './routes/pet.routes.js'
 import SwaggerRoutes from './routes/swagger.routes.js'
 import AllMyUserRoutes from './routes/user.routes.js'
+import AllMyShelterRoutes from './routes/pet.routes.js'
 
 const app = express()
 
@@ -22,5 +23,6 @@ app.use(cookieParser())
 AllMyPetRoutes(app)
 AllMyUserRoutes(app)
 SwaggerRoutes(app)
+AllMyShelterRoutes(app)
 
 export default app
