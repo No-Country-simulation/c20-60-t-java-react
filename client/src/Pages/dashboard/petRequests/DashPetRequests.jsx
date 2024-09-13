@@ -1,12 +1,14 @@
 import { RequestCard } from '@/components/ui'
-import { useGetRequests } from '@/hooks/useGetRequests'
+import { useGetPetRequests } from '@/hooks'
 import { DashboardPageLayout } from '@/layout/DashboardPageLayout'
+import { useParams } from 'react-router-dom'
 
-export function DashRequestsPage() {
-  const { requests } = useGetRequests()
+export function DashPetRequests() {
+  const { id } = useParams()
+  const { requests } = useGetPetRequests(id)
 
   return (
-    <DashboardPageLayout title="Peticiones">
+    <DashboardPageLayout title={'Peticiones por mascota'}>
       <ul className="grid grid-cols-2 gap-4">
         {requests?.map((peticion) => (
           <RequestCard peticion={peticion} key={peticion.phone_number} />

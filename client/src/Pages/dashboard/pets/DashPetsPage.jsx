@@ -36,6 +36,9 @@ export function DashPetsPage() {
                   <Link to={'../editar-mascota/' + pet.id}>
                     <Button variant="outline">editar</Button>
                   </Link>
+                  <Link to={'../mascotas/' + pet.id + '/peticiones'}>
+                    <Button variant="secondary">peticiones</Button>
+                  </Link>
                   <Button disabled={deleteMutation.isPending} onClick={() => deleteMutation.mutate(pet.id)}>
                     eliminar
                   </Button>

@@ -5,27 +5,38 @@ import { toast } from '@/components/ui/use-toast'
 import { adotpFormSchema } from '@/lib/zod-validations/adoptFormSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { requestAPI } from '@/api'
+import { useParams } from 'react-router-dom'
 
 export function AdotpForm() {
+  const { id } = useParams()
+
   const form = useForm({
     resolver: zodResolver(adotpFormSchema),
     defaultValues: {
       email: '',
       name: '',
       location: '',
-      phone_number: ''
+      phone_number: '',
+      message: ''
     }
   })
 
   const handleSubmit = (data) => {
-    console.log(data)
-    toast({ title: 'Formulario enviado con exito!', description: 'Gracias por decidir adoptar!' })
-    form.reset()
+    requestAPI
+      .create({ ...data, pet: id })
+      .then(() => {
+        toast({ title: 'Formulario enviado con exito!', description: 'Gracias por decidir adoptar!' })
+        form.reset()
+      })
+      .catch(() => {
+        toast({ title: 'Oops...', description: 'Hubo un error, vuelve a intentar!' })
+      })
   }
 
   return (
     <Form {...form}>
-      <form action="" className="flex w-[800px] flex-col gap-12" onSubmit={form.handleSubmit(handleSubmit)}>
+      <form className="flex w-[800px] flex-col gap-12" onSubmit={form.handleSubmit(handleSubmit)}>
         <section className="grid grid-cols-2 gap-10">
           <FormField
             name="name"
@@ -75,6 +86,19 @@ export function AdotpForm() {
                   <Input placeholder="1126157262" type="number" {...field} />
                 </FormControl>
                 <FormDescription>Tu número telefónico.</FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Mensaje</FormLabel>
+                <FormControl>
+                  <Input placeholder="Puedo brindarle calidad de vida" {...field} />
+                </FormControl>
+                <FormDescription>Contamos por que queres adoptar a esta mascota.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
