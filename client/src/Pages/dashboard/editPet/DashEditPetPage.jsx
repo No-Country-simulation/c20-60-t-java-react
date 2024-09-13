@@ -2,6 +2,7 @@ import { petAPI } from '@/api'
 import { toast } from '@/components/ui/use-toast'
 import { useGetPet } from '@/hooks/useGetPet'
 import { DashboardPageLayout } from '@/layout/DashboardPageLayout'
+import { convertDateToUnix } from '@/utils/convertDateToUnix'
 import { useParams } from 'react-router-dom'
 import { AddPetForm } from '../crear/addPetForm/AddPetForm'
 
@@ -28,7 +29,7 @@ export function DashEditPetPage() {
 
   const handleSubmit = (data) => {
     petAPI
-      .update(id, data)
+      .update(id, { ...data, birthDate: convertDateToUnix(data.birthDate) })
       .then(() => {
         toast({ title: 'Operacion exitosa', description: 'Informacion actualizada exitosamente!' })
       })
