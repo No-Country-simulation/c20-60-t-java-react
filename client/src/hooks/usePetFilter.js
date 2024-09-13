@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 
 export function usePetFilter() {
   const queryClient = useQueryClient()
-  const pets = queryClient.getQueryData(['pets'])
+  const pets = queryClient.getQueryData(['pets-adoptable'])
 
   const { filters, updateFilter, filteredPets, applyFilter } = petFiltersStore((state) => ({
     filters: state.filters,

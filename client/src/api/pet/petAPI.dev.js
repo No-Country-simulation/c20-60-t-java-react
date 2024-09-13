@@ -36,5 +36,12 @@ export const petDevAPI = {
         resolve()
       }, 2000)
     })
+  },
+  async getAllAdoptable() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
   }
 }

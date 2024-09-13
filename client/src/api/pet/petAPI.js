@@ -3,10 +3,12 @@ import { buildRequest } from '@/utils/buildRequest'
 import { convertDateToUnix } from '@/utils/convertDateToUnix'
 import { mapPet } from './mapper'
 
-const ENDPOINT = envs.BASE_API_URL + '/api/pets'
+let ENDPOINT = envs.BASE_API_URL + '/api/pets'
 
 export const petAPI = {
-  async getAll() {
+  async getAll({ adoptable }) {
+    if (adoptable) ENDPOINT += '?adoptable=true'
+    console.log(ENDPOINT)
     return fetch(ENDPOINT)
       .then((response) => response.json())
       .then((response) => response.pets.map((pet) => mapPet(pet)))
@@ -33,7 +35,7 @@ export const petAPI = {
     })
   },
   async update(id, data) {
-    return fetch(ENDPOINT + `/update/` + id, buildRequest({ ...data, birthDate: convertDateToUnix(data.birthDate) }, 'PUT')).then((response) => {
+    return fetch(ENDPOINT + `/update/` + id, buildRequest(data, 'PUT')).then((response) => {
       if (!response.ok) {
         throw new Error('Error al alctualizar el estado de la mascota')
       }

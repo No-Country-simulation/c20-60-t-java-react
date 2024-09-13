@@ -2,6 +2,7 @@ import { petAPI } from '@/api'
 import { toast } from '@/components/ui/use-toast'
 import { DashboardPageLayout } from '@/layout/DashboardPageLayout'
 import { defaultValues } from '@/lib/zod-validations/addPetFormSchema'
+import { convertDateToUnix } from '@/utils/convertDateToUnix'
 import { useNavigate } from 'react-router-dom'
 import { AddPetForm } from './addPetForm/AddPetForm'
 
@@ -10,7 +11,7 @@ export function DashAddPetPage() {
 
   const handleSubmit = (data) => {
     petAPI
-      .create(data)
+      .create({ ...data, birthDate: convertDateToUnix(data.birthDate) })
       .then((response) => {
         toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
         navigate({ pathname: '/mascotas/' + response.pet.id })

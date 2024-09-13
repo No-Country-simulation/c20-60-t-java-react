@@ -6,9 +6,10 @@ import { PetsLoader } from './petCard/PetCardLoader'
 import { PetsNotFound } from './PetsNotFound'
 import { PetsGrid } from './PetsGrid'
 import { PetsError } from './PetsError'
+import { useGetAdoptablePets } from '@/hooks'
 
 export function PetsPage() {
-  const { isError, isFetching, refetch } = useGetPets()
+  const { isError, isFetching, refetch } = useGetAdoptablePets()
   const { filteredPets } = usePetFilter()
 
   return (
