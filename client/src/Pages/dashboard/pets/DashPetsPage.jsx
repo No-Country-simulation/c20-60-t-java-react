@@ -1,11 +1,9 @@
-import { petAPI } from '@/api'
-import { Button, Text } from '@/components/ui'
+import { Button } from '@/components/ui'
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Toggle } from '@/components/ui/toggle'
 import { useDeletePetMutation, useUpdatePetMutation } from '@/hooks'
 import { useGetPets } from '@/hooks/useGetPets'
 import { DashboardPageLayout } from '@/layout/DashboardPageLayout'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 export function DashPetsPage() {
   const { pets } = useGetPets()
@@ -30,11 +28,13 @@ export function DashPetsPage() {
               <TableCell>{pet.name}</TableCell>
               <TableCell>{pet.species}</TableCell>
               <TableCell>
-                <Toggle onClick={() => toggleAdoptionState(pet)} active={pet.availableForAdoption} />
+                <Toggle disabled={adoptionMutation.isPending} onClick={() => adoptionMutation.mutate(pet)} active={pet.availableForAdoption} />
               </TableCell>
               <TableCell className="flex justify-end gap-2">
                 <Button variant="outline">editar</Button>
-                <Button>eliminar</Button>
+                <Button disabled={deleteMutation.isPending} onClick={() => deleteMutation.mutate(pet.id)}>
+                  eliminar
+                </Button>
               </TableCell>
             </TableRow>
           ))}
