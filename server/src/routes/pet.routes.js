@@ -5,7 +5,7 @@ const AllMyPetRoutes = (app) => {
   app.get('/api/pets/', PetController.findAllPets)
   app.get('/api/pets/:id', PetController.findOneSinglePet)
   app.put('/api/pets/update/:id', authenticate, PetController.updateExistingPet)
-  app.post('/api/pets/new', authenticate, PetController.createNewPet)
+  app.post('/api/pets/new', PetController.createNewPet)
   app.delete('/api/pets/delete/:id', authenticate, PetController.deleteAnExistingPet)
 }
 
