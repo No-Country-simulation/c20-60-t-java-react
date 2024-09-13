@@ -1,38 +1,24 @@
-import { petAPI } from '@/api'
 import { Button } from '@/components/ui/index'
-import { toast } from '@/components/ui/use-toast'
 import { booleanOptions, sexOptions, specieOptions } from '@/data/constants'
-import { addPetFormSchema, defaultValues } from '@/lib/zod-validations/addPetFormSchema'
+import { addPetFormSchema } from '@/lib/zod-validations/addPetFormSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { FormProvider, useForm } from 'react-hook-form'
 import { BooleanField } from './BooleanField'
 import { BooleanFieldWithIcons } from './BooleanFieldWithIcons'
 import { BreedField } from './BreedField'
+import { DateField } from './DateField'
 import { SizeField } from './SizeField'
 import { TextField } from './TextField'
-import { DateField } from './DateField'
 
-export function AddPetForm() {
+export function AddPetForm({ defaultValues, onSubmit }) {
   const form = useForm({
     resolver: zodResolver(addPetFormSchema),
     defaultValues
   })
 
-  const handleSubmit = (data) => {
-    const birthDate = data.birthDate
-    const birthTimeStamp = Math.round(birthDate.getTime() / 1000)
-    data.birthDate = birthTimeStamp
-
-    console.log(data)
-    petAPI.create(data).then(() => {
-      form.reset()
-      toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
-    })
-  }
-
   return (
     <FormProvider {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex flex-col gap-4 rounded-md border bg-secondary p-12">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-4 rounded-md border bg-secondary p-12">
         <TextField field={'name'} label={'Nombre'} placeholder={'Rocco'} description={'Nombre de la mascota'} />
         <BooleanFieldWithIcons field={'species'} label={'Especie'} options={specieOptions} />
         <BooleanFieldWithIcons field={'sex'} label={'Sexo de la mascota'} options={sexOptions} />

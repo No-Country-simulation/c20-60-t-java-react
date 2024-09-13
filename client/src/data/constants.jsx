@@ -30,6 +30,21 @@ export const sexOptions = [
   }
 ]
 
+export const sizeOptions = [
+  {
+    text: 'pequeño',
+    value: 'small'
+  },
+  {
+    text: 'mediano',
+    value: 'medium'
+  },
+  {
+    text: 'grande',
+    value: 'large'
+  }
+]
+
 export const specieOptions = [
   {
     text: 'Perro',
