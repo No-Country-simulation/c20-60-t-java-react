@@ -51,7 +51,7 @@ const PetSchema = new mongoose.Schema(
       type: Boolean,
       default: true
     },
-    shelter: {
+    shelterUser: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'Shelter'
     }

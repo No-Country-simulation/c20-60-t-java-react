@@ -3,7 +3,6 @@ import cors from 'cors'
 import express from 'express'
 import './config/mongoose.config.js' // This will fire our mongoose.connect statement to initialize our database connection
 import AllMyPetRoutes from './routes/pet.routes.js'
-import AllMyShelterRoutes from './routes/shelter.routes.js'
 import SwaggerRoutes from './routes/swagger.routes.js'
 import AllMyUserRoutes from './routes/user.routes.js'
 
@@ -22,7 +21,6 @@ app.use(cookieParser())
 
 AllMyPetRoutes(app)
 AllMyUserRoutes(app)
-AllMyShelterRoutes(app)
 SwaggerRoutes(app)
 
 export default app

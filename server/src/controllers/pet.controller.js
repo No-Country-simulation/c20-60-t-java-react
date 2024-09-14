@@ -17,13 +17,25 @@ const findOneSinglePet = (req, res) => {
 }
 
 const createNewPet = (req, res) => {
-  const shelterId = req.params.shelterId
-  const petData = { ...req.body, shelter: shelterId }
-  Pet.create(petData)
-    .then((newlyCreatedPet) => res.json({ pet: { id: newlyCreatedPet._id } }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+  // Obtener el token de la cookie o el encabezado Authorization
+  const token = req.cookies.usertoken || req.headers.authorization?.split(' ')[1]
+  if (!token) {
+    return res.status(403).json({ message: 'No token provided' })
+  }
+  // Verificar el JWT
+  jwt.verify(token, secret, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: 'Failed to authenticate token' })
+    }
+    // `decoded` contiene la información del usuario
+    const shelterUserId = decoded._id // Extraer el ID del usuario (refugio)
+    // Crear los datos de la mascota con el `shelterUser`
+    const petData = { ...req.body, shelterUser: shelterUserId }
+    Pet.create(petData)
+      .then((newlyCreatedPet) => res.json({ pet: { id: newlyCreatedPet._id } }))
+      .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+  })
 }
-
 const updateExistingPet = (req, res) => {
   Pet.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((updatedPet) => res.json({ pet: updatedPet }))
