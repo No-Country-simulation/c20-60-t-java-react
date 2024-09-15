@@ -1,5 +1,5 @@
-import { authenticate } from '../config/jwt.config.js'
 import RequestController from '../controllers/request.controller.js'
+import { authenticate } from '../middlewares/jwt.middleware.js'
 
 const AllMyRequestRoutes = (app) => {
   app.get('/api/requests/', RequestController.findAllRequests)
