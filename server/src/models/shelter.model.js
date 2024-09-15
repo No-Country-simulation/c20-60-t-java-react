@@ -1,20 +1,16 @@
+import bcrypt from 'bcrypt'
 import mongoose from 'mongoose'
 import uniqueValidator from 'mongoose-unique-validator'
-import bcrypt from 'bcrypt'
 
-const UserSchema = new mongoose.Schema(
+const ShelterSchema = new mongoose.Schema(
   {
-    firstName: {
+    shelterName: {
       type: String,
-      required: [true, 'First name is required']
+      required: [true, 'Shelter name is required']
     },
-    lastName: {
+    address: {
       type: String,
-      required: [true, 'Last name is required']
-    },
-    typeUser: {
-      type: String,
-      required: [true, 'Type is required']
+      required: [true, 'Address is required']
     },
     email: {
       type: String,
@@ -29,12 +25,16 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required'],
       minlength: [8, 'Password must be 8 characters or longer']
+    },
+    pets: {
+      type: [String],
+      default: ['']
     }
   },
   { timestamps: true }
 )
 
-UserSchema.virtual('confirmPassword')
+ShelterSchema.virtual('confirmPassword')
   .get(function () {
     return this._confirmPassword
   })
@@ -42,7 +42,7 @@ UserSchema.virtual('confirmPassword')
     this._confirmPassword = value
   })
 
-UserSchema.pre('validate', function (next) {
+ShelterSchema.pre('validate', function (next) {
   console.log(this)
   if (this.password !== this.confirmPassword) {
     this.invalidate('confirmPassword', 'Password must match confirm password')
@@ -50,15 +50,15 @@ UserSchema.pre('validate', function (next) {
   next()
 })
 
-UserSchema.pre('save', function (next) {
+ShelterSchema.pre('save', function (next) {
   bcrypt.hash(this.password, 10).then((hash) => {
     this.password = hash
     next()
   })
 })
 
-UserSchema.plugin(uniqueValidator, { message: 'Email already in use' })
+ShelterSchema.plugin(uniqueValidator, { message: 'Email already in use' })
 
-const UserModel = mongoose.model('User', UserSchema)
+const ShelterModel = mongoose.model('Shelter', ShelterSchema)
 
-export default UserModel
+export default ShelterModel
