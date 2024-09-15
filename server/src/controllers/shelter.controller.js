@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-import { secret } from '../config/jwt.config.js'
+import { secret } from '../middlewares/jwt.middleware.js'
 import ShelterModel from '../models/shelter.model.js'
 
 const register = (req, res) => {
