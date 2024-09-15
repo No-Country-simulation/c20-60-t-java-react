@@ -7,6 +7,7 @@ import { BooleanField } from './BooleanField'
 import { BooleanFieldWithIcons } from './BooleanFieldWithIcons'
 import { BreedField } from './BreedField'
 import { DateField } from './DateField'
+import { ImageField } from './ImageField'
 import { SizeField } from './SizeField'
 import { TextField } from './TextField'
 
@@ -31,9 +32,9 @@ export function AddPetForm({ defaultValues, onSubmit }) {
           placeholder={'Rocco es un perro muy hiperactivo!'}
           description={'Descripcion de la mascota'}
         />
-        <TextField field={'color'} label={'Color'} placeholder={'marmolado'} description={'Nombre de la mascota'} />
         <BreedField />
         <DateField />
+        <ImageField />
         <Button>enviar</Button>
       </form>
     </FormProvider>
