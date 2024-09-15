@@ -28,7 +28,7 @@ const ShelterSchema = new mongoose.Schema(
     },
     pets: {
       type: [String],
-      default: ['']
+      default: []
     }
   },
   { timestamps: true }
