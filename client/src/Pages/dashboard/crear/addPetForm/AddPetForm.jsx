@@ -31,7 +31,6 @@ export function AddPetForm({ defaultValues, onSubmit }) {
           placeholder={'Rocco es un perro muy hiperactivo!'}
           description={'Descripcion de la mascota'}
         />
-        <TextField field={'color'} label={'Color'} placeholder={'marmolado'} description={'Nombre de la mascota'} />
         <BreedField />
         <DateField />
         <Button>enviar</Button>
