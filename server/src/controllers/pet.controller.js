@@ -9,8 +9,7 @@ const findAllPets = (req, res) => {
 }
 
 const findOneSinglePet = (req, res) => {
-  const { query } = req.params
-  Pet.findOne({ _id: query })
+  Pet.findOne({ _id: req.params.query })
     .populate('shelter', '-password -createdAt -updatedAt -__v -pets') // Poblar la referencia al refugio
     .then((oneSinglePet) => res.json({ pet: oneSinglePet }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
@@ -23,13 +22,12 @@ const findAllAdoptablePets = (req, res) => {
 }
 
 const findPetsWithQuery = (req, res) => {
-  const { query } = req.params
-  if (query === 'true') findAllAdoptablePets(req, res)
+  if (req.params.query === 'true') findAllAdoptablePets(req, res)
   else findOneSinglePet(req, res)
 }
 
 const createNewPet = (req, res) => {
-  const shelterId = req.shelterId // geting shelterId from jwt middelware
+  const shelterId = req.shelterId // geting shelterId from verifyToken middelware
   const petData = { ...req.body, shelter: shelterId } // Crear los datos de la mascota con el `shelter`
   Pet.create(petData)
     .then((newlyCreatedPet) => {
@@ -45,14 +43,13 @@ const createNewPet = (req, res) => {
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
 const updateExistingPet = (req, res) => {
-  const { id } = req.params
-  Pet.findOneAndUpdate({ _id: id }, req.body, { new: true })
+  Pet.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then((updatedPet) => res.json({ pet: updatedPet }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
 
 const deleteAnExistingPet = (req, res) => {
-  const shelterId = req.shelterId // geting shelterId from jwt middelware
+  const shelterId = req.shelterId // geting shelterId from verifyToken middelware
 
   ShelterModel.findById(shelterId).then((shelter) => {
     const shelterPets = shelter.pets
