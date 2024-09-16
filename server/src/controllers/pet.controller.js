@@ -27,7 +27,7 @@ const findPetsWithQuery = (req, res) => {
 }
 
 const createNewPet = (req, res) => {
-  const shelterId = req.shelterId // geting shelterId from verifyToken middelware
+  const shelterId = req.shelterId // geting shelterId from jwt middelware
   const petData = { ...req.body, shelter: shelterId } // Crear los datos de la mascota con el `shelter`
   Pet.create(petData)
     .then((newlyCreatedPet) => {
@@ -49,7 +49,7 @@ const updateExistingPet = (req, res) => {
 }
 
 const deleteAnExistingPet = (req, res) => {
-  const shelterId = req.shelterId // geting shelterId from verifyToken middelware
+  const shelterId = req.shelterId // geting shelterId from jwt middelware
 
   ShelterModel.findById(shelterId).then((shelter) => {
     const shelterPets = shelter.pets
