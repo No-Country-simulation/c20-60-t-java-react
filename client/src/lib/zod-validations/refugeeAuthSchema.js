@@ -11,19 +11,18 @@ export const refugeeSignupSchema = refugeeLoginSchema
       .string()
       .min(6, 'La confirmación debe ser de al menos 6 carácteres')
       .max(25, 'La confirmación no puede tener más de 25 caracteres'),
-    typeUser: z.string().min(1),
-    firstName: z
+    shelterName: z
       .string()
       .trim()
-      .min(3, 'Primer nombre muy corto')
-      .max(50, 'Primer nombre muy largo')
+      .min(3, 'Nombre muy corto')
+      .max(50, 'Nombre muy largo')
       .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos'),
-    lastName: z
+    address: z
       .string()
       .trim()
-      .regex(/^[a-zA-Z\s]+$/, 'No se admiten caracteres invalidos')
-      .min(3, 'Apellido muy corto')
-      .max(50, 'Apellido muy largo')
+      .regex(/^[a-zA-Z\s,]+$/, 'No se admiten caracteres invalidos')
+      .min(3, 'Dirección muy corta')
+      .max(50, 'Dirección muy larga')
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Las contraseñas deben coincidir',
@@ -35,4 +34,4 @@ export const defaultLoginValues = {
   password: ''
 }
 
-export const defaultSignupValues = { ...defaultLoginValues, typeUser: undefined, firstName: '', lastName: '', confirmPassword: '' }
+export const defaultSignupValues = { ...defaultLoginValues, shelterName: '', address: '', confirmPassword: '' }

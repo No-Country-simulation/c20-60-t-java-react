@@ -14,11 +14,10 @@ export function mapPet(rawPet) {
     age: getAgeFromBirthDate(rawPet.birthDate) ?? '-',
     birthDate: rawPet.birthDate ?? new Date(),
     thumbnail: rawPet.imgURL ?? '-',
-    labels: rawPet.labels ?? '-',
-    color: rawPet.color ?? '-',
     description: rawPet.description ?? '-',
     vaccinated: rawPet.vaccinated ?? false,
     sterilized: rawPet.sterilized ?? false,
-    availableForAdoption: rawPet.availableForAdoption ?? false
+    availableForAdoption: rawPet.availableForAdoption ?? false,
+    location: rawPet.shelter.address ?? '-'
   }
 }

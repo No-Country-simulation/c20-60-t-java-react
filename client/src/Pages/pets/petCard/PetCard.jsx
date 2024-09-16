@@ -7,7 +7,7 @@ export function PetCard({ name, age, thumbnail, labels, id, description, species
   return (
     <Card className="flex h-full flex-col gap-3 p-3">
       <PetCardHeader name={name} age={age} image={thumbnail} species={species} />
-      <PetCardLabelsGroup labels={labels} />
+      {/* <PetCardLabelsGroup labels={labels} /> */}
       <PetCardInfo description={description} />
       <Link className="mt-auto w-fit underline transition hover:translate-y-[-2px]" to={`/mascotas/${id}`}>
         <Text>Mostrar más</Text>

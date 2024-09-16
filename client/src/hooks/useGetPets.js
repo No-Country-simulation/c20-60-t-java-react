@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query'
 export function useGetPets() {
   const { data, isError, refetch, isFetching } = useQuery({
     queryKey: ['pets'],
-    queryFn: () => petAPI.getAll({ adoptable: false }),
+    queryFn: () => petAPI.getAll(),
     refetchOnWindowFocus: false
   })
 
