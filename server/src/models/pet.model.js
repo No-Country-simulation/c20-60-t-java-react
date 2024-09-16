@@ -29,17 +29,9 @@ const PetSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Sex is required']
     },
-    color: {
-      type: String,
-      required: [true, 'Color is required']
-    },
     description: {
       type: String,
       required: [true, 'Description is required']
-    },
-    labels: {
-      type: [String],
-      required: [true, 'Labels are required']
     },
     sterilized: {
       type: Boolean
@@ -50,6 +42,10 @@ const PetSchema = new mongoose.Schema(
     availableForAdoption: {
       type: Boolean,
       default: true
+    },
+    shelter: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Shelter'
     }
   },
   { timestamps: true }

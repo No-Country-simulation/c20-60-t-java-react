@@ -1,20 +1,5 @@
 import { authAPI } from '@/api'
-import {
-  Button,
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-  Input,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui'
+import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui'
 import { toast } from '@/components/ui/use-toast'
 import { defaultSignupValues, refugeeSignupSchema } from '@/lib/zod-validations/refugeeAuthSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -31,8 +16,8 @@ export function SignupForm() {
   const handleSubmit = (data) => {
     authAPI.register(data).then(() => {
       form.reset()
-      toast({ title: 'User succesfully registered', description: 'Login with your credentials' })
-      redirect({ pathname: 'auth/iniciar-sesion' })
+      toast({ title: 'Shelter succesfully registered', description: 'Login with your credentials' })
+      redirect({ pathname: '/auth/iniciar-sesion' })
     })
   }
 
@@ -40,37 +25,13 @@ export function SignupForm() {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="flex w-full flex-col gap-4">
         <FormField
-          control={form.control}
-          name="typeUser"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Tipo de usuario</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccione el tipo de usuario" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {['refugio', 'paseador'].map((tipo) => (
-                    <SelectItem key={tipo} value={tipo}>
-                      {tipo}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          name="firstName"
+          name="shelterName"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nombre</FormLabel>
+              <FormLabel>Nombre del refugio</FormLabel>
               <FormControl>
-                <Input placeholder="Jhon" {...field} />
+                <Input placeholder="Patitas" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />
@@ -78,13 +39,13 @@ export function SignupForm() {
           )}
         />
         <FormField
-          name="lastName"
+          name="address"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Apellido</FormLabel>
+              <FormLabel>Dirección</FormLabel>
               <FormControl>
-                <Input placeholder="Doe" {...field} />
+                <Input placeholder="Gran Avenida 52, Kuala Lumpur" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />

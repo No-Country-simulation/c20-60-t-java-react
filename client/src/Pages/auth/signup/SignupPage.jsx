@@ -1,5 +1,5 @@
-import { SignupForm } from './SignupForm'
 import { AuthPageLayout } from '@/layout'
+import { SignupForm } from './SignupForm'
 
 export function SignupPage() {
   return (

@@ -8,3 +8,13 @@ export function buildRequest(data, method = 'POST') {
     }
   }
 }
+
+export function buildAuthGETRequest(method = 'GET') {
+  return {
+    method,
+    credentials: 'include',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+}

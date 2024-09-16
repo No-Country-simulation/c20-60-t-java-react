@@ -42,16 +42,13 @@ export function PetPage() {
                 <strong>Edad:</strong> {pet.age}
               </li>
               <li>
-                <strong>Color:</strong> {pet.color}
-              </li>
-              <li>
                 <strong>Esterilizado:</strong> {pet.sterilized ? 'Si' : 'No'}
               </li>
               <li>
                 <strong>Vacunado:</strong> {pet.vaccinated ? 'Si' : 'No'}
               </li>
               <li className="last">
-                <strong>Ubicación:</strong> Buenos Aires (Capital Federal)
+                <strong>Ubicación:</strong> {pet.location}
               </li>
             </ul>
             <h2 className="mt-4">Información sobre mí:</h2>
