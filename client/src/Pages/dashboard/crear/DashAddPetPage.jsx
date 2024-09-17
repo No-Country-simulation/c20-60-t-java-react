@@ -10,15 +10,17 @@ export function DashAddPetPage() {
   const navigate = useNavigate()
 
   const handleSubmit = (data) => {
-    petAPI
-      .create({ ...data, birthDate: convertDateToUnix(data.birthDate) })
-      .then((response) => {
-        toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
-        navigate({ pathname: '/mascotas/' + response.pet.id })
-      })
-      .catch((err) => {
-        toast({ title: 'Oops...', description: err.message })
-      })
+    console.log(data)
+
+    // petAPI
+    //   .create({ ...data, birthDate: convertDateToUnix(data.birthDate) })
+    //   .then((response) => {
+    //     toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
+    //     navigate({ pathname: '/mascotas/' + response.pet.id })
+    //   })
+    //   .catch((err) => {
+    //     toast({ title: 'Oops...', description: err.message })
+    //   })
   }
 
   return (
