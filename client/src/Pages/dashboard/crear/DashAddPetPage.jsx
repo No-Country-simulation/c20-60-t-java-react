@@ -9,18 +9,26 @@ import { AddPetForm } from './addPetForm/AddPetForm'
 export function DashAddPetPage() {
   const navigate = useNavigate()
 
-  const handleSubmit = (data) => {
-    console.log(data)
+  const handleSubmit = async (data) => {
+    const firstImageUrl = await uploadImageToCloudinary(data.firstImage)
+    const secondImageUrl = await uploadImageToCloudinary(data.secondImage)
 
-    // petAPI
-    //   .create({ ...data, birthDate: convertDateToUnix(data.birthDate) })
-    //   .then((response) => {
-    //     toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
-    //     navigate({ pathname: '/mascotas/' + response.pet.id })
-    //   })
-    //   .catch((err) => {
-    //     toast({ title: 'Oops...', description: err.message })
-    //   })
+    const petData = {
+      ...data,
+      birthDate: convertDateToUnix(data.birthDate),
+      firstImage: firstImageUrl,
+      secondImage: secondImageUrl
+    }
+
+    petAPI
+      .create(petData)
+      .then((response) => {
+        toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
+        navigate({ pathname: '/mascotas/' + response.pet.id })
+      })
+      .catch((err) => {
+        toast({ title: 'Oops...', description: err.message })
+      })
   }
 
   return (
