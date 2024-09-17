@@ -32,7 +32,7 @@ export function SignupForm() {
     authAPI.register(data).then(() => {
       form.reset()
       toast({ title: 'User succesfully registered', description: 'Login with your credentials' })
-      redirect({ pathname: 'auth/iniciar-sesion' })
+      redirect({ pathname: '/auth/iniciar-sesion' })
     })
   }
 
@@ -64,13 +64,13 @@ export function SignupForm() {
           )}
         />
         <FormField
-          name="firstName"
+          name="shelterName"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Nombre</FormLabel>
+              <FormLabel>Nombre del refugio</FormLabel>
               <FormControl>
-                <Input placeholder="Jhon" {...field} />
+                <Input placeholder="Patitas peludas" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />
@@ -78,11 +78,11 @@ export function SignupForm() {
           )}
         />
         <FormField
-          name="lastName"
+          name="address"
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Apellido</FormLabel>
+              <FormLabel>Direccion</FormLabel>
               <FormControl>
                 <Input placeholder="Doe" {...field} />
               </FormControl>
