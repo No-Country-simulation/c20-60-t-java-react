@@ -33,27 +33,27 @@ export const sexOptions = [
 export const sizeOptions = [
   {
     text: 'pequeño',
-    value: 'small'
+    value: 'pequeño'
   },
   {
     text: 'mediano',
-    value: 'medium'
+    value: 'mediano'
   },
   {
     text: 'grande',
-    value: 'large'
+    value: 'grande'
   }
 ]
 
 export const specieOptions = [
   {
     text: 'Perro',
-    value: 'dog',
+    value: 'perro',
     icon: <DogIcon />
   },
   {
     text: 'Gato',
-    value: 'cat',
+    value: 'gato',
     icon: <CatIcon />
   }
 ]
