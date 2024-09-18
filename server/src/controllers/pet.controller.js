@@ -1,3 +1,4 @@
+import { uploadImage } from '../config/cloudinary.config.js'
 import Pet from '../models/pet.model.js'
 import ShelterModel from '../models/shelter.model.js'
 
@@ -28,43 +29,82 @@ const findPetsWithQuery = (req, res) => {
   else findOneSinglePet(req, res)
 }
 
-const createNewPet = (req, res) => {
+const uploadImageToCloudinary = async (imgBase64Array) => {
+  try {
+    // Map the base64 images to an array of upload promises
+    const cloudinaryURLs = await Promise.all(
+      imgBase64Array.map(async (imgBase64) => {
+        try {
+          return await uploadImage(imgBase64)
+        } catch (error) {
+          console.error(error)
+          throw new Error('Image upload failed')
+        }
+      })
+    )
+    return cloudinaryURLs // Return an array of URLs from Cloudinary
+  } catch (error) {
+    console.error('Error in uploading images to Cloudinary:', error)
+    throw error
+  }
+}
+
+const createNewPet = async (req, res) => {
   const shelterId = req.shelterId // geting shelterId from jwt middelware
   const petData = { ...req.body, shelter: shelterId } // Crear los datos de la mascota con el `shelter`
-  Pet.create(petData)
-    .then((newlyCreatedPet) => {
-      // Saving pets on shelter data
-      ShelterModel.findById(shelterId).then((shelter) => {
-        const shelterPets = shelter.pets
-        ShelterModel.findByIdAndUpdate({ _id: shelterId }, { pets: [...shelterPets, newlyCreatedPet._id] }).catch((err) =>
-          res.status(400).json({ message: 'Something went wrong', error: err })
-        )
-      })
-      res.json({ pet: { id: newlyCreatedPet._id } }) // Creating new pet
-    })
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+  const imgBase64Array = petData.imgURL
+
+  try {
+    const cloudinaryURLs = await uploadImageToCloudinary(imgBase64Array)
+    petData.imgURL = cloudinaryURLs // Assign the Cloudinary URLs to the pet data
+
+    // Create the new pet
+    const newlyCreatedPet = await Pet.create(petData)
+
+    // Add the new pet's ID to the shelter's pets array using $push
+    await ShelterModel.findByIdAndUpdate({ _id: shelterId }, { $push: { pets: newlyCreatedPet._id } }, { new: true })
+
+    // Respond with the newly created pet's ID
+    res.json({ pet: { id: newlyCreatedPet._id } })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
-const updateExistingPet = (req, res) => {
+
+const updateExistingPet = async (req, res) => {
   const { id } = req.params
-  Pet.findOneAndUpdate({ _id: id }, req.body, { new: true })
-    .then((updatedPet) => res.json({ pet: updatedPet }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+  const hasImgBase64Array = req.body.imgURL?.length > 0
+
+  try {
+    if (hasImgBase64Array) {
+      const imgBase64Array = req.body.imgURL
+      const cloudinaryURLs = await uploadImageToCloudinary(imgBase64Array)
+      req.body.imgURL = cloudinaryURLs // Assign the Cloudinary URLs to the pet data
+    }
+
+    const updatedPet = await Pet.findOneAndUpdate({ _id: id }, req.body, { new: true })
+
+    res.json({ pet: updatedPet })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
-const deleteAnExistingPet = (req, res) => {
+const deleteAnExistingPet = async (req, res) => {
+  const { id } = req.params
   const shelterId = req.shelterId // geting shelterId from jwt middelware
+  try {
+    // Remove the pet ID from the shelter's pets array using $pull
+    await ShelterModel.findByIdAndUpdate({ _id: shelterId }, { $pull: { pets: id } }, { new: true })
 
-  ShelterModel.findById(shelterId).then((shelter) => {
-    const shelterPets = shelter.pets
-    const petToDeleteIndex = shelterPets.indexOf(req.params.id)
-    if (petToDeleteIndex > -1) shelterPets.splice(petToDeleteIndex, 1)
-    ShelterModel.findByIdAndUpdate({ _id: shelterId }, { pets: shelterPets }).catch((err) =>
-      res.status(400).json({ message: 'Something went wrong', error: err })
-    )
-  })
-  Pet.deleteOne({ _id: req.params.id })
-    .then((result) => res.json({ result }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+    // Delete the pet from the Pet collection
+    const result = await Pet.deleteOne({ _id: id })
+
+    // Return the result of the deletion
+    res.json({ result })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
 export default {

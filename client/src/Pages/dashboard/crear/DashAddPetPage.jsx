@@ -3,15 +3,26 @@ import { toast } from '@/components/ui/use-toast'
 import { DashboardPageLayout } from '@/layout/DashboardPageLayout'
 import { defaultValues } from '@/lib/zod-validations/addPetFormSchema'
 import { convertDateToUnix } from '@/utils/convertDateToUnix'
+import { convertFileToBase64 } from '@/utils/convertImageToBase64'
 import { useNavigate } from 'react-router-dom'
 import { AddPetForm } from './addPetForm/AddPetForm'
 
 export function DashAddPetPage() {
   const navigate = useNavigate()
 
-  const handleSubmit = (data) => {
+  const handleSubmit = async (data) => {
+    const firstImageBase64 = await convertFileToBase64(data.firstImage)
+    const secondImageBase64 = await convertFileToBase64(data.secondImage)
+
+    const petData = {
+      ...data,
+      birthDate: convertDateToUnix(data.birthDate),
+      imgURL: [firstImageBase64, secondImageBase64]
+      // secondImage: secondImageUrl
+    }
+
     petAPI
-      .create({ ...data, birthDate: convertDateToUnix(data.birthDate) })
+      .create(petData)
       .then((response) => {
         toast({ title: 'Informacion enviada', description: 'Mascota añadida!' })
         navigate({ pathname: '/mascotas/' + response.pet.id })

@@ -2,15 +2,15 @@ import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import express from 'express'
 import './config/mongoose.config.js' // This will fire our mongoose.connect statement to initialize our database connection
+import notFound from './middlewares/notFound.middleware.js'
 import AllMyPetRoutes from './routes/pet.routes.js'
 import AllMyRequestRoutes from './routes/request.routes.js'
-import SwaggerRoutes from './routes/swagger.routes.js'
 import AllMyShelterRoutes from './routes/shelter.routes.js'
-import notFound from './middlewares/notFound.middleware.js'
+import SwaggerRoutes from './routes/swagger.routes.js'
 
 const app = express()
 
-app.use(express.json(), express.urlencoded({ extended: true }))
+app.use(express.json({ limit: '50mb' }), express.urlencoded({ extended: true }))
 
 const corsOptions = {
   origin: process.env.ORIGIN_CLIENT,

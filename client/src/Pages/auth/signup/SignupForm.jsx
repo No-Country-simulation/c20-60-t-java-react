@@ -31,7 +31,7 @@ export function SignupForm() {
             <FormItem>
               <FormLabel>Nombre del refugio</FormLabel>
               <FormControl>
-                <Input placeholder="Patitas" {...field} />
+                <Input placeholder="Patitas peludas" {...field} />
               </FormControl>
               <FormDescription></FormDescription>
               <FormMessage />
@@ -43,7 +43,7 @@ export function SignupForm() {
           control={form.control}
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Dirección</FormLabel>
+              <FormLabel>Direccion</FormLabel>
               <FormControl>
                 <Input placeholder="Gran Avenida 52, Kuala Lumpur" {...field} />
               </FormControl>

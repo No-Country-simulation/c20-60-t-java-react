@@ -11,6 +11,7 @@ export const refugeeSignupSchema = refugeeLoginSchema
       .string()
       .min(6, 'La confirmación debe ser de al menos 6 carácteres')
       .max(25, 'La confirmación no puede tener más de 25 caracteres'),
+    typeUser: z.string().min(1),
     shelterName: z
       .string()
       .trim()
