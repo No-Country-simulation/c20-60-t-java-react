@@ -10,8 +10,8 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui'
+import { razasGato, razasPerro } from '@/data/constants'
 import { useFormContext } from 'react-hook-form'
-import { razasPerro, razasGato } from '@/data/constants'
 
 export function BreedField() {
   const form = useFormContext()
@@ -19,7 +19,7 @@ export function BreedField() {
   const selectedSpecie = form.watch('species')
 
   if (selectedSpecie) {
-    breeds = selectedSpecie === 'dog' ? razasPerro : razasGato
+    breeds = selectedSpecie === 'perro' ? razasPerro : razasGato
   }
 
   return (
