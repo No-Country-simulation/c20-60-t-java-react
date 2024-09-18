@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const PetSchema = new mongoose.Schema(
   {
     imgURL: {
-      type: String
+      type: [String]
     },
     name: {
       type: String,

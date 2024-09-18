@@ -10,14 +10,23 @@ export function DashAddPetPage() {
   const navigate = useNavigate()
 
   const handleSubmit = async (data) => {
-    const firstImageUrl = await uploadImageToCloudinary(data.firstImage)
-    const secondImageUrl = await uploadImageToCloudinary(data.secondImage)
+    const convertFileToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.readAsDataURL(file)
+        reader.onloadend = () => resolve(reader.result) // This will be the base64 string
+        reader.onerror = reject
+      })
+    }
+
+    const firstImageBase64 = await convertFileToBase64(data.firstImage)
+    const secondImageBase64 = await convertFileToBase64(data.secondImage)
 
     const petData = {
       ...data,
       birthDate: convertDateToUnix(data.birthDate),
-      firstImage: firstImageUrl,
-      secondImage: secondImageUrl
+      imgURL: [firstImageBase64, secondImageBase64]
+      // secondImage: secondImageUrl
     }
 
     petAPI

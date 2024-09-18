@@ -1,7 +1,7 @@
-require('dotenv/config')
-const cloudinary = require('cloudinary').v2
+import { v2 as cloudinary } from 'cloudinary'
+import 'dotenv/config'
 
-;(async function () {
+export async function uploadImage(url) {
   // Configuration
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -10,13 +10,13 @@ const cloudinary = require('cloudinary').v2
   })
 
   // Upload an image
-  const path = '../server/images/'
   const uploadResult = await cloudinary.uploader
-    .upload(`${path}image.png`, {
-      public_id: 'first cat'
+    .upload(url, {
+      folder: 'Pawsome Friends',
+      public_id: Date.now()
     })
     .catch((error) => {
-      console.log(error)
+      console.error(error)
     })
 
   console.log(uploadResult)
@@ -37,5 +37,5 @@ const cloudinary = require('cloudinary').v2
     ]
   })
 
-  console.log(optimizeUrl)
-})()
+  return optimizeUrl
+}

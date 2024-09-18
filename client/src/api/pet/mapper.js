@@ -13,7 +13,7 @@ export function mapPet(rawPet) {
     breed: rawPet.breed ?? '-',
     age: getAgeFromBirthDate(rawPet.birthDate) ?? '-',
     birthDate: rawPet.birthDate ?? new Date(),
-    thumbnail: rawPet.imgURL ?? '-',
+    thumbnail: rawPet.imgURL[0] ?? '-',
     description: rawPet.description ?? '-',
     vaccinated: rawPet.vaccinated ?? false,
     sterilized: rawPet.sterilized ?? false,
