@@ -17,7 +17,8 @@ export function petMapper(rawPet) {
     description: rawPet.description ?? '-',
     vaccinated: rawPet.vaccinated ?? false,
     sterilized: rawPet.sterilized ?? false,
-    availableForAdoption: rawPet.availableForAdoption ?? false
+    availableForAdoption: rawPet.availableForAdoption ?? false,
+    images: rawPet.imgURL ?? []
   }
 }
 
