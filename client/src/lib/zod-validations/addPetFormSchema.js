@@ -9,8 +9,6 @@ const imageSchema = z
     return !file || file.size <= MAX_UPLOAD_SIZE
   }, 'File size must be less than 5MB')
   .refine((file) => {
-    console.log(file)
-
     return ACCEPTED_FILE_TYPES.includes(file.type)
   }, 'Invalid file type')
 
