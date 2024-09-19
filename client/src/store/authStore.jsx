@@ -2,6 +2,7 @@ import { authAPI } from '@/api'
 import { toast } from '@/components/ui/use-toast'
 import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { LOCAL_STORAGE_KEYS } from '@/config/keys'
 
 export const AuthContext = createContext()
 
@@ -10,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const storedUser = localStorage.getItem('pawsome-friends-user')
+    const storedUser = localStorage.getItem(LOCAL_STORAGE_KEYS.SHELTER)
     if (storedUser) {
       setUser(JSON.parse(storedUser))
     }
@@ -21,8 +22,9 @@ const AuthProvider = ({ children }) => {
       .login(data)
       .then((response) => {
         setUser(() => {
-          localStorage.setItem('pawsome-friends-user', JSON.stringify(response.shelter))
+          localStorage.setItem(LOCAL_STORAGE_KEYS.SHELTER, JSON.stringify(response.shelter))
           navigate({ pathname: '/' })
+          toast({ title: 'Logged in!' })
           return response.shelter
         })
       })
@@ -30,7 +32,7 @@ const AuthProvider = ({ children }) => {
   }
 
   const logOut = async () => {
-    localStorage.removeItem('pawsome-friends-user')
+    localStorage.removeItem(LOCAL_STORAGE_KEYS.SHELTER)
     await authAPI.logout()
     setUser(null)
     navigate('/')

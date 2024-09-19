@@ -16,9 +16,6 @@ export const authAPI = {
         return response
       })
       .then((response) => response.json())
-      .catch((err) => {
-        throw new Error('There was an internal error')
-      })
   },
   async logout() {
     return fetch(ENDPOINT + `/logout`, { method: 'POST' })
