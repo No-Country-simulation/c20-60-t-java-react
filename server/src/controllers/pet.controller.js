@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { uploadImage } from '../config/cloudinary.config.js'
 import Pet from '../models/pet.model.js'
 import Request from '../models/request.model.js'
@@ -100,7 +101,7 @@ const deleteAnExistingPet = async (req, res) => {
     await Shelter.findByIdAndUpdate({ _id: shelterId }, { $pull: { pets: id } }, { new: true })
 
     // Delete the requests made for the pet to be deleted
-    const findAllRequestsForPet = await Request.find({ pet: { _id: id } })
+    await Request.deleteMany({ pet: { _id: id } })
 
     // Delete the pet from the Pet collection
     const result = await Pet.deleteOne({ _id: id })
