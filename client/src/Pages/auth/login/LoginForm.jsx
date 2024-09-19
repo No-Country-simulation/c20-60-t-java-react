@@ -1,8 +1,9 @@
 import { Button, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, Input } from '@/components/ui'
 import { defaultLoginValues, refugeeLoginSchema } from '@/lib/zod-validations/refugeeAuthSchema'
-import { useAuth } from '@/store/authStore'
+import { useAuth } from '@/hooks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
+import { toast } from '@/components/ui/use-toast'
 
 export function LoginForm() {
   const { loginAction } = useAuth()
@@ -12,8 +13,9 @@ export function LoginForm() {
   })
 
   const handleSubmit = (data) => {
-    console.log('LOGGING IN...')
-    loginAction(data)
+    loginAction(data).then(() => {
+      toast({ title: 'Logged in!' })
+    })
   }
 
   return (

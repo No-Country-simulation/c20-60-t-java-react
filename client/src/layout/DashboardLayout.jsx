@@ -3,7 +3,7 @@ import { DogMiniIcon } from '@/components/icons/DogMiniIcon'
 import { GearIcon } from '@/components/icons/GearIcon'
 import { LogOutIcon } from '@/components/icons/LogOutIcon'
 import { Button, Text } from '@/components/ui'
-import { useAuth } from '@/store/authStore'
+import { useAuth } from '@/hooks'
 import { Link, Outlet, useLocation } from 'react-router-dom'
 
 const DASHBOARD_NAV_LINKS = [
