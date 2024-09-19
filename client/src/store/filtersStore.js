@@ -1,3 +1,4 @@
+import { calculateAgeInMonths, convertAgeRangeToMonths } from '@/utils/ageFilterHelpers'
 import { create } from 'zustand'
 
 const FILTER_INIT = {
@@ -23,13 +24,22 @@ export const petFiltersStore = create((set) => ({
   applyFilter: (pets) =>
     set((state) => {
       const { filters } = state
-      const filtered = pets?.filter((pet) =>
+
+      let filtered = pets?.filter((pet) =>
         Object.keys(filters).every((field) => {
           const value = filters[field]
-          if (value === '') return true
+          if (value === '' || field === 'age') return true
           return typeof value === 'string' ? value.toLowerCase() === pet[field]?.toLowerCase() : value === pet[field]
         })
       )
+      if (filters.age) {
+        const { min, max } = convertAgeRangeToMonths(filters.age)
+
+        filtered = filtered.filter((pet) => {
+          const petAgeInMonths = calculateAgeInMonths(pet.birthDate)
+          return petAgeInMonths >= min && (max === null || petAgeInMonths <= max)
+        })
+      }
       return { filteredPets: filtered }
     })
 }))
