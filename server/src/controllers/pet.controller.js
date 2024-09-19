@@ -1,6 +1,7 @@
 import { uploadImage } from '../config/cloudinary.config.js'
 import Pet from '../models/pet.model.js'
 import ShelterModel from '../models/shelter.model.js'
+import 'dotenv/config'
 
 const findAllPets = (req, res) => {
   const shelterId = req.shelterId // geting shelterId from jwt middelware
@@ -55,7 +56,8 @@ const createNewPet = async (req, res) => {
   const imgBase64Array = petData.imgURL
 
   try {
-    const cloudinaryURLs = await uploadImageToCloudinary(imgBase64Array)
+    const cloudinaryURLs = process.env.MODE !== 'DEV' ? await uploadImageToCloudinary(imgBase64Array) : 'prueba'
+
     petData.imgURL = cloudinaryURLs // Assign the Cloudinary URLs to the pet data
 
     // Create the new pet

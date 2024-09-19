@@ -12,7 +12,7 @@ export function PetsPageLayout({ children, onRefetch }) {
       </aside>
       <nav className="my-6 h-10 w-full text-end md:hidden">
         <Popover>
-          <PopoverTrigger>
+          <PopoverTrigger asChild>
             <Button variant="secondary">
               <FilterIcon /> Filtrar
             </Button>

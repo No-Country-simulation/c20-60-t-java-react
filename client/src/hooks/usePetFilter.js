@@ -1,10 +1,11 @@
 import { petFiltersStore } from '@/store/index'
 import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
+import { PETS_ADOPTABLE } from '@/config/query_keys'
 
 export function usePetFilter() {
   const queryClient = useQueryClient()
-  const pets = queryClient.getQueryData(['pets-adoptable'])
+  const pets = queryClient.getQueryData([PETS_ADOPTABLE])
 
   const { filters, updateFilter, filteredPets, applyFilter } = petFiltersStore((state) => ({
     filters: state.filters,
