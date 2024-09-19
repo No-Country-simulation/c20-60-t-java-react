@@ -9,6 +9,16 @@ export const authAPI = {
   },
   async login(data) {
     return fetch(ENDPOINT + `/login`, buildRequest(data))
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Invalid credentials')
+        }
+        return response
+      })
+      .then((response) => response.json())
+      .catch((err) => {
+        throw new Error('There was an internal error')
+      })
   },
   async logout() {
     return fetch(ENDPOINT + `/logout`, { method: 'POST' })

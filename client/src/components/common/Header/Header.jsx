@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
-import { useAuth } from '@/store/authStore'
+import { useAuth } from '@/hooks'
 import { Link, useLocation } from 'react-router-dom'
 import { Text } from '../../ui/index'
 import { MenuIcon } from './MenuIcon'

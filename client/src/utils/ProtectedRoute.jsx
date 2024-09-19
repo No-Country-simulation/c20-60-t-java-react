@@ -1,4 +1,4 @@
-import { useAuth } from '@/store/authStore'
+import { useAuth } from '@/hooks'
 import { Navigate, Outlet } from 'react-router-dom'
 
 export function ProtectedRoute() {
