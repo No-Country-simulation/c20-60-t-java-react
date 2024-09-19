@@ -19,8 +19,6 @@ export async function uploadImage(url) {
       console.error(error)
     })
 
-  console.log(uploadResult)
-
   // Optimize delivery by resizing and applying auto-format and auto-quality
   const optimizeUrl = cloudinary.url(uploadResult.public_id, {
     transformation: [
