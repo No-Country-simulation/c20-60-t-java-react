@@ -1,6 +1,7 @@
 import { uploadImage } from '../config/cloudinary.config.js'
 import Pet from '../models/pet.model.js'
-import ShelterModel from '../models/shelter.model.js'
+import Request from '../models/request.model.js'
+import Shelter from '../models/shelter.model.js'
 
 const findAllPets = (req, res) => {
   const shelterId = req.shelterId // geting shelterId from jwt middelware
@@ -62,7 +63,7 @@ const createNewPet = async (req, res) => {
     const newlyCreatedPet = await Pet.create(petData)
 
     // Add the new pet's ID to the shelter's pets array using $push
-    await ShelterModel.findByIdAndUpdate({ _id: shelterId }, { $push: { pets: newlyCreatedPet._id } }, { new: true })
+    await Shelter.findByIdAndUpdate({ _id: shelterId }, { $push: { pets: newlyCreatedPet._id } }, { new: true })
 
     // Respond with the newly created pet's ID
     res.json({ pet: { id: newlyCreatedPet._id } })
@@ -95,7 +96,10 @@ const deleteAnExistingPet = async (req, res) => {
   const shelterId = req.shelterId // geting shelterId from jwt middelware
   try {
     // Remove the pet ID from the shelter's pets array using $pull
-    await ShelterModel.findByIdAndUpdate({ _id: shelterId }, { $pull: { pets: id } }, { new: true })
+    await Shelter.findByIdAndUpdate({ _id: shelterId }, { $pull: { pets: id } }, { new: true })
+
+    // Delete the requests made for the pet to be deleted
+    const findAllRequestsForPet = await Request.find({ pet: { _id: id } })
 
     // Delete the pet from the Pet collection
     const result = await Pet.deleteOne({ _id: id })
