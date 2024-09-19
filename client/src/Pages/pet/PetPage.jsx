@@ -48,7 +48,7 @@ export function PetPage() {
                 <strong>Vacunado:</strong> {pet.vaccinated ? 'Si' : 'No'}
               </li>
               <li className="last">
-                <strong>Ubicación:</strong> {pet.location}
+                <strong>Ubicación:</strong> {pet.shelter.location}
               </li>
             </ul>
             <h2 className="mt-4">Información sobre mí:</h2>

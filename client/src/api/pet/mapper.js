@@ -1,9 +1,9 @@
 // Frontend is going to use the object returned by this function
-// Some field doesn't have the same name that comes from the backend
+// Some fields dont have the same name that comes from the backend
 
 import { getAgeFromBirthDate } from '@/utils/getAgeFromBirthDate'
 
-export function mapPet(rawPet) {
+export function petMapper(rawPet) {
   return {
     id: rawPet._id,
     species: rawPet.species ?? '-',
@@ -17,7 +17,25 @@ export function mapPet(rawPet) {
     description: rawPet.description ?? '-',
     vaccinated: rawPet.vaccinated ?? false,
     sterilized: rawPet.sterilized ?? false,
-    availableForAdoption: rawPet.availableForAdoption ?? false,
-    location: rawPet.shelter.address ?? '-'
+    availableForAdoption: rawPet.availableForAdoption ?? false
+  }
+}
+
+export function petShelterMapper(rawPet) {
+  const pet = petMapper(rawPet)
+  const shelter = rawPet.shelter ? shelterMapper(rawPet.shelter) : {}
+
+  return {
+    ...pet,
+    shelter
+  }
+}
+
+function shelterMapper(rawShelter) {
+  return {
+    id: rawShelter._id ?? '-',
+    location: rawShelter.address ?? '-',
+    email: rawShelter.email ?? '-',
+    name: rawShelter.shelterName ?? '-'
   }
 }
