@@ -1,8 +1,9 @@
 import Request from '../models/request.model.js'
+import PetModel from '../models/pet.model.js'
 
 const findAllRequests = (req, res) => {
   Request.find()
-    .populate('pet', 'name imgURL species shelter')
+    .populate('pet')
     .then((allRequests) => res.json({ requests: allRequests }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
