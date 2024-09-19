@@ -20,12 +20,12 @@ export const booleanOptions = [
 export const sexOptions = [
   {
     text: 'Macho',
-    value: 'male',
+    value: 'macho',
     icon: <MaleIcon />
   },
   {
     text: 'Hembra',
-    value: 'female',
+    value: 'hembra',
     icon: <FemaleIcon />
   }
 ]
