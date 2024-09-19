@@ -1,7 +1,7 @@
 import { petFiltersStore } from '@/store/index'
 import { useQueryClient } from '@tanstack/react-query'
 import { useEffect } from 'react'
-import { PETS_ADOPTABLE } from '@/config/query_keys'
+import { PETS_ADOPTABLE } from '@/config/keys'
 
 export function usePetFilter() {
   const queryClient = useQueryClient()

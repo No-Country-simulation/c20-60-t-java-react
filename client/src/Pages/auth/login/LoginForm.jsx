@@ -3,7 +3,6 @@ import { defaultLoginValues, refugeeLoginSchema } from '@/lib/zod-validations/re
 import { useAuth } from '@/hooks'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { toast } from '@/components/ui/use-toast'
 
 export function LoginForm() {
   const { loginAction } = useAuth()
@@ -12,15 +11,9 @@ export function LoginForm() {
     defaultValues: defaultLoginValues
   })
 
-  const handleSubmit = (data) => {
-    loginAction(data).then(() => {
-      toast({ title: 'Logged in!' })
-    })
-  }
-
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="flex w-full flex-col gap-4">
+      <form onSubmit={form.handleSubmit(loginAction)} className="flex w-full flex-col gap-4">
         <FormField
           name="email"
           control={form.control}
