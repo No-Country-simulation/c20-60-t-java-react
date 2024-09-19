@@ -1,6 +1,6 @@
 import { envs } from '@/config/envs'
 import { buildRequest, buildAuthGETRequest } from '@/utils/buildRequest'
-import { petMapper, petShelterMapper } from './mapper'
+import { petMapper, petShelterMapper } from './petMapper'
 
 let ENDPOINT = envs.BASE_API_URL + '/api/pets'
 

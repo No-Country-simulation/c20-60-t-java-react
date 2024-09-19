@@ -1,5 +1,4 @@
 import Request from '../models/request.model.js'
-import PetModel from '../models/pet.model.js'
 
 const findAllRequests = (req, res) => {
   Request.find()
@@ -11,6 +10,7 @@ const findAllRequests = (req, res) => {
 const findAllRequestsForPet = (req, res) => {
   const { id } = req.params
   Request.find({ pet: { _id: id } })
+    .populate('pet')
     .then((allRequests) => res.json({ requests: allRequests }))
     .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
 }
