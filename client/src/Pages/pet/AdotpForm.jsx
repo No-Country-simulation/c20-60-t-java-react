@@ -1,33 +1,27 @@
+import { requestAPI } from '@/api'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/use-toast'
-import { adotpFormSchema } from '@/lib/zod-validations/adoptFormSchema'
+import { adotpFormSchema, defaultValues } from '@/lib/zod-validations/adoptFormSchema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
-import { requestAPI } from '@/api'
 import { useParams } from 'react-router-dom'
 
-export function AdotpForm() {
+export function AdotpForm({ onSend }) {
   const { id } = useParams()
 
   const form = useForm({
     resolver: zodResolver(adotpFormSchema),
-    defaultValues: {
-      email: '',
-      name: '',
-      location: '',
-      phone_number: '',
-      message: ''
-    }
+    defaultValues
   })
 
   const handleSubmit = (data) => {
     requestAPI
       .create({ ...data, pet: id })
       .then(() => {
-        toast({ title: 'Formulario enviado con exito!', description: 'Gracias por decidir adoptar!' })
         form.reset()
+        onSend()
       })
       .catch(() => {
         toast({ title: 'Oops...', description: 'Hubo un error, vuelve a intentar!' })
@@ -104,7 +98,9 @@ export function AdotpForm() {
             )}
           />
         </section>
-        <Button className="mx-auto w-fit min-w-[300px] px-4 py-2">Adoptar</Button>
+        <Button disabled={form.formState.isSubmitting} className="mx-auto w-fit min-w-[300px] px-4 py-2">
+          Adoptar
+        </Button>
       </form>
     </Form>
   )

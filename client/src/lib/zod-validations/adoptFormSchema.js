@@ -13,3 +13,11 @@ export const adotpFormSchema = z.object({
     { message: 'Numero telefónico invalido' }
   )
 })
+
+export const defaultValues = {
+  email: '',
+  name: '',
+  location: '',
+  phone_number: '',
+  message: ''
+}
