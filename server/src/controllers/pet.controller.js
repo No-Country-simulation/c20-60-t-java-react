@@ -56,7 +56,8 @@ const createNewPet = async (req, res) => {
   const imgBase64Array = petData.imgURL
 
   try {
-    const cloudinaryURLs = await uploadImageToCloudinary(imgBase64Array)
+    const cloudinaryURLs = process.env.MODE !== 'DEV' ? await uploadImageToCloudinary(imgBase64Array) : 'prueba'
+
     petData.imgURL = cloudinaryURLs // Assign the Cloudinary URLs to the pet data
 
     // Create the new pet

@@ -6,19 +6,24 @@ import { convertDateToUnix } from '@/utils/convertDateToUnix'
 import { convertFileToBase64 } from '@/utils/convertImageToBase64'
 import { useNavigate } from 'react-router-dom'
 import { AddPetForm } from './addPetForm/AddPetForm'
+import { envs } from '@/config/envs'
 
 export function DashAddPetPage() {
   const navigate = useNavigate()
 
   const handleSubmit = async (data) => {
-    const firstImageBase64 = await convertFileToBase64(data.firstImage)
-    const secondImageBase64 = await convertFileToBase64(data.secondImage)
+    let firstImageBase64 = 'img1'
+    let secondImageBase64 = 'img2'
+
+    if (envs.MODE !== 'dev') {
+      firstImageBase64 = await convertFileToBase64(data.firstImage)
+      secondImageBase64 = await convertFileToBase64(data.secondImage)
+    }
 
     const petData = {
       ...data,
       birthDate: convertDateToUnix(data.birthDate),
       imgURL: [firstImageBase64, secondImageBase64]
-      // secondImage: secondImageUrl
     }
 
     petAPI

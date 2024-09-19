@@ -1,7 +1,6 @@
 import { envs } from '@/config/envs'
 import { buildRequest, buildAuthGETRequest } from '@/utils/buildRequest'
-import { convertDateToUnix } from '@/utils/convertDateToUnix'
-import { mapPet } from './mapper'
+import { petMapper, petShelterMapper } from './mapper'
 
 let ENDPOINT = envs.BASE_API_URL + '/api/pets'
 
@@ -14,21 +13,23 @@ export const petAPI = {
         throw new Error('Failed to fetch pets')
       }
 
-      const data = await response.json() // Wait for the JSON data
-      return data.pets.map((pet) => mapPet(pet)) // Process the pets
+      const data = await response.json()
+      return data.pets.map((pet) => petMapper(pet))
     } catch (error) {
-      console.error('Error fetching pets:', error) // Handle errors
+      console.error('Error fetching pets:', error)
     }
   },
   async getAllAdoptable() {
-    return fetch(`${ENDPOINT}/true`)
+    return fetch(ENDPOINT + '/true')
       .then((response) => response.json())
-      .then((response) => response.pets.map((pet) => mapPet(pet)))
+      .then((response) => {
+        return response.pets.map((pet) => petMapper(pet))
+      })
   },
   async getOne({ id }) {
     return fetch(ENDPOINT + `/${id}`)
       .then((response) => response.json())
-      .then((response) => mapPet(response.pet))
+      .then((response) => petShelterMapper(response.pet))
   },
   async create(data) {
     return fetch(ENDPOINT + `/new`, buildRequest(data)).then((response) => {
