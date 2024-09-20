@@ -4,31 +4,39 @@ import Pet from '../models/pet.model.js'
 import Request from '../models/request.model.js'
 import Shelter from '../models/shelter.model.js'
 
-const findAllPets = (req, res) => {
+const findAllPets = async (req, res) => {
   const shelterId = req.shelterId // geting shelterId from jwt middelware
-  Pet.find({ shelter: shelterId })
-    .then((allDaPets) => res.json({ pets: allDaPets }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
-}
-
-const findOneSinglePet = (req, res) => {
-  const { query } = req.params
-  Pet.findOne({ _id: query })
-    .populate('shelter', '-password -createdAt -updatedAt -__v -pets') // Poblar la referencia al refugio
-    .then((oneSinglePet) => res.json({ pet: oneSinglePet }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
-}
-
-const findAllAdoptablePets = (req, res) => {
-  Pet.find({ availableForAdoption: true })
-    .then((allAdoptablePets) => res.json({ pets: allAdoptablePets }))
-    .catch((err) => res.status(400).json({ message: 'Something went wrong', error: err }))
+  try {
+    const allDaPets = await Pet.find({ shelter: shelterId })
+    res.json({ pets: allDaPets })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
 const findPetsWithQuery = (req, res) => {
   const { query } = req.params
   if (query === 'true') findAllAdoptablePets(req, res)
   else findOneSinglePet(req, res)
+}
+
+const findOneSinglePet = async (req, res) => {
+  const { query } = req.params
+  try {
+    const oneSinglePet = await Pet.findOne({ _id: query }).populate('shelter', '-password -createdAt -updatedAt -__v -pets') // Poblar la referencia al refugio
+    res.json({ pet: oneSinglePet })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
+}
+
+const findAllAdoptablePets = async (req, res) => {
+  try {
+    const allAdoptablePets = await Pet.find({ availableForAdoption: true })
+    res.json({ pets: allAdoptablePets })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
 const uploadImageToCloudinary = async (imgBase64Array) => {
