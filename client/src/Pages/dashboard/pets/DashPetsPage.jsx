@@ -15,7 +15,7 @@ export function DashPetsPage() {
     <DashboardPageLayout title="Mascotas">
       <section className="rounded-lg border border-border bg-secondary p-8">
         <Table>
-          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableCaption></TableCaption>
           <TableHeader>
             <TableRow>
               <TableHead>Nombre</TableHead>
@@ -34,13 +34,13 @@ export function DashPetsPage() {
                 </TableCell>
                 <TableCell className="flex justify-end gap-2">
                   <Link to={'../editar-mascota/' + pet.id}>
-                    <Button variant="outline">editar</Button>
+                    <Button variant="outline">Editar</Button>
                   </Link>
                   <Link to={'../mascotas/' + pet.id + '/peticiones'}>
-                    <Button variant="secondary">peticiones</Button>
+                    <Button variant="secondary">Peticiones</Button>
                   </Link>
                   <Button disabled={deleteMutation.isPending} onClick={() => deleteMutation.mutate(pet.id)}>
-                    eliminar
+                    Eliminar
                   </Button>
                 </TableCell>
               </TableRow>

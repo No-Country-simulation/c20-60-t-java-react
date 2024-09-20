@@ -8,12 +8,12 @@ import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const DASHBOARD_NAV_LINKS = [
   {
-    value: 'mascotas',
+    value: 'Mascotas',
     path: '/dashboard/mascotas',
     icon: <DogMiniIcon />
   },
   {
-    value: 'peticiones',
+    value: 'Peticiones',
     path: '/dashboard/peticiones',
     icon: <DocumentIcon />
   }
