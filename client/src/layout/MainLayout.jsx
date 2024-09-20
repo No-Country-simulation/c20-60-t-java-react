@@ -1,7 +1,7 @@
 import Footer from '@/components/common/Footer'
 import { Header } from '@/components/common/index'
 import { DevPill, Toaster } from '@/components/ui'
-import { Outlet } from 'react-router-dom'
+import { Outlet, ScrollRestoration } from 'react-router-dom'
 
 export function MainLayout() {
   return (
@@ -15,6 +15,7 @@ export function MainLayout() {
       </section>
       <Toaster />
       <DevPill />
+      <ScrollRestoration />
     </section>
   )
 }
