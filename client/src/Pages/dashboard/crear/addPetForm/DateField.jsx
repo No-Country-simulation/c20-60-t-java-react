@@ -42,7 +42,7 @@ export function DateField() {
               />
             </PopoverContent>
           </Popover>
-          <FormDescription>El año de nacimiento se usara para calcular la edad</FormDescription>
+          <FormDescription>El año de nacimiento se usará para calcular la edad</FormDescription>
           <FormMessage />
         </FormItem>
       )}

@@ -22,7 +22,7 @@ const AuthProvider = ({ children }) => {
         setUser(() => {
           localStorage.setItem(LOCAL_STORAGE_KEYS.SHELTER, JSON.stringify(response.shelter))
           navigateCallback({ pathname: '/' })
-          toast({ title: 'Logged in!' })
+          toast({ title: '¡Sesión iniciada!' })
           return response.shelter
         })
       })

@@ -24,18 +24,18 @@ export function AddPetForm({ defaultValues, onSubmit }) {
         <BooleanFieldWithIcons field={'species'} label={'Especie'} options={specieOptions} />
         <BooleanFieldWithIcons field={'sex'} label={'Sexo de la mascota'} options={sexOptions} />
         <SizeField />
-        <BooleanField field={'sterilized'} label={'La mascota esta esterilizada?'} options={booleanOptions} />
-        <BooleanField field={'vaccinated'} label={'La mascota esta vacunada?'} options={booleanOptions} />
+        <BooleanField field={'sterilized'} label={'¿La mascota está esterilizada?'} options={booleanOptions} />
+        <BooleanField field={'vaccinated'} label={'¿La mascota está vacunada?'} options={booleanOptions} />
         <TextField
           field={'description'}
-          label={'Descripcion'}
+          label={'Descripción'}
           placeholder={'Rocco es un perro muy hiperactivo!'}
-          description={'Descripcion de la mascota'}
+          description={'Descripción de la mascota'}
         />
         <BreedField />
         <DateField />
         <ImageField />
-        <Button>enviar</Button>
+        <Button>Enviar</Button>
       </form>
     </FormProvider>
   )

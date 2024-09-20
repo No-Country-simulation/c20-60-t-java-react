@@ -42,10 +42,10 @@ export function PetPage() {
                 <strong>Edad:</strong> {pet.age}
               </li>
               <li>
-                <strong>Esterilizado:</strong> {pet.sterilized ? 'Si' : 'No'}
+                <strong>Esterilizado:</strong> {pet.sterilized ? 'Sí' : 'No'}
               </li>
               <li>
-                <strong>Vacunado:</strong> {pet.vaccinated ? 'Si' : 'No'}
+                <strong>Vacunado:</strong> {pet.vaccinated ? 'Sí' : 'No'}
               </li>
               <li className="last">
                 <strong>Ubicación:</strong> {pet.shelter.location}

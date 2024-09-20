@@ -8,7 +8,7 @@ export const PET_PLACEHOLDER_IMAGE =
 
 export const booleanOptions = [
   {
-    text: 'Si',
+    text: 'Sí',
     value: true
   },
   {

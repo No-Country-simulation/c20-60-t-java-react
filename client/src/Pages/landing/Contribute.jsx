@@ -9,7 +9,7 @@ export function Contribute() {
           Con tu ayuda, podemos salvar a muchos más animales
         </Text>
         <Text variant="medium" className="my-6">
-          Dona ahora o inscríbete para ser voluntario en Pawsome Friends y formar parte del cambio juntos.
+          Dona ahora o inscríbete como refugio en Pawsome Friends para formar parte del cambio juntos.
         </Text>
       </header>
       <footer className="flex flex-col items-center gap-6">

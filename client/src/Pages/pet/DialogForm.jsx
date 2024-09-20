@@ -11,7 +11,7 @@ export function DialogForm() {
     <Dialog>
       <DialogTrigger asChild>
         <Button onClick={() => setFormWasSent(false)} className="mt-12 w-full">
-          Adoptame!
+          ¡Adóptame!
         </Button>
       </DialogTrigger>
       <DialogContent className="p-11">

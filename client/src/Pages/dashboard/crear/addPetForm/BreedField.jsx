@@ -33,7 +33,7 @@ export function BreedField() {
             <FormControl>
               <SelectTrigger>
                 <SelectValue
-                  placeholder={form.getValues('species') ? 'Selecciona la raza de la mascota' : 'Primero Selecciona el especie de la mascota'}
+                  placeholder={form.getValues('species') ? 'Selecciona la raza de la mascota' : 'Primero Selecciona la especie de la mascota'}
                 />
               </SelectTrigger>
             </FormControl>
