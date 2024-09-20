@@ -17,15 +17,15 @@ export function AdotpForm({ onSend }) {
   })
 
   const handleSubmit = (data) => {
-    requestAPI
-      .create({ ...data, pet: id })
-      .then(() => {
-        form.reset()
-        onSend()
-      })
-      .catch(() => {
-        toast({ title: 'Oops...', description: 'Hubo un error, vuelve a intentar!' })
-      })
+    onSend()
+    // requestAPI
+    //   .create({ ...data, pet: id })
+    //   .then(() => {
+    //     form.reset()
+    //   })
+    //   .catch(() => {
+    //     toast({ title: 'Oops...', description: 'Hubo un error, vuelve a intentar!' })
+    //   })
   }
 
   return (
