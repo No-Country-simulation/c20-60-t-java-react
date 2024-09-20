@@ -6,7 +6,7 @@ import { Text } from '../../components/ui/text'
 export function HowToAdopt() {
   return (
     <section>
-      <Text variant="display" className="pb-6 text-center">
+      <Text variant="display" className="block pb-6 text-center">
         ¿Cómo adoptar?
       </Text>
       <section className="relative grid justify-items-center gap-y-12 bg-secondary px-8 py-9 sm:grid-cols-2 sm:gap-x-8 md:grid-cols-3 md:gap-12 lg:gap-x-16">
