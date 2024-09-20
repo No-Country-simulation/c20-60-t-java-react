@@ -13,14 +13,14 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-20 w-full bg-accent px-4 text-primary-foreground shadow-md">
       <div className="mx-auto flex h-[80px] max-w-desktop items-center justify-between">
-        <a href={pathname !== '/' ? '/' : '#top'} className="flex cursor-pointer items-center gap-2">
+        <Link to="/" className="flex cursor-pointer items-center gap-2">
           <figure>
             <img src="/images/logo.png" alt="logo pawsome friend" width={60} height={60} />
           </figure>
           <Text variant="subtitle" className="text-primary">
             Pawsome friends
           </Text>
-        </a>
+        </Link>
         <div className="flex flex-row-reverse lg:flex-row">
           <Sheet>
             <SheetTrigger asChild>

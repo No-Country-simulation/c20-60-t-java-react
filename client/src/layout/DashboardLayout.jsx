@@ -4,7 +4,7 @@ import { GearIcon } from '@/components/icons/GearIcon'
 import { LogOutIcon } from '@/components/icons/LogOutIcon'
 import { Button, Text } from '@/components/ui'
 import { useAuth } from '@/hooks'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { Link, Outlet, useLocation, useNavigate } from 'react-router-dom'
 
 const DASHBOARD_NAV_LINKS = [
   {
@@ -22,6 +22,11 @@ const DASHBOARD_NAV_LINKS = [
 export function DashboardLayout() {
   const { logOut } = useAuth()
   const { pathname } = useLocation()
+  const navigate = useNavigate()
+
+  const handleLogout = () => {
+    logOut(navigate)
+  }
 
   return (
     <section className="grid min-h-[90dvh] grid-cols-[minmax(150px,300px)_1fr] gap-6 py-12">
@@ -50,7 +55,7 @@ export function DashboardLayout() {
               <GearIcon />
               Opciones
             </Button>
-            <Button className="w-full" onClick={logOut}>
+            <Button className="w-full" onClick={handleLogout}>
               <LogOutIcon />
               Cerrar sesión
             </Button>

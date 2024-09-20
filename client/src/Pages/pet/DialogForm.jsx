@@ -1,4 +1,4 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
+import { Dialog, DialogContent, DialogClose, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Text } from '@/components/ui/text'
 import { AdotpForm } from './AdotpForm'
 import { Button } from '@/components/ui/button'
@@ -14,17 +14,24 @@ export function DialogForm() {
           Adoptame!
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="p-11">
         {formWasSent ? (
-          <DialogHeader>
-            <DialogTitle className="flex flex-col gap-x-14 gap-y-8">
-              <Text variant="title">¡Gracias por tu interés en adoptar una mascota!</Text>
-              <Text variant="medium" className="text-accent">
-                Hemos recibido tu solicitud y nuestro equipo se pondrá en contacto contigo pronto para los próximos pasos. Nos alegra que quieras
-                ofrecerle un hogar a una mascota.
-              </Text>
-            </DialogTitle>
-          </DialogHeader>
+          <>
+            <DialogHeader>
+              <DialogTitle className="flex flex-col gap-x-14 gap-y-8">
+                <Text variant="title">Datos recibidos correctamente</Text>
+                <Text variant="medium" className="text-accent">
+                  Gracias por completar el formulario con tus datos. Una vez revisado, te contactaremos por correo electrónico para continuar con el
+                  proceso de adopción.
+                </Text>
+              </DialogTitle>
+            </DialogHeader>
+            <DialogClose asChild>
+              <Button type="button" size="lg" className="mx-auto">
+                Close
+              </Button>
+            </DialogClose>
+          </>
         ) : (
           <>
             <DialogHeader>

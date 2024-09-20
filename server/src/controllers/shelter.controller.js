@@ -3,65 +3,65 @@ import jwt from 'jsonwebtoken'
 import { secret } from '../middlewares/jwt.middleware.js'
 import ShelterModel from '../models/shelter.model.js'
 
-const register = (req, res) => {
+const register = async (req, res) => {
   const shelter = new ShelterModel(req.body)
-  shelter
-    .save()
-    .then(() => {
-      res.status(200).json({ msg: 'success!', shelter })
-    })
-    .catch((err) => res.status(400).json(err))
+  try {
+    await shelter.save()
+    res.status(200).json({ message: 'success!', shelter })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
-const logout = (req, res) => {
-  res.clearCookie('sheltertoken') // clear the cookie from the response
-  res.status(200).json({
-    message: 'You have successfully logged out'
-  })
+const logout = async (req, res) => {
+  try {
+    res.clearCookie('sheltertoken') // clear the cookie from the response
+    res.status(200).json({ message: 'You have successfully logged out' })
+  } catch (error) {
+    res.status(400).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
-const login = (req, res) => {
-  ShelterModel.findOne({ email: req.body.email })
-    .then((shelter) => {
-      if (shelter === null) {
-        res.status(400).json({ msg: 'invalid login attempt' })
-      } else {
-        if (req.body.password === undefined) {
-          res.status(400).json({ msg: 'invalid login attempt' })
-        }
-        console.log(req.body)
-        bcrypt
-          .compare(req.body.password, shelter.password)
-          .then((passwordIsValid) => {
-            console.log('passwordIsValid: ', passwordIsValid)
-            if (passwordIsValid) {
-              const shelterInfo = {
-                _id: shelter._id,
-                shelterName: shelter.shelterName,
-                address: shelter.address,
-                email: shelter.email
-              }
-              console.log('shelterInfo: ', shelterInfo)
+const login = async (req, res) => {
+  const { email, password } = req.body
+  try {
+    const shelter = await ShelterModel.findOne({ email: email })
+    if (shelter === null) {
+      return res.status(400).json({ message: 'invalid login attempt' })
+    }
+    if (req.body.password === undefined) {
+      return res.status(400).json({ message: 'invalid login attempt' })
+    }
 
-              const newJWT = jwt.sign(shelterInfo, secret)
-              console.log('newJWT: ', newJWT)
-              res
-                .status(200)
-                .cookie('sheltertoken', newJWT, {
-                  httpOnly: true,
-                  expires: new Date(Date.now() + 900000000),
-                  sameSite: 'none',
-                  secure: true
-                })
-                .json({ msg: 'success!', shelter: shelterInfo, newJWT })
-            } else {
-              res.status(401).json({ msg: 'invalid login attempt' })
-            }
-          })
-          .catch((err) => res.status(401).json({ msg: 'invalid login attempt', error: err }))
-      }
-    })
-    .catch((err) => res.status(401).json({ error: err }))
+    const passwordValidation = await bcrypt.compare(password, shelter.password)
+
+    if (!passwordValidation) {
+      return res.status(401).json({ message: 'invalid login attempt' })
+    }
+
+    const shelterInfo = {
+      _id: shelter._id,
+      shelterName: shelter.shelterName,
+      address: shelter.address,
+      email: shelter.email
+    }
+    console.log('shelterInfo: ', shelterInfo)
+
+    const newJWT = jwt.sign(shelterInfo, secret)
+    console.log('newJWT: ', newJWT)
+
+    res
+      .status(200)
+      .cookie('sheltertoken', newJWT, {
+        httpOnly: true,
+        expires: new Date(Date.now() + 900000000),
+        sameSite: 'none',
+        secure: true
+      })
+      .json({ message: 'success!', shelter: shelterInfo, newJWT })
+  } catch (error) {
+    res.status(401).json({ message: 'Something went wrong', error: error.message })
+  }
 }
 
 export default {
