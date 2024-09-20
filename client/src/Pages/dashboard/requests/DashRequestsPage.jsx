@@ -9,7 +9,7 @@ export function DashRequestsPage() {
     <DashboardPageLayout title="Peticiones">
       <ul className="grid grid-cols-2 gap-4">
         {requests?.map((peticion) => (
-          <RequestCard peticion={peticion} key={peticion.phone_number} />
+          <RequestCard peticion={peticion} key={peticion.id} />
         ))}
       </ul>
     </DashboardPageLayout>

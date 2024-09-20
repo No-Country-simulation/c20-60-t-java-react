@@ -6,7 +6,7 @@ export function RequestCard({ peticion }) {
       <div className="absolute right-0 top-0 flex items-center gap-2 rounded-bl-xl border bg-card p-4">
         <p className="text-xs">{peticion.pet.name}</p>
         <figure className="size-8 overflow-hidden rounded-full">
-          <img className="h-full w-full object-cover" src={peticion.pet.imgURL[0]} alt="" />
+          <img className="h-full w-full object-cover" src={peticion.pet.thumbnail} alt="" />
         </figure>
       </div>
       <header className="flex divide-x py-4">
