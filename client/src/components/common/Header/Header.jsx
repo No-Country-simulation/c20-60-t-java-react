@@ -30,8 +30,21 @@ export const Header = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="right">
-              <nav className="grid gap-4 p-2">
-                <Link to={'#about-us'} className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
+              <nav className="grid justify-items-start gap-4 pt-8">
+                <ThemeSwitcher className="mt-4"/>
+                {user ? (
+                  <Link to={'/dashboard/mascotas'} className="mt-2 hover:text-primary">
+                    <Button>Dashboard</Button>
+                  </Link>
+                ) : (
+                  <Link to={'/auth/iniciar-sesion'} className="mt-2 hover:text-primary">
+                    <Button>Iniciar sesión</Button>
+                  </Link>
+                )}
+                <Link to={'/mascotas'} className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
+                  Mascotas
+                </Link>
+                <Link to={'/#about-us'} className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
                   Sobre Nosotros
                 </Link>
                 <Link href="#" className="flex items-center gap-2 font-roboto text-lg font-medium transition-colors hover:text-primary">
@@ -53,11 +66,11 @@ export const Header = () => {
             <ThemeSwitcher />
             {user ? (
               <Link to={'/dashboard/mascotas'} className="hover:text-primary">
-                <Button>dashboard</Button>
+                <Button>Dashboard</Button>
               </Link>
             ) : (
               <Link to={'/auth/iniciar-sesion'} className="hover:text-primary">
-                <Button>iniciar sesion</Button>
+                <Button>Iniciar sesión</Button>
               </Link>
             )}
           </nav>
